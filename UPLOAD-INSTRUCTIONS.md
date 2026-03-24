@@ -26,7 +26,7 @@ For the site to work **as-is** (all images via URLs), upload only:
 | File / folder      | Required | Notes |
 |--------------------|----------|--------|
 | **index.html**     | Yes      | In the **root** of your web folder (e.g. `public_html` or `www`). |
-| **thanks.html**    | Yes*     | *Required* if you use the FormSubmit thank-you redirect (`_next`). Upload next to `index.html`. |
+| **thanks.html**    | No       | Optional standalone page; main contact flow uses an on-screen modal. |
 | **assets/**        | No       | Only if you switch any image `src` in index.html to local files (e.g. `assets/hero.jpg`). Can be empty or contain README.txt. |
 
 So the **minimum upload** is: **index.html** in the root.  
@@ -83,23 +83,24 @@ This creates **way-maker-site.zip** with `index.html` and `assets` at the top le
 
 ---
 
-## 7. Contact form redirect (`thanks.html`) & GitHub Pages
+## 7. Contact form (FormSubmit + photos)
 
-The contact form uses **FormSubmit** with a hidden field **`_next`** so users land on a thank-you page after sending (instead of FormSubmit’s default page).
+The form sends via **FormSubmit’s JSON/AJAX** endpoint so users **stay on the page** and see an **on-screen confirmation** (no redirect). Multipart uploads directly to FormSubmit often return **500** errors, so **photos are handled differently**:
 
-- **GitHub Pages** (repo `bondback-io/waymaker`): enable **Settings → Pages** → deploy from branch **`main`**, folder **`/` (root)**. The thank-you URL is:
-  - `https://bondback-io.github.io/waymaker/thanks.html`
-- Upload **`thanks.html`** next to **`index.html`** whenever you deploy.
-- **Custom domain** (`waymakerrubbishsolutions.com.au`): after DNS points to your host and the site loads, edit **`index.html`** and set `_next` to:
-  - `https://waymakerrubbishsolutions.com.au/thanks.html`  
-  (Using the domain before DNS is ready causes “site can’t be reached” after submit.)
+1. **ImgBB** (free): sign up at [api.imgbb.com](https://api.imgbb.com/), copy your API key.
+2. In **`index.html`**, find **`window.WAYMAKER_IMGBB_KEY = ''`** (near the top) and paste your key between the quotes.
+3. When someone submits **with photos**, images upload to ImgBB **first** (with a progress bar), then the enquiry email includes **links** to those images.
+
+**Text-only enquiries** work with no ImgBB key. **With photos but no key**, the site shows an error asking you to add the key or remove photos.
+
+Optional: **`thanks.html`** remains available if you want a standalone thank-you bookmark; the main flow no longer depends on it.
 
 ---
 
 ## 8. Checklist before go-live
 
 - [ ] **index.html** is in the document root (e.g. `public_html/index.html`).
-- [ ] **thanks.html** is uploaded next to **index.html** if you use FormSubmit with `_next`.
+- [ ] **ImgBB API key** is set in **index.html** (`WAYMAKER_IMGBB_KEY`) if you want photo uploads from the contact form.
 - [ ] Zip was created so that **index.html** is at the top level inside the zip (not inside an extra folder).
 - [ ] If you use local images, **assets** and the image files are uploaded.
 - [ ] Test the site: open your domain and check nav, forms, and images (or image URLs).

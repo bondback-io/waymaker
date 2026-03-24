@@ -33,6 +33,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Photo uploads: paste your free ImgBB API key (https://api.imgbb.com/) — required before photos can be sent with your enquiry -->
+  <script>
+    window.WAYMAKER_IMGBB_KEY = '';
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -723,14 +727,9 @@
 
         <div class="animate-on-scroll">
           <!-- FormSubmit delivers to mattpascua89@gmail.com (verify email on first use: https://formsubmit.co) -->
-          <form id="contact-form" class="space-y-4" action="https://formsubmit.co/mattpascua89@gmail.com" method="POST" enctype="multipart/form-data">
-            <!-- Honeypot: leave empty (FormSubmit spam filter) -->
+          <form id="contact-form" class="space-y-4" action="#" method="post">
+            <!-- Submitted via JS (FormSubmit AJAX). Multipart to FormSubmit often returns 500; photos upload to ImgBB first, then links go in the email. -->
             <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
-            <input type="hidden" name="_subject" value="Way Maker Rubbish Solutions – New website enquiry" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <!-- _next must be a URL that resolves. Custom domain: set to https://waymakerrubbishsolutions.com.au/thanks.html when DNS is live. -->
-            <input type="hidden" name="_next" value="https://bondback-io.github.io/waymaker/thanks.html" />
             <div>
               <label for="contact-name" class="block text-sm font-medium text-white/80 mb-1.5">Name *</label>
               <input type="text" id="contact-name" name="name" required autocomplete="name" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/45 focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your name" />
@@ -753,27 +752,40 @@
             </div>
             <div>
               <span class="block text-sm font-medium text-white/80 mb-1.5">Photos (optional)</span>
-              <p class="text-white/50 text-xs mb-2">Add photos of the waste or site so we can quote accurately. JPG, PNG, WEBP or GIF — <strong class="text-white/70">10MB total max</strong> (FormSubmit limit).</p>
+              <p class="text-white/50 text-xs mb-2">
+                Photos upload first (with progress), then your enquiry is sent — you stay on this page. JPG, PNG, WEBP or GIF —
+                <strong class="text-white/70">10MB total max</strong>. Add your free
+                <a href="https://api.imgbb.com/" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">ImgBB API key</a>
+                at the top of <code class="text-white/55">index.html</code> (<code class="text-white/55">WAYMAKER_IMGBB_KEY</code>).
+              </p>
               <input
                 type="file"
                 id="contact-photos-input"
-                name="attachment[]"
                 multiple
                 accept="image/jpeg,image/png,image/webp,image/gif,image/heic,.heic"
                 class="block w-full text-sm text-white/80 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-primary/30 file:text-white file:font-medium file:cursor-pointer hover:file:bg-primary/45"
               />
-              <p class="text-white/40 text-xs mt-1.5">
-                Choose files once or add more in batches. Remove any row before sending if it’s the wrong photo. FormSubmit expects the field name <code class="text-white/55">attachment[]</code> for multiple images in one email.
-              </p>
+              <p class="text-white/40 text-xs mt-1.5">Choose files once or add more in batches. Remove any row before sending if it’s the wrong photo.</p>
               <ul id="photos-preview-list" class="mt-3 space-y-2 empty:hidden" aria-label="Selected photos"></ul>
+              <div id="contact-upload-panel" class="hidden mt-4 rounded-xl bg-white/5 border border-white/10 p-4" aria-hidden="true">
+                <p id="contact-upload-status" class="text-sm text-white/85 font-medium mb-2">Preparing uploads…</p>
+                <div class="h-2.5 bg-white/10 rounded-full overflow-hidden">
+                  <div
+                    id="contact-upload-bar"
+                    class="h-full bg-gradient-to-r from-primary to-emerald-400 transition-[width] duration-200 ease-out rounded-full"
+                    style="width: 0%"
+                  ></div>
+                </div>
+                <p id="contact-upload-detail" class="text-xs text-white/50 mt-2"></p>
+              </div>
             </div>
             <button type="submit" id="contact-submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-accent hover:bg-orange-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold px-8 py-4 rounded-xl transition shadow-lg">
               <span id="contact-submit-label">Send enquiry</span>
             </button>
             <p id="form-status" class="text-sm mt-2 hidden rounded-lg px-3 py-2" role="status" aria-live="polite"></p>
             <p class="text-white/45 text-xs">
-              After you send, you’ll see a short thank-you page, then you can return to the site. First submission: confirm FormSubmit in
-              <strong class="text-white/70">mattpascua89@gmail.com</strong> (one-time). Photos require a normal form send (not AJAX). Spam: enable captcha in FormSubmit if needed.
+              You’ll get an on-screen confirmation — no redirect. First-time FormSubmit: confirm your email in
+              <strong class="text-white/70">mattpascua89@gmail.com</strong>. Spam: enable captcha in FormSubmit if needed.
             </p>
           </form>
         </div>
@@ -807,6 +819,35 @@
   <a href="tel:0423101334" id="float-call-btn" class="fixed bottom-6 right-6 z-40 lg:hidden flex items-center justify-center w-14 h-14 rounded-full bg-accent text-white shadow-xl float-call" aria-label="Call now">
     <i class="fa-solid fa-phone" aria-hidden="true"></i>
   </a>
+
+  <!-- Contact confirmation / error (FormSubmit AJAX — no full-page redirect) -->
+  <div
+    id="contact-modal-overlay"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-dark/80 backdrop-blur-sm p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="contact-modal-title"
+    aria-describedby="contact-modal-desc"
+  >
+    <div class="relative w-full max-w-md rounded-2xl border border-white/10 bg-[#0f172a] shadow-2xl shadow-black/40 p-8 sm:p-10">
+      <div id="contact-modal-icon-wrap" class="mb-5 flex justify-center">
+        <span class="flex h-16 w-16 items-center justify-center rounded-full bg-primary/20 text-primary">
+          <i class="fa-solid fa-circle-check text-3xl" aria-hidden="true"></i>
+        </span>
+      </div>
+      <h2 id="contact-modal-title" class="font-heading text-center text-xl sm:text-2xl font-bold text-white mb-3">Enquiry sent</h2>
+      <p id="contact-modal-desc" class="text-center text-white/75 text-sm leading-relaxed mb-8">
+        Thank you for contacting Way Maker Rubbish Solutions. We’ve received your message and will respond as soon as we can.
+      </p>
+      <button
+        type="button"
+        id="contact-modal-close"
+        class="w-full rounded-xl bg-primary hover:bg-emerald-500 text-white font-semibold py-3.5 px-4 transition shadow-lg shadow-primary/20"
+      >
+        Close
+      </button>
+    </div>
+  </div>
 
   <script>
     (function () {
@@ -900,11 +941,25 @@
         });
       });
 
-      /* Contact form: FormSubmit cannot attach files via AJAX — use multipart POST + native form.submit() */
+      /* Contact: FormSubmit AJAX (JSON) avoids multipart 500s. Photos upload to ImgBB first, then links are emailed. */
       var MAX_PHOTOS_BYTES = 10 * 1024 * 1024;
+      var FORMSUBMIT_AJAX = 'https://formsubmit.co/ajax/mattpascua89@gmail.com';
+      var IMGBB_API_KEY =
+        (typeof window.WAYMAKER_IMGBB_KEY === 'string' && window.WAYMAKER_IMGBB_KEY.trim()) || '';
+
       var photosInput = document.getElementById('contact-photos-input');
       var photosList = document.getElementById('photos-preview-list');
+      var uploadPanel = document.getElementById('contact-upload-panel');
+      var uploadBar = document.getElementById('contact-upload-bar');
+      var uploadStatus = document.getElementById('contact-upload-status');
+      var uploadDetail = document.getElementById('contact-upload-detail');
       var selectedFiles = [];
+
+      var modalOverlay = document.getElementById('contact-modal-overlay');
+      var modalTitle = document.getElementById('contact-modal-title');
+      var modalDesc = document.getElementById('contact-modal-desc');
+      var modalIconWrap = document.getElementById('contact-modal-icon-wrap');
+      var modalClose = document.getElementById('contact-modal-close');
 
       function syncPhotosToInput() {
         if (!photosInput || typeof DataTransfer === 'undefined') return;
@@ -919,6 +974,118 @@
         if (n < 1024) return n + ' B';
         if (n < 1024 * 1024) return (n / 1024).toFixed(1) + ' KB';
         return (n / (1024 * 1024)).toFixed(1) + ' MB';
+      }
+
+      function setUploadProgress(done01, label, detail) {
+        if (uploadBar) uploadBar.style.width = Math.round(Math.min(1, Math.max(0, done01)) * 100) + '%';
+        if (uploadStatus && label) uploadStatus.textContent = label;
+        if (uploadDetail) uploadDetail.textContent = detail || '';
+      }
+
+      function showUploadPanel(show) {
+        if (!uploadPanel) return;
+        if (show) {
+          uploadPanel.classList.remove('hidden');
+          uploadPanel.setAttribute('aria-hidden', 'false');
+        } else {
+          uploadPanel.classList.add('hidden');
+          uploadPanel.setAttribute('aria-hidden', 'true');
+          setUploadProgress(0, '', '');
+        }
+      }
+
+      function showContactModal(kind, title, body) {
+        if (!modalOverlay || !modalTitle || !modalDesc) return;
+        var ok = kind === 'success';
+        modalTitle.textContent = title;
+        modalDesc.textContent = body;
+        if (modalIconWrap) {
+          modalIconWrap.innerHTML =
+            '<span class="flex h-16 w-16 items-center justify-center rounded-full ' +
+            (ok ? 'bg-primary/20 text-primary' : 'bg-red-500/15 text-red-400') +
+            '"><i class="fa-solid ' +
+            (ok ? 'fa-circle-check' : 'fa-triangle-exclamation') +
+            ' text-3xl" aria-hidden="true"></i></span>';
+        }
+        modalOverlay.classList.remove('hidden');
+        modalOverlay.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        var closeBtn = document.getElementById('contact-modal-close');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function hideContactModal() {
+        if (!modalOverlay) return;
+        modalOverlay.classList.add('hidden');
+        modalOverlay.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+
+      if (modalClose) {
+        modalClose.addEventListener('click', hideContactModal);
+      }
+      if (modalOverlay) {
+        modalOverlay.addEventListener('click', function (ev) {
+          if (ev.target === modalOverlay) hideContactModal();
+        });
+        document.addEventListener('keydown', function (ev) {
+          if (ev.key === 'Escape' && modalOverlay && !modalOverlay.classList.contains('hidden')) {
+            hideContactModal();
+          }
+        });
+      }
+
+      function uploadOneToImgBB(file, apiKey, onProgress) {
+        return new Promise(function (resolve, reject) {
+          var fd = new FormData();
+          fd.append('image', file);
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', 'https://api.imgbb.com/1/upload?key=' + encodeURIComponent(apiKey));
+          xhr.upload.onprogress = function (e) {
+            if (e.lengthComputable && typeof onProgress === 'function') {
+              onProgress(e.loaded / e.total);
+            }
+          };
+          xhr.onload = function () {
+            try {
+              var j = JSON.parse(xhr.responseText || '{}');
+              if (j.success && j.data && (j.data.url || j.data.display_url)) {
+                resolve(j.data.url || j.data.display_url);
+              } else {
+                reject(new Error((j.error && j.error.message) || 'Image upload failed'));
+              }
+            } catch (err) {
+              reject(err);
+            }
+          };
+          xhr.onerror = function () {
+            reject(new Error('Network error while uploading'));
+          };
+          xhr.send(fd);
+        });
+      }
+
+      function uploadAllPhotos(files, apiKey, onOverallProgress) {
+        var urls = [];
+        var n = files.length;
+        if (n === 0) return Promise.resolve(urls);
+
+        function run(i) {
+          if (i >= n) return Promise.resolve(urls);
+          var base = i / n;
+          return uploadOneToImgBB(files[i], apiKey, function (fileFrac) {
+            if (typeof onOverallProgress === 'function') {
+              onOverallProgress(base + fileFrac / n);
+            }
+          }).then(function (url) {
+            urls.push(url);
+            if (typeof onOverallProgress === 'function') {
+              onOverallProgress((i + 1) / n);
+            }
+            return run(i + 1);
+          });
+        }
+        return run(0);
       }
 
       function renderPhotosList() {
@@ -976,14 +1143,6 @@
         });
       }
 
-      window.addEventListener('pageshow', function (ev) {
-        if (!ev.persisted || !photosInput) return;
-        photosInput.disabled = false;
-        if (!photosInput.getAttribute('name')) {
-          photosInput.setAttribute('name', 'attachment[]');
-        }
-      });
-
       var form = document.getElementById('contact-form');
       if (form) {
         form.addEventListener('submit', function (e) {
@@ -996,7 +1155,6 @@
             return;
           }
 
-          /* If files are in the input but not yet merged into selectedFiles (edge case), merge. */
           if (
             photosInput &&
             photosInput.files &&
@@ -1016,20 +1174,132 @@
             return;
           }
 
-          /*
-           * FormSubmit expects name="attachment[]" on ONE input with multiple files (multipart).
-           * Programmatically assign all File objects via DataTransfer before native submit.
-           */
-          syncPhotosToInput();
+          if (selectedFiles.length > 0 && !IMGBB_API_KEY) {
+            showContactModal(
+              'error',
+              'Photo uploads need setup',
+              'Add your free ImgBB API key in index.html (search for WAYMAKER_IMGBB_KEY), or remove photos to send a text-only enquiry.'
+            );
+            return;
+          }
 
           if (btn) btn.disabled = true;
+          var prevLabel = label ? label.textContent : '';
           if (label) label.textContent = 'Sending…';
           if (status) {
             status.classList.add('hidden');
             status.textContent = '';
           }
 
-          HTMLFormElement.prototype.submit.call(form);
+          function finishSubmitting() {
+            if (btn) btn.disabled = false;
+            if (label) label.textContent = prevLabel || 'Send enquiry';
+            showUploadPanel(false);
+            setUploadProgress(0, '', '');
+          }
+
+          function sendFormSubmitPayload(messageText) {
+            var gotcha = form.querySelector('[name="_gotcha"]');
+            var payload = {
+              name: (document.getElementById('contact-name') || {}).value || '',
+              email: (document.getElementById('contact-email') || {}).value || '',
+              phone: (document.getElementById('contact-phone') || {}).value || '',
+              waste_description: (document.getElementById('contact-waste') || {}).value || '',
+              message: messageText,
+              _subject: 'Way Maker Rubbish Solutions – New website enquiry',
+              _template: 'table',
+              _captcha: false,
+              _gotcha: (gotcha && gotcha.value) || ''
+            };
+
+            return fetch(FORMSUBMIT_AJAX, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+              },
+              body: JSON.stringify(payload)
+            })
+              .then(function (res) {
+                return res.text().then(function (text) {
+                  var data = {};
+                  try {
+                    data = text ? JSON.parse(text) : {};
+                  } catch (parseErr) {
+                    if (!res.ok) throw new Error(text || 'Send failed');
+                    data = {};
+                  }
+                  return { ok: res.ok, data: data };
+                });
+              })
+              .then(function (result) {
+                var d = result.data || {};
+                if (!result.ok) {
+                  throw new Error((d && d.message) || 'Send failed');
+                }
+                if (d.success === false || d.error) {
+                  throw new Error((d && d.message) || 'Send failed');
+                }
+                form.reset();
+                selectedFiles = [];
+                syncPhotosToInput();
+                renderPhotosList();
+                showContactModal(
+                  'success',
+                  'Enquiry sent',
+                  'Thank you for contacting Way Maker Rubbish Solutions. We’ve received your message and will respond as soon as we can.'
+                );
+              })
+              .catch(function (err) {
+                showContactModal(
+                  'error',
+                  'Could not send',
+                  'Something went wrong sending your enquiry. Please email mattpascua89@gmail.com or call 0423 101 334.'
+                );
+                if (typeof console !== 'undefined' && console.warn) {
+                  console.warn('Contact form:', err && err.message ? err.message : err);
+                }
+              })
+              .finally(finishSubmitting);
+          }
+
+          var baseMessage = (document.getElementById('contact-message') || {}).value || '';
+
+          if (selectedFiles.length === 0) {
+            sendFormSubmitPayload(baseMessage);
+            return;
+          }
+
+          showUploadPanel(true);
+          if (label) label.textContent = 'Uploading photos…';
+          setUploadProgress(0, 'Uploading photos…', '0 of ' + selectedFiles.length + ' complete');
+
+          uploadAllPhotos(selectedFiles, IMGBB_API_KEY, function (overall) {
+            setUploadProgress(
+              overall,
+              'Uploading photos…',
+              'Please keep this page open — ' + Math.round(overall * 100) + '%'
+            );
+          })
+            .then(function (urls) {
+              if (label) label.textContent = 'Sending enquiry…';
+              setUploadProgress(1, 'Sending enquiry…', '');
+              var lines = urls.map(function (u, idx) {
+                return idx + 1 + '. ' + u;
+              });
+              var photoBlock =
+                '\n\n--- Photo links (hosted for viewing) ---\n' + lines.join('\n');
+              sendFormSubmitPayload(baseMessage + photoBlock);
+            })
+            .catch(function (err) {
+              finishSubmitting();
+              showContactModal(
+                'error',
+                'Photo upload failed',
+                (err && err.message ? err.message + ' ' : '') +
+                  'Check your ImgBB API key and try again, or remove photos and send a text-only enquiry.'
+              );
+            });
         });
       }
 
