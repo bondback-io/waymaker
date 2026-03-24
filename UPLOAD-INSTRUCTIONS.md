@@ -90,7 +90,9 @@ Enquiries are sent **from the browser** with **no full-page redirect**. For **re
 1. Open **[web3forms.com](https://web3forms.com)**, create a free form using **mattpascua89@gmail.com**, and copy the **Access Key**.
 2. In **`index.html`**, set **`window.WAYMAKER_WEB3FORMS_ACCESS_KEY = 'your-key-here';`** (same `<script>` block as ImgBB).
 
-If **`WAYMAKER_WEB3FORMS_ACCESS_KEY`** is **empty**, the site falls back to **FormSubmit AJAX** (confirm the inbox once at [formsubmit.co](https://formsubmit.co) and check spam if mail is missing).
+If **`WAYMAKER_WEB3FORMS_ACCESS_KEY`** is **empty**, the site falls back to **FormSubmit AJAX**. For FormSubmit: confirm the inbox once at [formsubmit.co](https://formsubmit.co), check **Spam** in Gmail, and ensure **`_captcha: false`** is in the payload (included in this project’s code).
+
+**DNS and the contact form:** Changing **A/CNAME** records for your **website** (e.g. pointing the domain to GitHub Pages or a host) does **not** stop Web3Forms or FormSubmit from sending mail **to** mattpascua89@gmail.com. Those services send email from their own servers. Only **MX** records on your domain would affect mail **to** `@yourdomain.com` addresses — not Gmail as the destination inbox. If the form **loads** on your site but mail never arrives, the cause is almost always **FormSubmit/Web3Forms** settings, **spam**, or **missing Web3Forms key** — not website DNS.
 
 **Photos:** multipart to FormSubmit is unreliable, so images upload to **ImgBB** first (with a progress bar), then **links** are included in the enquiry message.
 

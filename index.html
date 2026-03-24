@@ -4,7 +4,11 @@
 
   <script>
     window.WAYMAKER_IMGBB_KEY = 'ff8296d491a4f6e5020acb6d76a99933';
-    /* Free at https://web3forms.com — use the same inbox (mattpascua89@gmail.com). When set, enquiries use Web3Forms (reliable). If empty, FormSubmit AJAX is used as fallback. */
+    /*
+     * Strongly recommended: get a free Access Key at https://web3forms.com (use mattpascua89@gmail.com as the form email).
+     * Web3Forms is more reliable than FormSubmit for inbox delivery.
+     * Your domain’s DNS (A/CNAME for the website) does NOT affect Web3Forms or FormSubmit — only MX on your domain would affect @yourdomain mail, not Gmail.
+     */
     window.WAYMAKER_WEB3FORMS_ACCESS_KEY = '';
   </script>
   <meta charset="UTF-8" />
@@ -1226,6 +1230,7 @@
                 replyto: emailVal
               };
             } else {
+              /* FormSubmit: _captcha false is required or submissions may be dropped; _template improves readable emails. */
               payload = {
                 name: (document.getElementById('contact-name') || {}).value || '',
                 email: emailVal,
@@ -1235,6 +1240,8 @@
                 message: messageText,
                 _subject: 'Way Maker Rubbish Solutions – New website enquiry',
                 _replyto: emailVal,
+                _template: 'table',
+                _captcha: false,
                 _honey: (honey && honey.value) || ''
               };
             }
