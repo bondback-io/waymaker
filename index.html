@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Waymaker Rubbish Solutions – family-owned rubbish removal on the Sunshine Coast, QLD. Residential, commercial, property clean-outs & deceased estates. Personal service, eco-responsible disposal." />
+  <meta name="keywords" content="rubbish removal Sunshine Coast, junk removal QLD, Waymaker Rubbish Solutions, property clean out, deceased estate clearance, residential rubbish removal, commercial waste removal" />
+  <meta name="author" content="Waymaker Rubbish Solutions" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#10B981" />
+  <meta name="geo.region" content="AU-QLD" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Waymaker Rubbish Solutions | Reliable Rubbish Removal Sunshine Coast QLD" />
+  <meta property="og:description" content="Trusted local rubbish removal on the Sunshine Coast. Family-owned, faith-centered, eco-responsible – no call centres." />
+  <meta property="og:locale" content="en_AU" />
+  <meta property="og:site_name" content="Waymaker Rubbish Solutions" />
+  <title>Waymaker Rubbish Solutions | Reliable Rubbish Removal Sunshine Coast QLD</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#10B981',
+            accent: '#F97316',
+            dark: '#0F172A',
+            offwhite: '#F8FAFC',
+          },
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+          },
+          animation: {
+            float: 'float 3s ease-in-out infinite',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, .font-heading { font-family: 'Poppins', sans-serif; }
+    html { scroll-behavior: smooth; }
+
+    /* Hero: 5 slides, 1s crossfade; blurred bg (depth, non-distracting); JS 4500ms; prefers-reduced-motion: lighter blur, no auto-advance */
+    .hero-slides { pointer-events: none; overflow: hidden; }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+    }
+    .hero-slide.is-active {
+      opacity: 1;
+      z-index: 1;
+    }
+    /* Darker tint on slides 2–5 only; fades with slide crossfade */
+    #hero-slides .hero-slide:not(:first-child)::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.48);
+      pointer-events: none;
+      z-index: 2;
+    }
+    /* Slides 2–5: ~10% blur strength (~2px vs heavy 18px); oversized layer clips edges */
+    .hero-slide-blurred {
+      position: absolute;
+      inset: -6%;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      filter: blur(2px);
+      -webkit-filter: blur(2px);
+      transform: scale(1.03);
+      transform-origin: center center;
+      z-index: 1;
+    }
+    /* Slide 1 only: sharp image (no blur) */
+    .hero-slide-blurred--sharp {
+      inset: 0;
+      filter: none;
+      -webkit-filter: none;
+      transform: scale(1);
+    }
+    /* Dark gradient + neutral scrim (no navy/blue tint) */
+    .hero-gradient-overlay {
+      background:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.62) 55%, rgba(0, 0, 0, 0.72) 100%),
+        rgba(0, 0, 0, 0.12);
+      pointer-events: none;
+    }
+    #hero .hero-text-contrast {
+      text-shadow:
+        1px 1px 4px rgba(0, 0, 0, 0.85),
+        0 2px 20px rgba(0, 0, 0, 0.55);
+    }
+    #hero .hero-text-contrast-subtle {
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 1px 12px rgba(0, 0, 0, 0.5);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-slide { transition: none; }
+      .hero-slide-blurred {
+        filter: blur(1px);
+        -webkit-filter: blur(1px);
+      }
+      .hero-slide-blurred.hero-slide-blurred--sharp {
+        filter: none;
+        -webkit-filter: none;
+      }
+    }
+
+    .section-gradient {
+      background: linear-gradient(180deg, #F8FAFC 0%, rgba(16, 185, 129, 0.05) 100%);
+    }
+
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.12);
+    }
+
+    .nav-scrolled { background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(12px); }
+
+    .logo-brand {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    }
+
+    .float-call { animation: float 2.5s ease-in-out infinite; }
+
+    .animate-on-scroll { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* FAQ accordion */
+    .faq-btn[aria-expanded="true"] .faq-icon { transform: rotate(180deg); }
+    .faq-panel { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-panel.open { max-height: 40rem; }
+  </style>
+</head>
+<body class="bg-offwhite text-dark font-body antialiased overflow-x-hidden">
+
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+      <div class="flex items-center justify-between h-20">
+        <a href="#hero" class="logo-brand inline-flex flex-col sm:flex-row sm:items-baseline gap-0 sm:gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-3 py-2 sm:px-4 sm:py-2.5 text-white hover:bg-white/15 transition-all">
+          <span class="text-lg sm:text-xl md:text-2xl uppercase leading-tight">Waymaker</span>
+          <span class="text-xs sm:text-sm font-semibold text-primary/95 uppercase tracking-wide">Rubbish Solutions</span>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-6 xl:gap-8">
+          <a href="#about" class="text-white/90 hover:text-primary transition font-medium text-sm">About</a>
+          <a href="#services" class="text-white/90 hover:text-primary transition font-medium text-sm">Services</a>
+          <a href="#why" class="text-white/90 hover:text-primary transition font-medium text-sm">Why Us</a>
+          <a href="#areas" class="text-white/90 hover:text-primary transition font-medium text-sm">Areas</a>
+          <a href="#faqs" class="text-white/90 hover:text-primary transition font-medium text-sm">FAQs</a>
+          <a href="#contact" class="text-white/90 hover:text-primary transition font-medium text-sm">Contact</a>
+          <a href="#contact" class="inline-flex items-center gap-2 bg-accent hover:bg-orange-600 text-white font-semibold px-4 py-2.5 rounded-lg transition shadow-lg text-sm" aria-label="Request a quote">Get a Quote</a>
+        </div>
+
+        <button id="menu-toggle" type="button" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 focus:ring-2 focus:ring-primary" aria-label="Toggle menu" aria-expanded="false">
+          <i class="fa-solid fa-bars text-2xl" id="menu-icon-open"></i>
+          <i class="fa-solid fa-xmark text-2xl hidden" id="menu-icon-close"></i>
+        </button>
+      </div>
+
+      <div id="mobile-menu" class="hidden lg:hidden py-4 border-t border-white/10">
+        <div class="flex flex-col gap-3">
+          <a href="#about" class="text-white hover:text-primary transition font-medium">About</a>
+          <a href="#services" class="text-white hover:text-primary transition font-medium">Services</a>
+          <a href="#why" class="text-white hover:text-primary transition font-medium">Why Us</a>
+          <a href="#areas" class="text-white hover:text-primary transition font-medium">Service Areas</a>
+          <a href="#faqs" class="text-white hover:text-primary transition font-medium">FAQs</a>
+          <a href="#contact" class="text-white hover:text-primary transition font-medium">Contact</a>
+          <a href="tel:0423101334" class="inline-flex items-center gap-2 bg-accent text-white font-semibold px-4 py-3 rounded-lg justify-center">
+            <i class="fa-solid fa-phone"></i> Call 0423 101 334
+          </a>
+          <a href="#contact" class="inline-flex items-center justify-center bg-primary text-white font-semibold px-4 py-3 rounded-lg">Get a Quote</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section id="hero" class="relative flex min-h-[80vh] sm:min-h-[90vh] lg:min-h-screen items-center justify-center overflow-hidden">
+    <!-- Slide 1: sharp, no extra tint. Slides 2–5: light blur + darker tint (CSS ::after). -->
+    <!-- Download high-res version and save as assets/hero-blurred.jpg; or use your own photo of bins/trailer/ute (reference: wm.nz wheelie-bin driveway). -->
+    <!-- Per-slide locals: assets/hero-1.jpg … hero-5.jpg -->
+    <div id="hero-slides" class="hero-slides absolute inset-0 z-0" aria-hidden="true">
+      <div class="hero-slide is-active">
+        <div class="hero-slide-blurred hero-slide-blurred--sharp" style="background-image: url('https://images.ctfassets.net/iiu58j8xnirw/5F49YKsE2bO72gCtn0fVe8/f7bfce474eb2e59eda9a80e203f549fa/consumer_website_images_1920_x_1080__5_.jpg?w=1920&amp;q=85&amp;fm=webp');"></div>
+      </div>
+      <div class="hero-slide">
+        <div class="hero-slide-blurred" style="background-image: url('https://www.wm.nz/globalassets/001-assets/open-graph-images/wheelie-bin-on-driveway.jpg');"></div>
+      </div>
+      <div class="hero-slide">
+        <div class="hero-slide-blurred" style="background-image: url('https://www.brisbane.qld.gov.au/content/dam/brisbanecitycouncil/corpwebsite/15-0-living-in-brisbane-blogs/environment-and-sustainability/gardening/green-waste-northgate-%2832%29.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg');"></div>
+      </div>
+      <div class="hero-slide">
+        <div class="hero-slide-blurred" style="background-image: url('https://mobileskips.com.au/wp-content/uploads/2020/12/garden-waste-1047259_1920-1.jpg');"></div>
+      </div>
+      <div class="hero-slide">
+        <div class="hero-slide-blurred" style="background-image: url('https://c8.alamy.com/comp/2J3A7AK/a-man-unloads-his-garbage-from-a-pickup-truck-at-a-garbage-dump-in-paraguay-2J3A7AK.jpg');"></div>
+      </div>
+    </div>
+    <div class="hero-gradient-overlay absolute inset-0 z-[1]" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 sm:pt-24 pb-12">
+      <p class="font-heading font-semibold uppercase tracking-widest text-primary mb-4 text-sm sm:text-base animate-on-scroll hero-text-contrast">
+        Family-owned · Sunshine Coast, QLD
+      </p>
+      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-4 animate-on-scroll hero-text-contrast">
+        Waymaker Rubbish Solutions
+      </h1>
+      <p class="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-white mb-4 animate-on-scroll hero-text-contrast">
+        Reliable Rubbish Removal &amp; Bin Valet Service – Sunshine Coast QLD
+      </p>
+      <p class="text-base sm:text-lg text-white max-w-2xl mx-auto mb-10 animate-on-scroll leading-relaxed font-medium hero-text-contrast-subtle">
+        Family-driven and faith-centered – honest, respectful clear-outs for homes, rentals, and businesses. Eco-responsible where we can, and you always deal with the owner.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center animate-on-scroll">
+        <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-xl text-lg shadow-xl transition transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-accent/50">
+          Get Free Quote
+        </a>
+        <a href="tel:0423101334" class="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 backdrop-blur text-white font-bold px-8 py-4 rounded-xl text-lg border-2 border-white/50 transition focus:outline-none focus:ring-4 focus:ring-white/30" aria-label="Call Waymaker Rubbish Solutions">
+          <i class="fa-solid fa-phone text-accent" aria-hidden="true"></i> 0423 101 334
+        </a>
+      </div>
+    </div>
+
+    <div class="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+      <a href="#about" class="text-white hover:text-accent transition drop-shadow-lg" aria-label="Scroll to about section">
+        <i class="fa-solid fa-chevron-down text-2xl" aria-hidden="true"></i>
+      </a>
+    </div>
+  </section>
+
+  <section id="about" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 animate-on-scroll space-y-6">
+          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark leading-tight">
+            About Waymaker Rubbish Solutions
+          </h2>
+          <div class="space-y-4 text-dark/80 text-lg leading-relaxed">
+            <p>
+              Waymaker Rubbish Solutions is a faith-centered and family-driven business, built on hard work, trust, and a deep desire to serve our local Sunshine Coast community.
+            </p>
+            <p>
+              As someone who values honesty and reliability, I’m personally committed to making waste removal simple, stress-free, and respectful for every customer. I understand how overwhelming clutter can become, and I take genuine pride in helping people reclaim their space and move forward with ease.
+            </p>
+            <p>
+              When you choose Waymaker, you’re dealing directly with me – no call centres or big companies. I handle every job with care, respect, and attention to detail, whether it’s a single item pickup or a full property clean-out.
+            </p>
+            <p class="font-medium text-dark">
+              My goal is straightforward: deliver a service you can trust, rely on, and feel great about recommending to friends and family.
+            </p>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2 animate-on-scroll flex flex-col items-center lg:items-end">
+          <!-- Family photo: assets/family-photo.jpeg -->
+          <figure class="w-full max-w-[min(100%,480px)]">
+            <img
+              src="assets/family-photo.jpeg"
+              alt="Matthew and family – Waymaker Rubbish Solutions, Sunshine Coast"
+              class="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3] border border-dark/5"
+            />
+            <figcaption class="mt-4 text-center lg:text-right text-dark/70 text-sm sm:text-base font-medium">
+              Matthew &amp; family – Building trust one clear-out at a time
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-20 sm:py-28 section-gradient">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12 animate-on-scroll">
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-6">Our Services</h2>
+        <p class="text-lg text-dark/80 leading-relaxed mb-6">
+          From homes and holiday lets to commercial sites and sensitive clearances, we tailor each job to your needs.
+        </p>
+        <p class="text-xl sm:text-2xl font-heading font-bold text-primary">
+          No Job Too Big or Too Small
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-8">
+        <article class="card-hover bg-white rounded-2xl p-8 shadow-md border border-dark/5 animate-on-scroll">
+          <div class="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-house-chimney text-2xl text-primary" aria-hidden="true"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-dark mb-4">Residential</h3>
+          <ul class="space-y-2 text-dark/75 text-[15px] sm:text-base leading-relaxed">
+            <li class="flex gap-2"><i class="fa-solid fa-check text-primary mt-1 shrink-0" aria-hidden="true"></i><span>Household junk, garage and shed clear-outs</span></li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-primary mt-1 shrink-0" aria-hidden="true"></i><span>Green waste, furniture, and whitegoods</span></li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-primary mt-1 shrink-0" aria-hidden="true"></i><span>One-off pickups or larger residential loads</span></li>
+          </ul>
+        </article>
+
+        <article class="card-hover bg-white rounded-2xl p-8 shadow-md border border-dark/5 animate-on-scroll">
+          <div class="w-14 h-14 rounded-xl bg-accent/15 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-briefcase text-2xl text-accent" aria-hidden="true"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-dark mb-4">Commercial</h3>
+          <ul class="space-y-2 text-dark/75 text-[15px] sm:text-base leading-relaxed">
+            <li class="flex gap-2"><i class="fa-solid fa-check text-accent mt-1 shrink-0" aria-hidden="true"></i><span>Offices, retail, and small business premises</span></li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-accent mt-1 shrink-0" aria-hidden="true"></i><span>Construction and renovation site waste (where applicable)</span></li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-accent mt-1 shrink-0" aria-hidden="true"></i><span>Flexible scheduling to minimise disruption</span></li>
+          </ul>
+        </article>
+
+        <article class="card-hover bg-white rounded-2xl p-8 shadow-md border border-dark/5 animate-on-scroll">
+          <div class="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-key text-2xl text-primary" aria-hidden="true"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-dark mb-4">Real Estate &amp; Property Clean-Outs</h3>
+          <ul class="space-y-2 text-dark/75 text-[15px] sm:text-base leading-relaxed">
+            <li class="flex gap-2"><i class="fa-solid fa-check text-primary mt-1 shrink-0" aria-hidden="true"></i><span>End-of-lease and bond-related clearances</span></li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-primary mt-1 shrink-0" aria-hidden="true"></i><span>Airbnb and holiday home turnarounds</span></li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-primary mt-1 shrink-0" aria-hidden="true"></i><span>Preparing properties for sale or new tenants</span></li>
+          </ul>
+        </article>
+
+        <article class="card-hover bg-white rounded-2xl p-8 shadow-md border border-dark/5 animate-on-scroll">
+          <div class="w-14 h-14 rounded-xl bg-accent/15 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-heart text-2xl text-accent" aria-hidden="true"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-dark mb-4">Deceased Estate Clearance</h3>
+          <ul class="space-y-2 text-dark/75 text-[15px] sm:text-base leading-relaxed">
+            <li class="flex gap-2"><i class="fa-solid fa-check text-accent mt-1 shrink-0" aria-hidden="true"></i><span>Respectful, patient service during difficult times</span></li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-accent mt-1 shrink-0" aria-hidden="true"></i><span>Full or partial house clearances at your pace</span></li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-accent mt-1 shrink-0" aria-hidden="true"></i><span>Clear communication and careful handling of belongings</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark text-center mb-12 animate-on-scroll">
+        Why Choose Waymaker?
+      </h2>
+      <ul class="space-y-5 animate-on-scroll">
+        <li class="flex gap-4 items-start p-5 rounded-2xl bg-offwhite border border-primary/10">
+          <span class="w-11 h-11 rounded-full bg-primary/15 flex items-center justify-center shrink-0"><i class="fa-solid fa-people-roof text-primary text-lg" aria-hidden="true"></i></span>
+          <div>
+            <h3 class="font-heading font-bold text-dark text-lg mb-1">Family-owned &amp; personal</h3>
+            <p class="text-dark/75 leading-relaxed">You speak with the owner – not a call centre. Every job reflects our name and our values.</p>
+          </div>
+        </li>
+        <li class="flex gap-4 items-start p-5 rounded-2xl bg-offwhite border border-primary/10">
+          <span class="w-11 h-11 rounded-full bg-primary/15 flex items-center justify-center shrink-0"><i class="fa-solid fa-leaf text-primary text-lg" aria-hidden="true"></i></span>
+          <div>
+            <h3 class="font-heading font-bold text-dark text-lg mb-1">Eco-responsible disposal</h3>
+            <p class="text-dark/75 leading-relaxed">We prioritise recycling and responsible disposal wherever possible.</p>
+          </div>
+        </li>
+        <li class="flex gap-4 items-start p-5 rounded-2xl bg-offwhite border border-primary/10">
+          <span class="w-11 h-11 rounded-full bg-primary/15 flex items-center justify-center shrink-0"><i class="fa-solid fa-sun text-primary text-lg" aria-hidden="true"></i></span>
+          <div>
+            <h3 class="font-heading font-bold text-dark text-lg mb-1">Local Sunshine Coast focus</h3>
+            <p class="text-dark/75 leading-relaxed">We know the area, the roads, and what local families and hosts need.</p>
+          </div>
+        </li>
+        <li class="flex gap-4 items-start p-5 rounded-2xl bg-offwhite border border-primary/10">
+          <span class="w-11 h-11 rounded-full bg-primary/15 flex items-center justify-center shrink-0"><i class="fa-solid fa-handshake text-primary text-lg" aria-hidden="true"></i></span>
+          <div>
+            <h3 class="font-heading font-bold text-dark text-lg mb-1">Honest pricing &amp; clear communication</h3>
+            <p class="text-dark/75 leading-relaxed">No corporate runaround – straight answers, reliable timing, and respect for your property.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="areas" class="py-20 sm:py-28 section-gradient">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-4">Service Areas</h2>
+        <p class="text-lg text-dark/80 max-w-2xl mx-auto">Proudly serving the Sunshine Coast and surrounding areas. Not sure if we cover you? Just ask.</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-3 mb-10 animate-on-scroll">
+        <span class="inline-flex items-center gap-2 bg-primary text-white font-heading font-bold px-5 py-2.5 rounded-full text-sm sm:text-base shadow-md">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Sunshine Coast, QLD
+        </span>
+        <span class="inline-flex items-center gap-2 bg-white border-2 border-primary/30 text-dark font-semibold px-4 py-2 rounded-full text-sm">Noosa</span>
+        <span class="inline-flex items-center gap-2 bg-white border-2 border-primary/30 text-dark font-semibold px-4 py-2 rounded-full text-sm">Maroochydore</span>
+        <span class="inline-flex items-center gap-2 bg-white border-2 border-primary/30 text-dark font-semibold px-4 py-2 rounded-full text-sm">Caloundra</span>
+        <span class="inline-flex items-center gap-2 bg-white border-2 border-primary/30 text-dark font-semibold px-4 py-2 rounded-full text-sm">Nambour</span>
+        <span class="inline-flex items-center gap-2 bg-white border-2 border-primary/30 text-dark font-semibold px-4 py-2 rounded-full text-sm">Gympie surrounds</span>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden shadow-xl border border-dark/5 max-w-4xl mx-auto animate-on-scroll aspect-video min-h-[280px]">
+        <iframe
+          src="https://maps.google.com/maps?q=Sunshine+Coast+Queensland+Australia&z=10&output=embed"
+          width="100%"
+          height="100%"
+          style="border:0; min-height: 280px;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Waymaker Rubbish Solutions service area – Sunshine Coast Queensland"
+        ></iframe>
+      </div>
+      <p class="text-center text-dark/60 text-sm mt-4 animate-on-scroll">Replace the map embed URL in the code with your exact service pin if you prefer.</p>
+    </div>
+  </section>
+
+  <section id="faqs" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark text-center mb-4 animate-on-scroll">Frequently Asked Questions</h2>
+      <p class="text-center text-dark/75 mb-10 animate-on-scroll">Quick answers about how we work on the Sunshine Coast.</p>
+
+      <div class="space-y-3 animate-on-scroll" id="faq-accordion">
+        <div class="border border-dark/10 rounded-xl overflow-hidden bg-offwhite">
+          <button type="button" class="faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-white/80 transition" aria-expanded="false">
+            <span>How do I get a quote?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-primary transition-transform shrink-0" aria-hidden="true"></i>
+          </button>
+          <div class="faq-panel px-5">
+            <p class="pb-4 text-dark/75 leading-relaxed">Call <a href="tel:0423101334" class="text-primary font-semibold hover:underline">0423 101 334</a>, email <a href="mailto:mattpascua89@gmail.com" class="text-primary font-semibold hover:underline">mattpascua89@gmail.com</a>, or use the form below. Tell us what needs removing and where you are – we’ll respond with a clear, honest estimate.</p>
+          </div>
+        </div>
+
+        <div class="border border-dark/10 rounded-xl overflow-hidden bg-offwhite">
+          <button type="button" class="faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-white/80 transition" aria-expanded="false">
+            <span>What types of waste do you take?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-primary transition-transform shrink-0" aria-hidden="true"></i>
+          </button>
+          <div class="faq-panel px-5">
+            <p class="pb-4 text-dark/75 leading-relaxed">General household and commercial junk, furniture, green waste, and most items from clean-outs and estates. Hazardous materials and certain regulated wastes may need a specialist – ask us and we’ll advise honestly.</p>
+          </div>
+        </div>
+
+        <div class="border border-dark/10 rounded-xl overflow-hidden bg-offwhite">
+          <button type="button" class="faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-white/80 transition" aria-expanded="false">
+            <span>Can you help with time-sensitive or same-day jobs?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-primary transition-transform shrink-0" aria-hidden="true"></i>
+          </button>
+          <div class="faq-panel px-5">
+            <p class="pb-4 text-dark/75 leading-relaxed">We do our best for urgent and time-sensitive clearances (e.g. lease deadlines, guest changeovers). Availability varies – call as early as you can and we’ll work with your timeline.</p>
+          </div>
+        </div>
+
+        <div class="border border-dark/10 rounded-xl overflow-hidden bg-offwhite">
+          <button type="button" class="faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-white/80 transition" aria-expanded="false">
+            <span>Do I need to be on-site?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-primary transition-transform shrink-0" aria-hidden="true"></i>
+          </button>
+          <div class="faq-panel px-5">
+            <p class="pb-4 text-dark/75 leading-relaxed">Usually it helps for the first visit so we can confirm access and what’s being removed. For some repeat or arranged jobs we can discuss alternatives – we’ll always agree what works for you.</p>
+          </div>
+        </div>
+
+        <div class="border border-dark/10 rounded-xl overflow-hidden bg-offwhite">
+          <button type="button" class="faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-white/80 transition" aria-expanded="false">
+            <span>How is rubbish disposed of?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-primary transition-transform shrink-0" aria-hidden="true"></i>
+          </button>
+          <div class="faq-panel px-5">
+            <p class="pb-4 text-dark/75 leading-relaxed">We use licensed facilities and aim to recycle and divert from landfill where possible. We’re transparent about how your load is handled.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 sm:py-28 bg-dark text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div class="animate-on-scroll">
+          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl uppercase mb-4">Get in Touch</h2>
+          <p class="text-white/85 text-lg mb-8 leading-relaxed">
+            Ready to clear the clutter? Call, email, or send a message – we’ll get back to you promptly with a straightforward quote.
+          </p>
+
+          <div class="space-y-5 mb-10">
+            <a href="tel:0423101334" class="flex items-center gap-4 text-white hover:text-primary transition group" aria-label="Phone Waymaker Rubbish Solutions">
+              <span class="w-14 h-14 rounded-xl bg-primary/25 flex items-center justify-center group-hover:bg-primary/35 transition">
+                <i class="fa-solid fa-phone text-primary text-xl" aria-hidden="true"></i>
+              </span>
+              <div>
+                <p class="text-white/60 text-sm font-medium">Phone</p>
+                <p class="font-heading font-bold text-xl">0423 101 334</p>
+              </div>
+            </a>
+            <a href="mailto:mattpascua89@gmail.com" class="flex items-center gap-4 text-white hover:text-primary transition group" aria-label="Email Waymaker Rubbish Solutions">
+              <span class="w-14 h-14 rounded-xl bg-primary/25 flex items-center justify-center group-hover:bg-primary/35 transition">
+                <i class="fa-solid fa-envelope text-primary text-xl" aria-hidden="true"></i>
+              </span>
+              <div>
+                <p class="text-white/60 text-sm font-medium">Email</p>
+                <p class="font-heading font-bold text-lg break-all">mattpascua89@gmail.com</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+            <p class="font-heading font-bold text-accent mb-2">Prefer to talk?</p>
+            <p class="text-white/80 text-sm">We’re happy to discuss your job over the phone and arrange a time that suits your family or business.</p>
+          </div>
+        </div>
+
+        <div class="animate-on-scroll">
+          <form id="contact-form" class="space-y-4" action="#" method="post" novalidate>
+            <div>
+              <label for="contact-name" class="block text-sm font-medium text-white/80 mb-1.5">Name *</label>
+              <input type="text" id="contact-name" name="name" required autocomplete="name" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/45 focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your name" />
+            </div>
+            <div>
+              <label for="contact-phone" class="block text-sm font-medium text-white/80 mb-1.5">Phone *</label>
+              <input type="tel" id="contact-phone" name="phone" required autocomplete="tel" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/45 focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="04XX XXX XXX" />
+            </div>
+            <div>
+              <label for="contact-email" class="block text-sm font-medium text-white/80 mb-1.5">Email *</label>
+              <input type="email" id="contact-email" name="email" required autocomplete="email" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/45 focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="your@email.com" />
+            </div>
+            <div>
+              <label for="contact-waste" class="block text-sm font-medium text-white/80 mb-1.5">Waste description *</label>
+              <textarea id="contact-waste" name="waste_description" rows="3" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/45 focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="e.g. Garage clean-out, old lounge, green waste pile…"></textarea>
+            </div>
+            <div>
+              <label for="contact-message" class="block text-sm font-medium text-white/80 mb-1.5">Message</label>
+              <textarea id="contact-message" name="message" rows="3" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/45 focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Access notes, preferred day/time, suburb…"></textarea>
+            </div>
+            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-accent hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-xl transition shadow-lg">
+              Send enquiry
+            </button>
+            <p class="text-white/50 text-xs">Connect this form to your host’s mail script, Formspree, or similar for live submissions.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark border-t border-white/10 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+        <div>
+          <p class="font-heading font-extrabold text-xl text-white uppercase">Waymaker</p>
+          <p class="text-primary font-semibold text-sm tracking-wide">Rubbish Solutions</p>
+          <p class="text-white/50 text-sm mt-2">Sunshine Coast, Queensland</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6 text-sm">
+          <a href="#about" class="text-white/70 hover:text-primary transition">About</a>
+          <a href="#services" class="text-white/70 hover:text-primary transition">Services</a>
+          <a href="#areas" class="text-white/70 hover:text-primary transition">Areas</a>
+          <a href="#faqs" class="text-white/70 hover:text-primary transition">FAQs</a>
+          <a href="#contact" class="text-white/70 hover:text-primary transition">Contact</a>
+          <a href="tel:0423101334" class="text-white/70 hover:text-primary transition">0423 101 334</a>
+        </div>
+      </div>
+      <p class="text-center text-white/45 text-sm mt-10">© <span id="year"></span> Waymaker Rubbish Solutions. Family-owned rubbish removal on the Sunshine Coast.</p>
+    </div>
+  </footer>
+
+  <a href="tel:0423101334" id="float-call-btn" class="fixed bottom-6 right-6 z-40 lg:hidden flex items-center justify-center w-14 h-14 rounded-full bg-accent text-white shadow-xl float-call" aria-label="Call now">
+    <i class="fa-solid fa-phone" aria-hidden="true"></i>
+  </a>
+
+  <script>
+    (function () {
+      var menuToggle = document.getElementById('menu-toggle');
+      var mobileMenu = document.getElementById('mobile-menu');
+      var iconOpen = document.getElementById('menu-icon-open');
+      var iconClose = document.getElementById('menu-icon-close');
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function () {
+          var isOpen = !mobileMenu.classList.contains('hidden');
+          mobileMenu.classList.toggle('hidden', isOpen);
+          if (iconOpen) iconOpen.classList.toggle('hidden', !isOpen);
+          if (iconClose) iconClose.classList.toggle('hidden', isOpen);
+          menuToggle.setAttribute('aria-expanded', !isOpen);
+        });
+        mobileMenu.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            mobileMenu.classList.add('hidden');
+            if (iconOpen) iconOpen.classList.remove('hidden');
+            if (iconClose) iconClose.classList.add('hidden');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      var navbar = document.getElementById('navbar');
+      if (navbar) {
+        window.addEventListener('scroll', function () {
+          if (window.scrollY > 60) navbar.classList.add('nav-scrolled');
+          else navbar.classList.remove('nav-scrolled');
+        });
+        if (window.scrollY > 60) navbar.classList.add('nav-scrolled');
+        else navbar.classList.remove('nav-scrolled');
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+          var targetId = anchor.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+          var target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+          });
+        },
+        { root: null, rootMargin: '0px', threshold: 0.08 }
+      );
+      document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
+        observer.observe(el);
+      });
+      document.querySelectorAll('#hero .animate-on-scroll').forEach(function (el) {
+        el.classList.add('visible');
+      });
+
+      var heroSlides = document.querySelectorAll('#hero-slides .hero-slide');
+      if (heroSlides.length > 1) {
+        var heroIndex = 0;
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function advanceHeroSlide() {
+          heroSlides[heroIndex].classList.remove('is-active');
+          heroIndex = (heroIndex + 1) % heroSlides.length;
+          heroSlides[heroIndex].classList.add('is-active');
+        }
+        if (!reduceMotion) {
+          window.setInterval(advanceHeroSlide, 4500); /* 4.5s per slide */
+        }
+      }
+
+      document.querySelectorAll('.faq-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var expanded = btn.getAttribute('aria-expanded') === 'true';
+          document.querySelectorAll('.faq-btn').forEach(function (b) {
+            b.setAttribute('aria-expanded', 'false');
+            var p = b.nextElementSibling;
+            if (p && p.classList.contains('faq-panel')) p.classList.remove('open');
+          });
+          if (!expanded) {
+            btn.setAttribute('aria-expanded', 'true');
+            var panel = btn.nextElementSibling;
+            if (panel && panel.classList.contains('faq-panel')) panel.classList.add('open');
+          }
+        });
+      });
+
+      var form = document.getElementById('contact-form');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          alert('Thanks for your enquiry. We’ll be in touch soon. For a faster response, call 0423 101 334.');
+          form.reset();
+        });
+      }
+
+      var y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

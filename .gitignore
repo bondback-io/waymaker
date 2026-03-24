@@ -1,0 +1,9 @@
+# OS / editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.log
+
+# Optional: uncomment if you add local env or large assets not for repo
+# .env
+# *.zip
