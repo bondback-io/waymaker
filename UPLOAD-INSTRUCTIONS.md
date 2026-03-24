@@ -83,25 +83,30 @@ This creates **way-maker-site.zip** with `index.html` and `assets` at the top le
 
 ---
 
-## 7. Contact form (FormSubmit + photos)
+## 7. Contact form (email delivery + photos)
 
-The form sends via **FormSubmit’s JSON/AJAX** endpoint so users **stay on the page** and see an **on-screen confirmation** (no redirect). Multipart uploads directly to FormSubmit often return **500** errors, so **photos are handled differently**:
+Enquiries are sent **from the browser** with **no full-page redirect**. For **reliable delivery** to **mattpascua89@gmail.com**, add a **Web3Forms** access key (recommended):
 
-1. **ImgBB** (free): sign up at [api.imgbb.com](https://api.imgbb.com/), copy your API key.
-2. In **`index.html`**, find **`window.WAYMAKER_IMGBB_KEY = ''`** (near the top) and paste your key between the quotes.
-3. When someone submits **with photos**, images upload to ImgBB **first** (with a progress bar), then the enquiry email includes **links** to those images.
+1. Open **[web3forms.com](https://web3forms.com)**, create a free form using **mattpascua89@gmail.com**, and copy the **Access Key**.
+2. In **`index.html`**, set **`window.WAYMAKER_WEB3FORMS_ACCESS_KEY = 'your-key-here';`** (same `<script>` block as ImgBB).
 
-**Text-only enquiries** work with no ImgBB key. **With photos but no key**, the site shows an error asking you to add the key or remove photos.
+If **`WAYMAKER_WEB3FORMS_ACCESS_KEY`** is **empty**, the site falls back to **FormSubmit AJAX** (confirm the inbox once at [formsubmit.co](https://formsubmit.co) and check spam if mail is missing).
 
-Optional: **`thanks.html`** remains available if you want a standalone thank-you bookmark; the main flow no longer depends on it.
+**Photos:** multipart to FormSubmit is unreliable, so images upload to **ImgBB** first (with a progress bar), then **links** are included in the enquiry message.
+
+1. **ImgBB** (free): [api.imgbb.com](https://api.imgbb.com/) — set **`WAYMAKER_IMGBB_KEY`** in **`index.html`**.
+2. **With photos but no ImgBB key**, the form shows an error until you add the key or remove photos.
+
+Optional: **`thanks.html`** is only a standalone bookmark page if you still use it.
 
 ---
 
 ## 8. Checklist before go-live
 
 - [ ] **index.html** is in the document root (e.g. `public_html/index.html`).
-- [ ] **ImgBB API key** is set in **index.html** (`WAYMAKER_IMGBB_KEY`) if you want photo uploads from the contact form.
+- [ ] **Web3Forms access key** is set in **index.html** (`WAYMAKER_WEB3FORMS_ACCESS_KEY`) for reliable email delivery.
+- [ ] **ImgBB API key** is set (`WAYMAKER_IMGBB_KEY`) if you want photo uploads from the contact form.
 - [ ] Zip was created so that **index.html** is at the top level inside the zip (not inside an extra folder).
 - [ ] If you use local images, **assets** and the image files are uploaded.
 - [ ] Test the site: open your domain and check nav, forms, and images (or image URLs).
-- [ ] If using **GitHub Pages**, confirm Pages is enabled and the `_next` URL in **index.html** matches your live site (GitHub URL or custom domain).
+- [ ] If using **GitHub Pages**, confirm Pages is enabled and the site URL matches your deployment.
