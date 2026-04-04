@@ -49,8 +49,8 @@
       theme: {
         extend: {
           colors: {
-            primary: '#6DBA2E',
-            accent: '#6DBA2E',
+            primary: '#10B981',
+            accent: '#F97316',
             dark: '#232529',
             offwhite: '#F8FAFC',
           },
@@ -67,9 +67,14 @@
               '0%, 100%': { transform: 'translateY(0)' },
               '50%': { transform: 'translateY(-10px)' },
             },
+            ctaPulse: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(249, 115, 22, 0.55)' },
+              '50%': { boxShadow: '0 0 0 16px rgba(249, 115, 22, 0)' },
+            },
           },
           animation: {
             float: 'float 3s ease-in-out infinite',
+            'cta-pulse': 'ctaPulse 2s ease-out infinite',
           },
         },
       },
@@ -356,7 +361,7 @@
         Way Maker Rubbish Solutions
       </h1>
       <p class="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-white mb-4 animate-on-scroll hero-text-contrast">
-        Reliable Rubbish Removal &amp; Bin Valet Service – Sunshine Coast QLD
+        Fast Reliable Rubbish Solutions servicing the Sunshine Coast
       </p>
       <p class="text-base sm:text-lg text-white max-w-2xl mx-auto mb-10 animate-on-scroll leading-relaxed font-medium hero-text-contrast-subtle">
         A family-run business grounded in faith and strong values, delivering reliable and respectful clear-outs for homes, rentals, and businesses. We approach every job with care, focusing on responsible disposal and minimising waste wherever possible.
@@ -365,8 +370,10 @@
         <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-primary/90 text-white font-bold px-8 py-4 rounded-xl text-lg shadow-xl transition transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-accent/50">
           Get Free Quote
         </a>
-        <a href="tel:0423101334" class="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 backdrop-blur text-white font-bold px-8 py-4 rounded-xl text-lg border-2 border-white/50 transition focus:outline-none focus:ring-4 focus:ring-white/30" aria-label="Call Way Maker Rubbish Solutions">
-          <i class="fa-solid fa-phone text-primary" aria-hidden="true"></i> 0423 101 334
+        <!-- HERO CTA: replaced phone-number pill with bold orange quote CTA + pulse (tel unchanged) -->
+        <a href="tel:0423101334" class="inline-flex items-center justify-center gap-3 bg-accent hover:bg-orange-600 text-white font-heading font-extrabold px-8 py-5 sm:px-10 sm:py-6 rounded-xl text-lg sm:text-2xl shadow-2xl shadow-orange-500/40 transition transform hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-orange-300/70 animate-cta-pulse w-full sm:w-auto" aria-label="Call Way Maker Rubbish Solutions for a quote">
+          <span class="text-2xl sm:text-3xl leading-none shrink-0" aria-hidden="true">📞</span>
+          <span class="text-center leading-tight">CALL ME NOW FOR A QUOTE</span>
         </a>
       </div>
     </div>
@@ -377,6 +384,58 @@
       </a>
     </div>
   </section>
+
+  <!-- PRICING SECTION: inserted after hero — Simple & Transparent Pricing (emerald + orange accents) -->
+  <section id="pricing" class="py-16 sm:py-24 bg-offwhite border-t border-b border-primary/15" aria-labelledby="pricing-heading">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+        <h2 id="pricing-heading" class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-3">
+          <span class="text-primary">Simple &amp; Transparent</span> Pricing
+        </h2>
+        <p class="text-dark/70 text-lg font-medium">Straightforward load-based pricing. No surprises.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8 mb-10">
+        <article class="group rounded-2xl bg-white border-2 border-primary/20 shadow-lg shadow-primary/5 p-8 flex flex-col transition duration-300 hover:border-primary hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1">
+          <div class="w-12 h-1 rounded-full bg-primary mb-5 group-hover:w-16 transition-all duration-300" aria-hidden="true"></div>
+          <h3 class="font-heading font-bold text-xl text-dark mb-2">Small Load</h3>
+          <p class="text-dark/60 text-sm mb-4 flex-grow">1/3rd of tray</p>
+          <p class="font-heading font-extrabold text-4xl text-primary mb-6">$200</p>
+          <a href="#contact" class="inline-flex items-center justify-center w-full py-3.5 rounded-xl bg-accent hover:bg-orange-600 text-white font-heading font-bold text-sm sm:text-base shadow-lg shadow-orange-500/25 transition transform group-hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-accent/40">Get a quote</a>
+        </article>
+        <article class="group rounded-2xl bg-white border-2 border-primary md:scale-[1.02] shadow-xl shadow-primary/10 p-8 flex flex-col relative transition duration-300 hover:border-primary hover:shadow-2xl hover:shadow-primary/15 hover:-translate-y-1 ring-2 ring-primary/10">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-heading font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow-md">Popular</span>
+          <div class="w-12 h-1 rounded-full bg-primary mb-5 group-hover:w-16 transition-all duration-300" aria-hidden="true"></div>
+          <h3 class="font-heading font-bold text-xl text-dark mb-2">Medium Load</h3>
+          <p class="text-dark/60 text-sm mb-4 flex-grow">2/3 of tray</p>
+          <p class="font-heading font-extrabold text-4xl text-primary mb-6">$300</p>
+          <a href="#contact" class="inline-flex items-center justify-center w-full py-3.5 rounded-xl bg-accent hover:bg-orange-600 text-white font-heading font-bold text-sm sm:text-base shadow-lg shadow-orange-500/25 transition transform group-hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-accent/40">Get a quote</a>
+        </article>
+        <article class="group rounded-2xl bg-white border-2 border-primary/20 shadow-lg shadow-primary/5 p-8 flex flex-col transition duration-300 hover:border-primary hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1">
+          <div class="w-12 h-1 rounded-full bg-primary mb-5 group-hover:w-16 transition-all duration-300" aria-hidden="true"></div>
+          <h3 class="font-heading font-bold text-xl text-dark mb-2">Full Tray Load</h3>
+          <p class="text-dark/60 text-sm mb-4 flex-grow">Full tray</p>
+          <p class="font-heading font-extrabold text-4xl text-primary mb-6">$400</p>
+          <a href="#contact" class="inline-flex items-center justify-center w-full py-3.5 rounded-xl bg-accent hover:bg-orange-600 text-white font-heading font-bold text-sm sm:text-base shadow-lg shadow-orange-500/25 transition transform group-hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-accent/40">Get a quote</a>
+        </article>
+      </div>
+
+      <div class="rounded-2xl bg-white border border-primary/20 p-6 sm:p-8 shadow-md">
+        <h3 class="font-heading font-bold text-lg text-dark mb-4 flex items-center gap-2">
+          <span class="text-primary" aria-hidden="true"><i class="fa-solid fa-circle-info"></i></span> Price list &amp; details
+        </h3>
+        <ul class="space-y-3 text-dark/85 text-base sm:text-lg mb-6">
+          <li class="flex gap-3"><span class="text-primary font-bold shrink-0">•</span> <span><strong class="text-dark">Small Load</strong> (1/3rd of Tray) — <strong class="text-primary">$200</strong></span></li>
+          <li class="flex gap-3"><span class="text-primary font-bold shrink-0">•</span> <span><strong class="text-dark">Medium Load</strong> (2/3 of Tray) — <strong class="text-primary">$300</strong></span></li>
+          <li class="flex gap-3"><span class="text-primary font-bold shrink-0">•</span> <span><strong class="text-dark">Full Tray Load</strong> — <strong class="text-primary">$400</strong></span></li>
+        </ul>
+        <p class="text-dark/75 text-sm sm:text-base leading-relaxed border-t border-primary/10 pt-6">
+          <strong class="text-dark">Please note:</strong> Prices may vary depending on waste type, weight, and site accessibility. Same-day service available. All prices include loading, transport &amp; responsible eco-disposal.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- /PRICING SECTION -->
 
   <section id="about" class="py-20 sm:py-28 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
