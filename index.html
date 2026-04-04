@@ -293,8 +293,8 @@
 
         <div class="hidden lg:flex items-center gap-6 xl:gap-8">
           <a href="#about" class="text-white/90 hover:text-primary transition font-medium text-sm">About</a>
-          <a href="#services" class="text-white/90 hover:text-primary transition font-medium text-sm">Services</a>
           <a href="#pricing" class="text-white/90 hover:text-primary transition font-medium text-sm">Pricing</a>
+          <a href="#services" class="text-white/90 hover:text-primary transition font-medium text-sm">Services</a>
           <a href="#why" class="text-white/90 hover:text-primary transition font-medium text-sm">Why Us</a>
           <a href="#areas" class="text-white/90 hover:text-primary transition font-medium text-sm">Areas</a>
           <a href="#faqs" class="text-white/90 hover:text-primary transition font-medium text-sm">FAQs</a>
@@ -312,8 +312,8 @@
       <div id="mobile-menu" class="hidden lg:hidden py-4 border-t border-white/10">
         <div class="flex flex-col gap-3">
           <a href="#about" class="text-white hover:text-primary transition font-medium">About</a>
-          <a href="#services" class="text-white hover:text-primary transition font-medium">Services</a>
           <a href="#pricing" class="text-white hover:text-primary transition font-medium">Pricing</a>
+          <a href="#services" class="text-white hover:text-primary transition font-medium">Services</a>
           <a href="#why" class="text-white hover:text-primary transition font-medium">Why Us</a>
           <a href="#areas" class="text-white hover:text-primary transition font-medium">Service Areas</a>
           <a href="#faqs" class="text-white hover:text-primary transition font-medium">FAQs</a>
@@ -389,7 +389,48 @@
     </div>
   </section>
 
-  <!-- PRICING SECTION: logo-colour subheading + load cards (emerald + orange accents) -->
+  <section id="about" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 animate-on-scroll space-y-6">
+          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark leading-tight">
+            Meet Matt and Shannen
+          </h2>
+          <div class="space-y-4 text-dark/80 text-lg leading-relaxed">
+            <p>
+              Way Maker Rubbish Solutions was started by Matt and his wife Shannen. Waymaker is a faith centered and family-driven business, built on hard work, trust, and a deep desire to serve our local Sunshine Coast community.
+            </p>
+            <p>
+              We value honesty and reliability and committed to making waste removal simple, stress free, and respectful for every customer. We understand how overwhelming clutter can become, and we take genuine pride in helping people reclaim their space and move forward with ease.
+            </p>
+            <p>
+              Our goal is straightforward: deliver a service you can trust, rely on, and feel great about recommending to friends and family!
+            </p>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2 animate-on-scroll flex flex-col items-center lg:items-end">
+          <!-- Family photo: assets/family-photo.jpeg -->
+          <figure class="w-full max-w-[min(100%,480px)]">
+            <img
+              src="assets/family-photo.jpeg"
+              alt="Matthew and family – owner-operated Way Maker Rubbish Solutions, Sunshine Coast Queensland backyard"
+              class="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3] border border-dark/5"
+              width="480"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption class="mt-4 text-center lg:text-right text-dark/70 text-sm sm:text-base font-medium">
+              Matthew &amp; family – Building trust one clear-out at a time
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING SECTION: follows About (Meet Matt and Shannen); nav order About → Pricing → Services -->
   <section id="pricing" class="py-16 sm:py-24 bg-offwhite border-t border-b border-primary/15" aria-labelledby="pricing-heading">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Pricing heading: logo green, larger type + accent rule so it stands out -->
@@ -433,47 +474,6 @@
     </div>
   </section>
   <!-- /PRICING SECTION -->
-
-  <section id="about" class="py-20 sm:py-28 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="order-2 lg:order-1 animate-on-scroll space-y-6">
-          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark leading-tight">
-            Meet Matt and Shannen
-          </h2>
-          <div class="space-y-4 text-dark/80 text-lg leading-relaxed">
-            <p>
-              Way Maker Rubbish Solutions was started by Matt and his wife Shannen. Waymaker is a faith centered and family-driven business, built on hard work, trust, and a deep desire to serve our local Sunshine Coast community.
-            </p>
-            <p>
-              We value honesty and reliability and committed to making waste removal simple, stress free, and respectful for every customer. We understand how overwhelming clutter can become, and we take genuine pride in helping people reclaim their space and move forward with ease.
-            </p>
-            <p>
-              Our goal is straightforward: deliver a service you can trust, rely on, and feel great about recommending to friends and family!
-            </p>
-          </div>
-        </div>
-
-        <div class="order-1 lg:order-2 animate-on-scroll flex flex-col items-center lg:items-end">
-          <!-- Family photo: assets/family-photo.jpeg -->
-          <figure class="w-full max-w-[min(100%,480px)]">
-            <img
-              src="assets/family-photo.jpeg"
-              alt="Matthew and family – owner-operated Way Maker Rubbish Solutions, Sunshine Coast Queensland backyard"
-              class="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3] border border-dark/5"
-              width="480"
-              height="360"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption class="mt-4 text-center lg:text-right text-dark/70 text-sm sm:text-base font-medium">
-              Matthew &amp; family – Building trust one clear-out at a time
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="services" class="py-20 sm:py-28 section-gradient">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
