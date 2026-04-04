@@ -176,12 +176,6 @@
       letter-spacing: 0.02em;
       text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
     }
-    /* Logo PNG: height set in markup; object-fit + auto sizing keeps edges smooth when scaling */
-    .logo-brand img {
-      width: auto;
-      object-fit: contain;
-      object-position: left center;
-    }
 
     .float-call { animation: float 2.5s ease-in-out infinite; }
 
@@ -292,9 +286,9 @@
 
   <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-      <div class="flex items-center justify-between gap-3 py-3 sm:py-4 lg:py-5">
-        <a href="#hero" class="logo-brand inline-flex items-center transition-all min-w-0 max-w-[calc(100%-3.25rem)] lg:max-w-none">
-          <img src="assets/waymaker-logo.png" alt="Way Maker Rubbish Solutions logo" class="h-48 sm:h-56 md:h-72 lg:h-[22rem] xl:h-[26rem] w-auto max-w-full sm:max-w-none" loading="eager" decoding="async" fetchpriority="high" />
+      <div class="flex items-center justify-between h-20">
+        <a href="#hero" class="logo-brand inline-flex items-center transition-all">
+          <img src="assets/waymaker-logo.png" alt="Way Maker Rubbish Solutions logo" class="h-24 sm:h-28 md:h-36 lg:h-44 xl:h-52 w-auto max-w-[95vw] sm:max-w-none" loading="eager" decoding="async" />
         </a>
 
         <div class="hidden lg:flex items-center gap-3 xl:gap-4">
@@ -356,7 +350,7 @@
     </div>
     <div class="hero-gradient-overlay absolute inset-0 z-[1]" aria-hidden="true"></div>
 
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-52 sm:pt-60 md:pt-72 lg:pt-[24rem] xl:pt-[28rem] pb-12">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 sm:pt-24 pb-12">
       <h1 class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-logo leading-tight mb-4 animate-on-scroll hero-text-contrast">
         Way Maker Rubbish Solutions
       </h1>
