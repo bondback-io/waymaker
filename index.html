@@ -82,16 +82,47 @@
     }
   </script>
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    /* Full-width layout + iOS Safari: avoid horizontal overflow when zoomed (vw logo + flex row > 100%) */
+    html {
+      scroll-behavior: smooth;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+    }
     h1, h2, h3, h4, .font-heading { font-family: 'Poppins', sans-serif; }
-    html { scroll-behavior: smooth; }
+
+    body > section,
+    body > footer {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
 
     /* Hero: 5 slides, 1s crossfade; blurred bg (depth, non-distracting); JS 4500ms; prefers-reduced-motion: lighter blur, no auto-advance */
-    .hero-slides { pointer-events: none; overflow: hidden; }
+    .hero-slides {
+      pointer-events: none;
+      overflow: hidden;
+      width: 100%;
+      max-width: 100%;
+      left: 0;
+      right: 0;
+    }
     .hero-slide {
       position: absolute;
       inset: 0;
       overflow: hidden;
+      width: 100%;
+      max-width: 100%;
       opacity: 0;
       transition: opacity 1s ease-in-out;
       z-index: 0;
@@ -308,14 +339,14 @@
   }
   </script>
 </head>
-<body class="bg-offwhite text-dark font-body antialiased overflow-x-hidden">
+<body class="bg-offwhite text-dark font-body antialiased overflow-x-hidden w-full max-w-full min-w-0">
   <!-- CONFIG: [INSERT YOUR PHONE NUMBER] — search file for 0423101334 / 0423 101 334 and update tel: + JSON-LD telephone -->
 
   <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative" aria-label="Main navigation">
-      <div class="flex items-center justify-between min-h-[4.25rem] h-20">
-        <a href="#hero" class="logo-brand inline-flex shrink-0 items-center self-center py-1.5 lg:py-0 transition-all">
-          <img src="assets/waymaker-logo.png" alt="Way Maker Rubbish Solutions logo" class="h-20 sm:h-24 md:h-36 lg:h-48 xl:h-56 w-auto max-w-[min(88vw,22rem)] sm:max-w-[min(92vw,28rem)] md:max-w-none object-contain object-left" loading="eager" decoding="async" />
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full max-w-full min-w-0" aria-label="Main navigation">
+      <div class="flex items-center justify-between gap-2 sm:gap-3 min-w-0 min-h-[4.25rem] h-20">
+        <a href="#hero" class="logo-brand inline-flex min-w-0 flex-1 items-center self-center py-1.5 pr-1 lg:flex-none lg:shrink-0 lg:pr-0 lg:py-0 transition-all">
+          <img src="assets/waymaker-logo.png" alt="Way Maker Rubbish Solutions logo" class="h-20 sm:h-24 md:h-36 lg:h-48 xl:h-56 w-auto max-w-full sm:max-w-[min(100%,28rem)] md:max-w-none object-contain object-left" loading="eager" decoding="async" />
         </a>
 
         <div class="hidden lg:flex shrink-0 items-center gap-3 xl:gap-4">
@@ -357,7 +388,7 @@
     </nav>
   </header>
 
-  <section id="hero" class="relative flex min-h-[80vh] sm:min-h-[90vh] lg:min-h-screen items-center justify-center overflow-hidden">
+  <section id="hero" class="relative flex w-full max-w-full min-w-0 min-h-[80vh] sm:min-h-[90vh] lg:min-h-screen items-center justify-center overflow-hidden">
     <!-- Slide 1: sharp, no extra tint. Slides 2–5: light blur + darker tint (CSS ::after). -->
     <!-- Download high-res version and save as assets/hero-blurred.jpg; or use your own photo of bins/trailer/ute (reference: wm.nz wheelie-bin driveway). -->
     <!-- Per-slide locals: assets/hero-1.jpg … hero-5.jpg -->
@@ -922,7 +953,7 @@
     </div>
   </footer>
 
-  <a href="tel:0423101334" id="float-call-btn" class="fixed bottom-6 right-6 z-40 lg:hidden flex items-center justify-center w-14 h-14 rounded-full bg-accent text-white shadow-xl float-call" aria-label="Call now">
+  <a href="tel:0423101334" id="float-call-btn" class="fixed z-40 lg:hidden flex items-center justify-center w-14 h-14 rounded-full bg-accent text-white shadow-xl float-call bottom-[max(1.5rem,env(safe-area-inset-bottom,0px))] right-[max(1.5rem,env(safe-area-inset-right,0px))]" aria-label="Call now">
     <i class="fa-solid fa-phone" aria-hidden="true"></i>
   </a>
 
