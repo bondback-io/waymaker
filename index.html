@@ -210,22 +210,139 @@
     }
 
     /* Mobile nav: full-viewport overlay (in-flow menu was pushing content / sitting “in” the page) */
-    #mobile-menu {
+    #mobile-menu.waymaker-mobile-nav {
       display: none;
       -webkit-overflow-scrolling: touch;
     }
-    #mobile-menu[data-open='true'] {
+    #mobile-menu.waymaker-mobile-nav[data-open='true'] {
       display: flex;
+      flex-direction: column;
     }
     @media (min-width: 1024px) {
-      #mobile-menu,
-      #mobile-menu[data-open='true'] {
+      #mobile-menu.waymaker-mobile-nav,
+      #mobile-menu.waymaker-mobile-nav[data-open='true'] {
         display: none !important;
       }
     }
-    .mobile-menu-panel {
-      padding-top: max(5.75rem, calc(env(safe-area-inset-top, 0px) + 4.5rem));
-      padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+
+    /* Strong overrides: full-screen drawer, readable taps (beats Tailwind / host theme) */
+    @media (max-width: 1023.98px) {
+      header#navbar.waymaker-site-header {
+        z-index: 10001 !important;
+      }
+
+      #mobile-menu.waymaker-mobile-nav[data-open='true'] {
+        display: flex !important;
+        flex-direction: column !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        min-height: 100vh !important;
+        min-height: 100dvh !important;
+        height: 100% !important;
+        max-height: none !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        z-index: 10000 !important;
+        overflow: hidden !important;
+        overscroll-behavior: contain !important;
+        isolation: isolate !important;
+        background: rgb(15, 23, 42) !important;
+        background: rgba(15, 23, 42, 0.98) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+      }
+
+      #mobile-menu.waymaker-mobile-nav .waymaker-mobile-nav-panel {
+        flex: 1 1 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        width: 100% !important;
+        max-width: 24rem !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        min-height: 0 !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        overscroll-behavior-y: contain !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+        padding-top: max(6rem, calc(env(safe-area-inset-top, 0px) + 5.25rem)) !important;
+        padding-bottom: max(2rem, env(safe-area-inset-bottom, 0px)) !important;
+        gap: 0.25rem !important;
+        box-sizing: border-box !important;
+      }
+
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-link {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        font-family: 'Poppins', system-ui, sans-serif !important;
+        font-size: 1.25rem !important;
+        font-weight: 600 !important;
+        line-height: 1.35 !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
+        min-height: 3.25rem !important;
+        padding: 0.875rem 1rem !important;
+        border-radius: 0.75rem !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+        background: transparent !important;
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.12);
+      }
+
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-link:active,
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-link:hover {
+        background: rgba(255, 255, 255, 0.08) !important;
+        color: #6ee7b7 !important;
+      }
+
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        font-family: 'Poppins', system-ui, sans-serif !important;
+        font-size: 1.125rem !important;
+        font-weight: 700 !important;
+        min-height: 3.5rem !important;
+        padding: 0.875rem 1.25rem !important;
+        margin-top: 0.75rem !important;
+        border-radius: 0.875rem !important;
+        text-decoration: none !important;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call {
+        background: #f97316 !important;
+        color: #ffffff !important;
+        margin-top: 1.25rem !important;
+      }
+
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote {
+        background: #10b981 !important;
+        color: #ffffff !important;
+        margin-bottom: 0.5rem !important;
+      }
+
+      html.waymaker-menu-open,
+      body.waymaker-menu-open {
+        overflow: hidden !important;
+        height: 100% !important;
+        touch-action: none !important;
+        overscroll-behavior: none !important;
+      }
     }
 
     .logo-brand {
@@ -342,7 +459,7 @@
 <body class="bg-offwhite text-dark font-body antialiased overflow-x-hidden w-full max-w-full min-w-0">
   <!-- CONFIG: [INSERT YOUR PHONE NUMBER] — search file for 0423101334 / 0423 101 334 and update tel: + JSON-LD telephone -->
 
-  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <header id="navbar" class="waymaker-site-header fixed top-0 left-0 right-0 z-50 transition-all duration-300">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full max-w-full min-w-0" aria-label="Main navigation">
       <div class="flex items-center justify-between gap-2 sm:gap-3 min-w-0 min-h-[4.25rem] h-20">
         <a href="#hero" class="logo-brand inline-flex min-w-0 flex-1 items-center self-center py-1.5 pr-1 lg:flex-none lg:shrink-0 lg:pr-0 lg:py-0 transition-all">
@@ -369,23 +486,23 @@
   <!-- Outside #navbar: fixed menu must not sit under an ancestor with backdrop-filter (.nav-scrolled), or inset-0 clips to the header box -->
   <div
     id="mobile-menu"
-    class="lg:hidden fixed inset-0 z-[45] flex-col bg-slate-950/97 backdrop-blur-xl overscroll-contain shadow-2xl shadow-black/40"
+    class="waymaker-mobile-nav lg:hidden fixed inset-0 z-[10000] flex-col overscroll-contain"
     data-open="false"
     role="dialog"
     aria-modal="true"
     aria-label="Mobile navigation"
     aria-hidden="true"
   >
-    <div class="mobile-menu-panel flex flex-col gap-0 max-w-lg mx-auto w-full flex-1 min-h-0 overflow-y-auto px-4 sm:px-6">
-      <a href="#about" class="text-white hover:text-primary hover:bg-white/5 transition font-medium text-lg py-3.5 px-1 border-b border-white/10 rounded-lg">About</a>
-      <a href="#pricing" class="text-white hover:text-primary hover:bg-white/5 transition font-medium text-lg py-3.5 px-1 border-b border-white/10 rounded-lg">Pricing</a>
-      <a href="#areas" class="text-white hover:text-primary hover:bg-white/5 transition font-medium text-lg py-3.5 px-1 border-b border-white/10 rounded-lg">Service Areas</a>
-      <a href="#google-reviews" class="text-white hover:text-primary hover:bg-white/5 transition font-medium text-lg py-3.5 px-1 border-b border-white/10 rounded-lg">Reviews</a>
-      <a href="#contact" class="text-white hover:text-primary hover:bg-white/5 transition font-medium text-lg py-3.5 px-1 border-b border-white/10 rounded-lg">Contact Us</a>
-      <a href="tel:0423101334" class="mt-4 inline-flex items-center gap-2 bg-accent text-white font-semibold px-4 py-3.5 rounded-xl justify-center shadow-lg">
-        <i class="fa-solid fa-phone" aria-hidden="true"></i> Call 0423 101 334
+    <div class="waymaker-mobile-nav-panel mobile-menu-panel">
+      <a href="#about" class="waymaker-mobile-nav-link">About</a>
+      <a href="#pricing" class="waymaker-mobile-nav-link">Pricing</a>
+      <a href="#areas" class="waymaker-mobile-nav-link">Service Areas</a>
+      <a href="#google-reviews" class="waymaker-mobile-nav-link">Reviews</a>
+      <a href="#contact" class="waymaker-mobile-nav-link">Contact Us</a>
+      <a href="tel:0423101334" class="waymaker-mobile-nav-cta waymaker-mobile-nav-cta--call">
+        <i class="fa-solid fa-phone shrink-0" aria-hidden="true"></i> Call 0423 101 334
       </a>
-      <a href="#contact" class="inline-flex items-center justify-center bg-primary text-white font-semibold px-4 py-3.5 rounded-xl mt-2 mb-4">Get a Quote</a>
+      <a href="#contact" class="waymaker-mobile-nav-cta waymaker-mobile-nav-cta--quote">Get a Quote</a>
     </div>
   </div>
 
@@ -954,14 +1071,14 @@
     </div>
   </footer>
 
-  <a href="tel:0423101334" id="float-call-btn" class="fixed z-40 lg:hidden flex items-center justify-center w-14 h-14 rounded-full bg-accent text-white shadow-xl float-call bottom-[max(1.5rem,env(safe-area-inset-bottom,0px))] right-[max(1.5rem,env(safe-area-inset-right,0px))]" aria-label="Call now">
+  <a href="tel:0423101334" id="float-call-btn" class="fixed z-[5000] lg:hidden flex items-center justify-center w-14 h-14 rounded-full bg-accent text-white shadow-xl float-call bottom-[max(1.5rem,env(safe-area-inset-bottom,0px))] right-[max(1.5rem,env(safe-area-inset-right,0px))]" aria-label="Call now">
     <i class="fa-solid fa-phone" aria-hidden="true"></i>
   </a>
 
   <!-- Contact confirmation / error (FormSubmit AJAX — no full-page redirect) -->
   <div
     id="contact-modal-overlay"
-    class="fixed inset-0 z-[100] hidden items-center justify-center bg-dark/80 backdrop-blur-sm p-4"
+    class="fixed inset-0 z-[12000] hidden items-center justify-center bg-dark/80 backdrop-blur-sm p-4"
     role="dialog"
     aria-modal="true"
     aria-labelledby="contact-modal-title"
@@ -1005,6 +1122,8 @@
         if (iconOpen) iconOpen.classList.toggle('hidden', open);
         if (iconClose) iconClose.classList.toggle('hidden', !open);
         document.body.classList.toggle('overflow-hidden', open);
+        document.documentElement.classList.toggle('waymaker-menu-open', open);
+        document.body.classList.toggle('waymaker-menu-open', open);
         if (navbar) {
           if (open) navbar.classList.add('nav-scrolled');
           else if (window.scrollY <= 60) navbar.classList.remove('nav-scrolled');
