@@ -371,56 +371,6 @@
     .google-reviews-strip {
       background: linear-gradient(135deg, rgba(109, 186, 46, 0.14) 0%, rgba(248, 250, 252, 1) 45%, rgba(109, 186, 46, 0.09) 100%);
     }
-
-    /* Mobile header: centered logo below bar; hide duplicate hero title (matches lg breakpoint 1024px) */
-    @media (max-width: 1023.98px) {
-      #hero h1.waymaker-hero-site-title {
-        position: absolute !important;
-        width: 1px !important;
-        height: 1px !important;
-        padding: 0 !important;
-        margin: -1px !important;
-        overflow: hidden !important;
-        clip: rect(0, 0, 0, 0) !important;
-        clip-path: inset(50%) !important;
-        white-space: nowrap !important;
-        border: 0 !important;
-      }
-
-      .waymaker-mobile-header-logo-row {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-        padding-bottom: 0.625rem !important;
-        padding-top: 0.125rem !important;
-        box-sizing: border-box !important;
-      }
-
-      .waymaker-mobile-header-logo-row a {
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        line-height: 0 !important;
-      }
-
-      .waymaker-mobile-header-logo-img {
-        display: block !important;
-        width: clamp(180px, 48vw, 220px) !important;
-        max-width: 220px !important;
-        height: auto !important;
-        object-fit: contain !important;
-        object-position: center center !important;
-        image-rendering: auto !important;
-        -webkit-user-drag: none;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .waymaker-mobile-header-logo-row {
-        display: none !important;
-      }
-    }
   </style>
   <!-- JSON-LD: update telephone, address, geo, openingHours, review URLs, and og-image path when you go live -->
   <script type="application/ld+json">
@@ -511,8 +461,8 @@
 
   <header id="navbar" class="waymaker-site-header fixed top-0 left-0 right-0 z-50 transition-all duration-300">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full max-w-full min-w-0" aria-label="Main navigation">
-      <div class="flex items-center justify-end lg:justify-between gap-2 sm:gap-3 min-w-0 min-h-[4.25rem] h-20 w-full">
-        <a href="#hero" class="logo-brand hidden lg:inline-flex min-w-0 lg:flex-none lg:shrink-0 items-center self-center py-1.5 lg:py-0 transition-all">
+      <div class="flex items-center justify-between gap-2 sm:gap-3 min-w-0 min-h-[4.25rem] h-20">
+        <a href="#hero" class="logo-brand inline-flex min-w-0 flex-1 items-center self-center py-1.5 pr-1 lg:flex-none lg:shrink-0 lg:pr-0 lg:py-0 transition-all">
           <img src="assets/waymaker-logo.png" alt="Way Maker Rubbish Solutions logo" class="h-20 sm:h-24 md:h-36 lg:h-48 xl:h-56 w-auto max-w-full sm:max-w-[min(100%,28rem)] md:max-w-none object-contain object-left" loading="eager" decoding="async" />
         </a>
 
@@ -529,22 +479,6 @@
           <i class="fa-solid fa-bars text-2xl" id="menu-icon-open" aria-hidden="true"></i>
           <i class="fa-solid fa-xmark text-2xl hidden" id="menu-icon-close" aria-hidden="true"></i>
         </button>
-      </div>
-
-      <!-- Mobile only: centered logo under top bar (desktop row hidden via lg:hidden on wrapper) -->
-      <div class="waymaker-mobile-header-logo-row lg:hidden">
-        <a href="#hero" class="rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-transparent" aria-label="Way Maker Rubbish Solutions — home">
-          <img
-            src="assets/waymaker-logo.png"
-            alt=""
-            width="440"
-            height="176"
-            class="waymaker-mobile-header-logo-img"
-            loading="eager"
-            decoding="async"
-            fetchpriority="high"
-          />
-        </a>
       </div>
     </nav>
   </header>
@@ -600,8 +534,8 @@
     </div>
     <div class="hero-gradient-overlay absolute inset-0 z-[1]" aria-hidden="true"></div>
 
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-[calc(10.5rem+env(safe-area-inset-top,0px))] lg:pt-24 pb-12">
-      <h1 class="waymaker-hero-site-title font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-logo leading-tight mb-4 animate-on-scroll hero-text-contrast">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-[calc(5rem+env(safe-area-inset-top,0px))] sm:pt-24 pb-12">
+      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-logo leading-tight mb-4 animate-on-scroll hero-text-contrast">
         WayMaker Rubbish Solutions
       </h1>
       <p class="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-white mb-4 animate-on-scroll hero-text-contrast">
