@@ -604,35 +604,6 @@
       letter-spacing: 0.02em;
       text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
     }
-    /* Header logo PNG (square canvas with wide wordmark): cap size, keep sharp, leave room for menu / CTAs */
-    header#navbar .logo-brand-img {
-      display: block;
-      height: auto;
-      width: auto;
-      max-height: 5rem;
-      max-width: min(100%, calc(100vw - 6.75rem));
-      object-fit: contain;
-      object-position: left center;
-      -webkit-user-drag: none;
-    }
-    @media (min-width: 640px) {
-      header#navbar .logo-brand-img {
-        max-height: 6rem;
-        max-width: min(100%, calc(100vw - 9rem));
-      }
-    }
-    @media (min-width: 1024px) {
-      header#navbar .logo-brand-img {
-        max-height: 6.25rem;
-        max-width: min(20rem, 36vw);
-      }
-    }
-    @media (min-width: 1280px) {
-      header#navbar .logo-brand-img {
-        max-height: 6.75rem;
-        max-width: min(24rem, 32vw);
-      }
-    }
 
     .float-call { animation: float 2.5s ease-in-out infinite; }
 
@@ -749,9 +720,9 @@
 
   <header id="navbar" class="waymaker-site-header fixed top-0 left-0 right-0 z-50 transition-all duration-300">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full max-w-full min-w-0" aria-label="Main navigation">
-      <div class="flex items-center justify-between gap-2 sm:gap-3 min-w-0 min-h-[4.25rem] py-2 sm:py-2.5 lg:py-2.5">
+      <div class="flex items-center justify-between gap-2 sm:gap-3 min-w-0 min-h-[4.25rem] h-20">
         <a href="#hero" class="logo-brand inline-flex min-w-0 flex-1 items-center self-center py-1.5 pr-1 lg:flex-none lg:shrink-0 lg:pr-0 lg:py-0 transition-all">
-          <img src="assets/waymaker-logo.png" alt="Way Maker Rubbish Solutions logo" class="logo-brand-img" width="1024" height="1024" loading="eager" decoding="async" />
+          <img src="assets/waymaker-logo.png" alt="Way Maker Rubbish Solutions logo" class="h-20 sm:h-24 md:h-36 lg:h-48 xl:h-56 w-auto max-w-full sm:max-w-[min(100%,28rem)] md:max-w-none object-contain object-left" loading="eager" decoding="async" />
         </a>
 
         <div class="hidden lg:flex shrink-0 items-center gap-3 xl:gap-4">
@@ -801,7 +772,7 @@
     </div>
     <div class="hero-gradient-overlay absolute inset-0 z-[1]" aria-hidden="true"></div>
 
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-[calc(6.25rem+env(safe-area-inset-top,0px))] sm:pt-[calc(6.75rem+env(safe-area-inset-top,0px))] lg:pt-[calc(8rem+env(safe-area-inset-top,0px))] pb-12">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-[calc(5rem+env(safe-area-inset-top,0px))] sm:pt-24 pb-12">
       <p class="sr-only">Way Maker Rubbish Solutions — Sunshine Coast rubbish removal.</p>
       <h1 class="hero-headline-impact animate-on-scroll hero-text-contrast mb-5 sm:mb-6 md:mb-8 px-1">
         <span class="block whitespace-normal">Stop waiting.</span>
