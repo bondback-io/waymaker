@@ -109,63 +109,36 @@
       box-sizing: border-box;
     }
 
-    /* Hero: 5 slides, 1s crossfade; blurred bg (depth, non-distracting); JS 4500ms; prefers-reduced-motion: lighter blur, no auto-advance */
-    .hero-slides {
+    /* Hero: single static background (sharp cover); swap URL or use assets/hero-static.jpg when you have a local file */
+    .hero-static-bg {
       pointer-events: none;
-      overflow: hidden;
-      width: 100%;
-      max-width: 100%;
-      left: 0;
-      right: 0;
-    }
-    .hero-slide {
       position: absolute;
       inset: 0;
-      overflow: hidden;
-      width: 100%;
-      max-width: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
       z-index: 0;
+      overflow: hidden;
+      width: 100%;
+      max-width: 100%;
     }
-    .hero-slide.is-active {
-      opacity: 1;
-      z-index: 1;
-    }
-    /* Darker tint on slides 2–5 only; fades with slide crossfade */
-    #hero-slides .hero-slide:not(:first-child)::after {
-      content: '';
+    .hero-static-bg__layer {
       position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.48);
-      pointer-events: none;
-      z-index: 2;
-    }
-    /* Slides 2–5: ~10% blur strength (~2px vs heavy 18px); oversized layer clips edges */
-    .hero-slide-blurred {
-      position: absolute;
-      inset: -6%;
+      inset: -2px;
+      background-color: #142818;
+      background-image: url('https://mobileskips.com.au/wp-content/uploads/2020/12/garden-waste-1047259_1920-1.jpg');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
-      filter: blur(2px);
-      -webkit-filter: blur(2px);
-      transform: scale(1.03);
-      transform-origin: center center;
-      z-index: 1;
     }
-    /* Slide 1 only: sharp image (no blur) */
-    .hero-slide-blurred--sharp {
-      inset: 0;
-      filter: none;
-      -webkit-filter: none;
-      transform: scale(1);
+    @media (max-width: 639px) {
+      .hero-static-bg__layer {
+        background-position: center 38%;
+      }
     }
-    /* Dark gradient + neutral scrim (no navy/blue tint) */
+    /* Dark gradient + subtle green scrim for brand + headline / CTA contrast */
     .hero-gradient-overlay {
       background:
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.62) 55%, rgba(0, 0, 0, 0.72) 100%),
-        rgba(0, 0, 0, 0.12);
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.82) 100%),
+        linear-gradient(115deg, rgba(20, 55, 30, 0.45) 0%, transparent 50%),
+        rgba(0, 0, 0, 0.14);
       pointer-events: none;
     }
     #hero .hero-text-contrast {
@@ -339,15 +312,6 @@
       .nav-quote-cta:hover {
         transform: none;
         filter: brightness(1.05);
-      }
-      .hero-slide { transition: none; }
-      .hero-slide-blurred {
-        filter: blur(1px);
-        -webkit-filter: blur(1px);
-      }
-      .hero-slide-blurred.hero-slide-blurred--sharp {
-        filter: none;
-        -webkit-filter: none;
       }
     }
 
@@ -688,30 +652,9 @@
   </div>
 
   <section id="hero" class="relative flex w-full max-w-full min-w-0 min-h-[80vh] sm:min-h-[90vh] lg:min-h-screen items-center justify-center overflow-hidden">
-    <!-- Slide 1: sharp, no extra tint. Slides 2–5: light blur + darker tint (CSS ::after). -->
-    <!-- Download high-res version and save as assets/hero-blurred.jpg; or use your own photo of bins/trailer/ute (reference: wm.nz wheelie-bin driveway). -->
-    <!-- Per-slide locals: assets/hero-1.jpg … hero-5.jpg -->
-    <div id="hero-slides" class="hero-slides absolute inset-0 z-0" aria-hidden="true">
-      <div class="hero-slide is-active">
-          <!-- SEO/crawler: slide 1 = Sunshine Coast Hinterland panorama, green hills, QLD -->
-          <div class="hero-slide-blurred hero-slide-blurred--sharp" style="background-image: url('https://images.ctfassets.net/iiu58j8xnirw/5F49YKsE2bO72gCtn0fVe8/f7bfce474eb2e59eda9a80e203f549fa/consumer_website_images_1920_x_1080__5_.jpg?w=1920&amp;q=85&amp;fm=webp');"></div>
-      </div>
-      <div class="hero-slide">
-        <!-- SEO: slide 2 = residential wheelie bins on driveway, Sunshine Coast QLD -->
-        <div class="hero-slide-blurred" style="background-image: url('https://www.wm.nz/globalassets/001-assets/open-graph-images/wheelie-bin-on-driveway.jpg');"></div>
-      </div>
-      <div class="hero-slide">
-        <!-- SEO: slide 3 = garden / green waste, eco-friendly disposal QLD -->
-        <div class="hero-slide-blurred" style="background-image: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1280&amp;q=80&amp;auto=format&amp;fit=crop');"></div>
-      </div>
-      <div class="hero-slide">
-        <!-- SEO: slide 4 = cleared garden / green waste after removal -->
-        <div class="hero-slide-blurred" style="background-image: url('https://mobileskips.com.au/wp-content/uploads/2020/12/garden-waste-1047259_1920-1.jpg');"></div>
-      </div>
-      <div class="hero-slide">
-        <!-- SEO: slide 5 = ute load junk removal, furniture and rubbish -->
-        <div class="hero-slide-blurred" style="background-image: url('https://c8.alamy.com/comp/2J3A7AK/a-man-unloads-his-garbage-from-a-pickup-truck-at-a-garbage-dump-in-paraguay-2J3A7AK.jpg');"></div>
-      </div>
+    <!-- Static hero background (no carousel). Replace background-image in .hero-static-bg__layer with assets/hero-static.jpg for a self-hosted photo. -->
+    <div class="hero-static-bg" aria-hidden="true">
+      <div class="hero-static-bg__layer"></div>
     </div>
     <div class="hero-gradient-overlay absolute inset-0 z-[1]" aria-hidden="true"></div>
 
@@ -1368,20 +1311,6 @@
       document.querySelectorAll('#hero .animate-on-scroll').forEach(function (el) {
         el.classList.add('visible');
       });
-
-      var heroSlides = document.querySelectorAll('#hero-slides .hero-slide');
-      if (heroSlides.length > 1) {
-        var heroIndex = 0;
-        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        function advanceHeroSlide() {
-          heroSlides[heroIndex].classList.remove('is-active');
-          heroIndex = (heroIndex + 1) % heroSlides.length;
-          heroSlides[heroIndex].classList.add('is-active');
-        }
-        if (!reduceMotion) {
-          window.setInterval(advanceHeroSlide, 4500); /* 4.5s per slide */
-        }
-      }
 
       document.querySelectorAll('.faq-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
