@@ -362,7 +362,10 @@
       50% { transform: translateY(-8px); }
     }
 
-    /* FAQ accordion */
+    /* FAQ accordion — chevrons: explicit logo green (matches tailwind theme `logo` #6DBA2E; beats button text-dark inheritance) */
+    #faqs .faq-icon {
+      color: #6dba2e !important;
+    }
     .faq-btn[aria-expanded="true"] .faq-icon { transform: rotate(180deg); }
     .faq-panel { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
     .faq-panel.open { max-height: 40rem; }
