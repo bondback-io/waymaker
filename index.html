@@ -278,6 +278,56 @@
         0 0 0 6px rgba(109, 186, 46, 0.65),
         0 6px 24px rgba(0, 0, 0, 0.45);
     }
+
+    /* Pricing cards: BOOK NOW — same gradient / chrome as hero “CALL NOW FOR A QUOTE” */
+    .pricing-book-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0.875rem 1rem;
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 0.875rem;
+      line-height: 1.25;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #ffffff !important;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 0.75rem;
+      background: linear-gradient(165deg, #8fd94e 0%, #6dba2e 38%, #52a322 100%);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      box-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.12) inset,
+        0 6px 24px rgba(0, 0, 0, 0.45),
+        0 10px 36px rgba(82, 163, 34, 0.38);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease, border-color 0.22s ease;
+    }
+    @media (min-width: 640px) {
+      .pricing-book-cta {
+        font-size: 1rem;
+      }
+    }
+    .group:hover .pricing-book-cta {
+      transform: scale(1.02);
+    }
+    .pricing-book-cta:hover {
+      transform: scale(1.035) translateY(-2px);
+      filter: brightness(1.09) saturate(1.05);
+      border-color: rgba(255, 255, 255, 0.42);
+      box-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.2) inset,
+        0 10px 32px rgba(0, 0, 0, 0.5),
+        0 14px 48px rgba(109, 186, 46, 0.55);
+    }
+    .pricing-book-cta:focus-visible {
+      outline: none;
+      box-shadow:
+        0 0 0 3px #ffffff,
+        0 0 0 6px rgba(109, 186, 46, 0.65),
+        0 6px 24px rgba(0, 0, 0, 0.45);
+    }
     @keyframes hero-cta-pulse-ring {
       0%, 100% {
         box-shadow:
@@ -309,7 +359,9 @@
         animation: none;
       }
       .hero-cta:hover,
-      .nav-quote-cta:hover {
+      .nav-quote-cta:hover,
+      .pricing-book-cta:hover,
+      .group:hover .pricing-book-cta {
         transform: none;
         filter: brightness(1.05);
       }
@@ -743,21 +795,21 @@
         <article class="group rounded-2xl bg-white border-2 border-black shadow-lg shadow-black/5 p-8 flex flex-col text-center transition duration-300 hover:shadow-xl hover:shadow-black/10 hover:-translate-y-1">
           <h3 class="font-heading font-bold text-xl text-dark mb-2">Small Load</h3>
           <p class="text-dark/60 text-sm mb-4 flex-grow">(1/3rd of a Tray)</p>
-          <p class="font-heading font-extrabold text-4xl text-logo mb-6">$200</p>
-          <a href="#quote" class="inline-flex items-center justify-center w-full py-3.5 rounded-xl bg-accent hover:bg-orange-600 text-white font-heading font-bold text-sm sm:text-base shadow-lg shadow-orange-500/25 transition transform group-hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-accent/40" aria-label="Book now — request a quote">BOOK NOW</a>
+          <p class="font-heading font-extrabold text-4xl text-black mb-6">$200</p>
+          <a href="#quote" class="pricing-book-cta" aria-label="Book now — request a quote">BOOK NOW</a>
         </article>
         <article class="group rounded-2xl bg-white border-2 border-black md:scale-[1.02] shadow-xl shadow-black/10 p-8 flex flex-col text-center relative transition duration-300 hover:shadow-2xl hover:shadow-black/15 hover:-translate-y-1 ring-2 ring-black/10">
           <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-black border border-black text-xs font-heading font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow-md">Popular</span>
           <h3 class="font-heading font-bold text-xl text-dark mb-2">Medium Load</h3>
           <p class="text-dark/60 text-sm mb-4 flex-grow">(2/3rd of a Tray)</p>
-          <p class="font-heading font-extrabold text-4xl text-logo mb-6">$300</p>
-          <a href="#quote" class="inline-flex items-center justify-center w-full py-3.5 rounded-xl bg-accent hover:bg-orange-600 text-white font-heading font-bold text-sm sm:text-base shadow-lg shadow-orange-500/25 transition transform group-hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-accent/40" aria-label="Book now — request a quote">BOOK NOW</a>
+          <p class="font-heading font-extrabold text-4xl text-black mb-6">$300</p>
+          <a href="#quote" class="pricing-book-cta" aria-label="Book now — request a quote">BOOK NOW</a>
         </article>
         <article class="group rounded-2xl bg-white border-2 border-black shadow-lg shadow-black/5 p-8 flex flex-col text-center transition duration-300 hover:shadow-xl hover:shadow-black/10 hover:-translate-y-1">
           <h3 class="font-heading font-bold text-xl text-dark mb-2">Full Tray Load</h3>
           <p class="text-dark/60 text-sm mb-4 flex-grow">Full tray</p>
-          <p class="font-heading font-extrabold text-4xl text-logo mb-6">$400</p>
-          <a href="#quote" class="inline-flex items-center justify-center w-full py-3.5 rounded-xl bg-accent hover:bg-orange-600 text-white font-heading font-bold text-sm sm:text-base shadow-lg shadow-orange-500/25 transition transform group-hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-accent/40" aria-label="Book now — request a quote">BOOK NOW</a>
+          <p class="font-heading font-extrabold text-4xl text-black mb-6">$400</p>
+          <a href="#quote" class="pricing-book-cta" aria-label="Book now — request a quote">BOOK NOW</a>
         </article>
       </div>
 
