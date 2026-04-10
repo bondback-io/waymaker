@@ -336,6 +336,59 @@
         0 0 0 6px rgba(109, 186, 46, 0.65),
         0 6px 24px rgba(0, 0, 0, 0.45);
     }
+
+    /* Contact form submit — same brand green as hero “CALL NOW FOR A QUOTE” */
+    .contact-submit-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 1rem 2rem;
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      color: #ffffff !important;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: linear-gradient(165deg, #8fd94e 0%, #6dba2e 38%, #52a322 100%);
+      box-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.12) inset,
+        0 6px 24px rgba(0, 0, 0, 0.45),
+        0 10px 36px rgba(82, 163, 34, 0.38);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease, border-color 0.22s ease, opacity 0.2s ease;
+    }
+    @media (min-width: 640px) {
+      .contact-submit-cta {
+        width: auto;
+      }
+    }
+    .contact-submit-cta:hover:not(:disabled) {
+      transform: scale(1.035) translateY(-2px);
+      filter: brightness(1.09) saturate(1.05);
+      border-color: rgba(255, 255, 255, 0.42);
+      box-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.2) inset,
+        0 10px 32px rgba(0, 0, 0, 0.5),
+        0 14px 48px rgba(109, 186, 46, 0.55);
+    }
+    .contact-submit-cta:focus-visible {
+      outline: none;
+      box-shadow:
+        0 0 0 3px #ffffff,
+        0 0 0 6px rgba(109, 186, 46, 0.65),
+        0 6px 24px rgba(0, 0, 0, 0.45);
+    }
+    .contact-submit-cta:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+      filter: none;
+    }
     @keyframes hero-cta-pulse-ring {
       0%, 100% {
         box-shadow:
@@ -369,7 +422,8 @@
       .hero-cta:hover,
       .nav-quote-cta:hover,
       .pricing-book-cta:hover,
-      .group:hover .pricing-book-cta {
+      .group:hover .pricing-book-cta,
+      .contact-submit-cta:hover:not(:disabled) {
         transform: none;
         filter: brightness(1.05);
       }
@@ -1223,7 +1277,7 @@
                 <p id="contact-upload-detail" class="text-xs text-white/50 mt-2"></p>
               </div>
             </div>
-            <button type="submit" id="contact-submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-accent hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold px-8 py-4 rounded-xl transition shadow-lg">
+            <button type="submit" id="contact-submit" class="contact-submit-cta">
               <span id="contact-submit-label">Send enquiry</span>
             </button>
             <p id="form-status" class="text-sm mt-2 hidden rounded-lg px-3 py-2" role="status" aria-live="polite"></p>
