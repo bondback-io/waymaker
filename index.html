@@ -141,6 +141,13 @@
         rgba(0, 0, 0, 0.14);
       pointer-events: none;
     }
+    /* Mobile only: full viewport height so About is below the fold (Tailwind md: is 768px+) */
+    @media (max-width: 767.98px) {
+      #hero {
+        min-height: 100svh;
+        min-height: 100dvh;
+      }
+    }
     #hero .hero-text-contrast {
       text-shadow:
         1px 1px 4px rgba(0, 0, 0, 0.85),
