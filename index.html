@@ -605,15 +605,8 @@
       text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
     }
 
-    .float-call { animation: float 2.5s ease-in-out infinite; }
-
     .animate-on-scroll { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
 
     /* FAQ accordion — chevrons: explicit logo green (matches tailwind theme `logo` #6DBA2E; beats button text-dark inheritance) */
     #faqs .faq-icon {
@@ -1307,10 +1300,6 @@
     </div>
   </footer>
 
-  <a href="tel:0423101334" id="float-call-btn" class="fixed z-[5000] lg:hidden flex items-center justify-center w-14 h-14 rounded-full bg-accent text-white shadow-xl float-call bottom-[max(1.5rem,env(safe-area-inset-bottom,0px))] right-[max(1.5rem,env(safe-area-inset-right,0px))]" aria-label="Call now">
-    <i class="fa-solid fa-phone" aria-hidden="true"></i>
-  </a>
-
   <!-- Contact confirmation / error (FormSubmit AJAX — no full-page redirect) -->
   <div
     id="contact-modal-overlay"
@@ -1346,7 +1335,6 @@
       var mobileMenu = document.getElementById('mobile-menu');
       var iconOpen = document.getElementById('menu-icon-open');
       var iconClose = document.getElementById('menu-icon-close');
-      var floatCallBtn = document.getElementById('float-call-btn');
       var navbar = document.getElementById('navbar');
 
       function setMobileMenuOpen(open) {
@@ -1364,8 +1352,6 @@
           if (open) navbar.classList.add('nav-scrolled');
           else if (window.scrollY <= 60) navbar.classList.remove('nav-scrolled');
         }
-        if (floatCallBtn) floatCallBtn.classList.toggle('pointer-events-none', open);
-        if (floatCallBtn) floatCallBtn.setAttribute('aria-hidden', open ? 'true' : 'false');
       }
 
       if (menuToggle && mobileMenu) {
