@@ -257,6 +257,54 @@
       line-height: 1;
       filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
     }
+
+    /* Header/footer "Get a Quote" — same brand green gradient as hero CTAs */
+    .nav-quote-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1rem;
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      color: #ffffff !important;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 0.625rem;
+      background: linear-gradient(165deg, #8fd94e 0%, #6dba2e 38%, #52a322 100%);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      box-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.12) inset,
+        0 4px 16px rgba(0, 0, 0, 0.35),
+        0 6px 24px rgba(82, 163, 34, 0.32);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease, border-color 0.22s ease;
+    }
+    @media (min-width: 640px) {
+      .nav-quote-cta {
+        padding: 0.625rem 1.125rem;
+        font-size: 0.9375rem;
+        border-radius: 0.75rem;
+      }
+    }
+    .nav-quote-cta:hover {
+      transform: scale(1.035) translateY(-2px);
+      filter: brightness(1.09) saturate(1.05);
+      border-color: rgba(255, 255, 255, 0.42);
+      box-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.2) inset,
+        0 8px 24px rgba(0, 0, 0, 0.45),
+        0 10px 36px rgba(109, 186, 46, 0.5);
+    }
+    .nav-quote-cta:focus-visible {
+      outline: none;
+      box-shadow:
+        0 0 0 3px #ffffff,
+        0 0 0 6px rgba(109, 186, 46, 0.65),
+        0 6px 24px rgba(0, 0, 0, 0.45);
+    }
     @keyframes hero-cta-pulse-ring {
       0%, 100% {
         box-shadow:
@@ -287,7 +335,8 @@
       .hero-cta--pulse {
         animation: none;
       }
-      .hero-cta:hover {
+      .hero-cta:hover,
+      .nav-quote-cta:hover {
         transform: none;
         filter: brightness(1.05);
       }
@@ -442,9 +491,24 @@
       }
 
       #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote {
-        background: #10b981 !important;
+        background: linear-gradient(165deg, #8fd94e 0%, #6dba2e 38%, #52a322 100%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.28) !important;
+        box-shadow:
+          0 2px 0 rgba(255, 255, 255, 0.12) inset,
+          0 4px 16px rgba(0, 0, 0, 0.35),
+          0 6px 24px rgba(82, 163, 34, 0.32) !important;
         color: #ffffff !important;
         margin-bottom: 0.5rem !important;
+      }
+
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote:active,
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote:hover {
+        filter: brightness(1.09) saturate(1.05);
+        border-color: rgba(255, 255, 255, 0.42) !important;
+        box-shadow:
+          0 2px 0 rgba(255, 255, 255, 0.2) inset,
+          0 8px 24px rgba(0, 0, 0, 0.45),
+          0 10px 36px rgba(109, 186, 46, 0.5) !important;
       }
 
       html.waymaker-menu-open,
@@ -589,7 +653,7 @@
           <a href="#areas" class="text-white/90 hover:text-primary transition font-medium text-lg">Service Areas</a>
           <a href="#google-reviews" class="text-white/90 hover:text-primary transition font-medium text-lg">Reviews</a>
           <a href="#contact" class="text-white/90 hover:text-primary transition font-medium text-lg">Contact Us</a>
-          <a href="#contact" class="inline-flex items-center gap-2 bg-accent hover:bg-primary/90 text-white font-semibold px-4 py-2.5 rounded-lg transition shadow-lg text-sm" aria-label="Request a quote">Get a Quote</a>
+          <a href="#contact" class="nav-quote-cta" aria-label="Request a quote">Get a Quote</a>
         </div>
 
         <button id="menu-toggle" type="button" class="lg:hidden shrink-0 self-center text-white p-2.5 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -1179,7 +1243,7 @@
           <a href="#areas" class="text-white/90 hover:text-primary transition font-medium text-lg">Service Areas</a>
           <a href="#google-reviews" class="text-white/90 hover:text-primary transition font-medium text-lg">Reviews</a>
           <a href="#contact" class="text-white/90 hover:text-primary transition font-medium text-lg">Contact Us</a>
-          <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-primary/90 text-white font-semibold px-4 py-2.5 rounded-lg transition shadow-lg text-sm" aria-label="Request a quote">Get a Quote</a>
+          <a href="#contact" class="nav-quote-cta" aria-label="Request a quote">Get a Quote</a>
         </nav>
       </div>
       <p class="text-center text-white/45 text-sm mt-10">© <span id="year"></span> Waymaker Rubbish Solutions. Owner-operated rubbish removal solutions.</p>
