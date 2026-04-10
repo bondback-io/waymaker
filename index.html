@@ -41,7 +41,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -58,6 +58,7 @@
           fontFamily: {
             heading: ['Poppins', 'sans-serif'],
             body: ['Inter', 'sans-serif'],
+            display: ['"Bebas Neue"', 'Impact', 'Arial Narrow', 'sans-serif'],
           },
           keyframes: {
             fadeIn: {
@@ -172,9 +173,28 @@
         1px 1px 4px rgba(0, 0, 0, 0.85),
         0 2px 20px rgba(0, 0, 0, 0.55);
     }
-    /* Match pricing / theme `logo` (#6DBA2E) — explicit so hero title never drifts from dollar amounts */
-    #hero h1.hero-text-contrast {
-      color: #6DBA2E;
+    /* Hero billboard headline — bold condensed all-caps white (Bebas Neue) */
+    #hero h1.hero-headline-impact {
+      font-family: 'Bebas Neue', 'Impact', 'Arial Narrow', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 0.92;
+      color: #ffffff !important;
+      font-size: clamp(3rem, 14vw, 6.75rem);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (min-width: 640px) {
+      #hero h1.hero-headline-impact {
+        font-size: clamp(3.5rem, 12vw, 7.5rem);
+        letter-spacing: 0.05em;
+      }
+    }
+    @media (min-width: 1024px) {
+      #hero h1.hero-headline-impact {
+        font-size: clamp(4.5rem, 9vw, 8.5rem);
+      }
     }
     #hero .hero-text-contrast-subtle {
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 1px 12px rgba(0, 0, 0, 0.5);
@@ -541,14 +561,13 @@
     <div class="hero-gradient-overlay absolute inset-0 z-[1]" aria-hidden="true"></div>
 
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-[calc(5rem+env(safe-area-inset-top,0px))] sm:pt-24 pb-12">
-      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-logo leading-tight mb-4 animate-on-scroll hero-text-contrast">
-        WayMaker Rubbish Solutions
+      <p class="sr-only">Way Maker Rubbish Solutions — Sunshine Coast rubbish removal.</p>
+      <h1 class="hero-headline-impact animate-on-scroll hero-text-contrast mb-5 sm:mb-6 md:mb-8 px-1">
+        <span class="block whitespace-normal">Stop waiting.</span>
+        <span class="block whitespace-normal">Start clearing.</span>
       </h1>
-      <p class="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-white mb-4 animate-on-scroll hero-text-contrast">
+      <p class="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-white mb-8 sm:mb-10 animate-on-scroll hero-text-contrast">
         Fast, reliable rubbish solutions servicing the Sunshine Coast
-      </p>
-      <p class="text-base sm:text-lg text-white max-w-2xl mx-auto mb-10 animate-on-scroll leading-relaxed font-medium hero-text-contrast-subtle">
-        A family run business grounded in faith and strong values, delivering reliable and respectful rubbish removal for homes, rentals, and businesses. We approach every job with care, focusing on responsible disposal and minimising waste wherever possible.
       </p>
       <!-- Hero CTAs: same min-h, px, py, text-lg so both buttons match visually -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center animate-on-scroll">
