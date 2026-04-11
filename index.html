@@ -635,6 +635,17 @@
         touch-action: none !important;
         overscroll-behavior: none !important;
       }
+
+      /* Menu toggle: same bright lime as .nav-quote-cta / hero green CTAs (#8fd94e), not focus:ring-primary (#10B981) */
+      #menu-toggle {
+        border: 2px solid #8fd94e !important;
+        box-sizing: border-box !important;
+      }
+      #menu-toggle:focus,
+      #menu-toggle:focus-visible {
+        --tw-ring-color: #8fd94e !important;
+        --tw-ring-opacity: 1 !important;
+      }
     }
 
     .logo-brand {
