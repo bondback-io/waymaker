@@ -601,12 +601,8 @@
         -webkit-tap-highlight-color: transparent;
       }
 
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call {
-        background: #f97316 !important;
-        color: #ffffff !important;
-        margin-top: 1.25rem !important;
-      }
-
+      /* Call + Get a Quote — same brand green as hero / Get a Quote CTAs */
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call,
       #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote {
         background: linear-gradient(165deg, #8fd94e 0%, #6dba2e 38%, #52a322 100%) !important;
         border: 1px solid rgba(255, 255, 255, 0.28) !important;
@@ -615,9 +611,23 @@
           0 4px 16px rgba(0, 0, 0, 0.35),
           0 6px 24px rgba(82, 163, 34, 0.32) !important;
         color: #ffffff !important;
+      }
+
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call i {
+        color: #ffffff !important;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+      }
+
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call {
+        margin-top: 1.25rem !important;
+      }
+
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote {
         margin-bottom: 0.5rem !important;
       }
 
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call:active,
+      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call:hover,
       #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote:active,
       #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote:hover {
         filter: brightness(1.09) saturate(1.05);
