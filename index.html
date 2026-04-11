@@ -441,20 +441,23 @@
       box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.12);
     }
 
-    /* Top of page: full navbar transparent over hero. After scroll (or mobile menu open) tray goes solid for contrast. */
+    /* Top of page: transparent over hero. Scrolled (or mobile menu open): full-width solid black bar */
     header#navbar.waymaker-site-header {
+      width: 100%;
+      left: 0;
+      right: 0;
       background-color: transparent;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
+      transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
     }
-    .nav-scrolled {
-      background: transparent !important;
+    header#navbar.waymaker-site-header.nav-scrolled {
+      background-color: #000000 !important;
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
     }
     .waymaker-nav-bar-tray {
       background-color: transparent;
-      transition: background-color 0.3s ease;
       align-self: stretch;
       display: flex;
       align-items: center;
@@ -464,9 +467,6 @@
       gap: 0.5rem;
       padding-left: 0.5rem;
       padding-right: 0.25rem;
-    }
-    header#navbar.waymaker-site-header.nav-scrolled .waymaker-nav-bar-tray {
-      background-color: #000000;
     }
     @media (min-width: 640px) {
       .waymaker-nav-bar-tray {
