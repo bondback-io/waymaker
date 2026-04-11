@@ -165,6 +165,7 @@
         background-color: #142818;
       }
       #hero > div.max-w-5xl {
+        padding-top: calc(4.25rem + env(safe-area-inset-top, 0px)) !important;
         padding-bottom: 0.75rem !important;
       }
     }
@@ -804,9 +805,9 @@
 
   <header id="navbar" class="waymaker-site-header fixed top-0 left-0 right-0 z-50 transition-all duration-300">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full max-w-full min-w-0" aria-label="Main navigation">
-      <div class="flex items-center min-w-0 gap-0 py-2 sm:py-2.5 md:py-3 lg:py-4 xl:py-5">
+      <div class="flex items-stretch min-w-0 min-h-[4.25rem] h-20 gap-0">
         <a href="#hero" class="logo-brand inline-flex min-w-0 flex-1 items-center self-center py-1.5 pr-1 lg:flex-none lg:shrink-0 lg:pr-0 lg:py-0 transition-all bg-transparent">
-          <img src="assets/waymaker-logo.png" alt="Way Maker Rubbish Solutions logo" class="h-40 sm:h-48 md:h-72 lg:h-96 xl:h-[28rem] w-auto max-w-full sm:max-w-[min(100%,56rem)] md:max-w-none object-contain object-left" loading="eager" decoding="async" />
+          <img src="assets/waymaker-logo.png" alt="Way Maker Rubbish Solutions logo" class="h-20 sm:h-24 md:h-36 lg:h-48 xl:h-56 w-auto max-w-full sm:max-w-[min(100%,28rem)] md:max-w-none object-contain object-left" loading="eager" decoding="async" />
         </a>
 
         <div class="waymaker-nav-bar-tray">
@@ -858,7 +859,7 @@
     </div>
     <div class="hero-gradient-overlay absolute inset-0 z-[1]" aria-hidden="true"></div>
 
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-[calc(11rem+env(safe-area-inset-top,0px))] sm:pt-[calc(13.5rem+env(safe-area-inset-top,0px))] md:pt-[calc(19.5rem+env(safe-area-inset-top,0px))] lg:pt-[calc(26rem+env(safe-area-inset-top,0px))] xl:pt-[calc(31rem+env(safe-area-inset-top,0px))] pb-12">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-[calc(5rem+env(safe-area-inset-top,0px))] sm:pt-24 pb-12">
       <p class="sr-only">Way Maker Rubbish Solutions — Sunshine Coast rubbish removal.</p>
       <h1 class="hero-headline-impact animate-on-scroll hero-text-contrast mb-5 sm:mb-6 md:mb-8 px-1">
         <span class="block whitespace-normal">Stop waiting.</span>
