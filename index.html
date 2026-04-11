@@ -441,16 +441,42 @@
       box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.12);
     }
 
-    /* Top bar: solid black on all viewports (scroll / mobile menu still use .nav-scrolled for JS hooks) */
+    /* Header shell transparent so logo sits over hero; black only on .waymaker-nav-bar-tray */
     header#navbar.waymaker-site-header {
-      background-color: #000000;
+      background-color: transparent;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
     }
     .nav-scrolled {
-      background: #000000 !important;
+      background: transparent !important;
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
+    }
+    .waymaker-nav-bar-tray {
+      background-color: #000000;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 1 1 auto;
+      min-width: 0;
+      gap: 0.5rem;
+      padding-left: 0.5rem;
+      padding-right: 0.25rem;
+    }
+    @media (min-width: 640px) {
+      .waymaker-nav-bar-tray {
+        gap: 0.75rem;
+        padding-left: 0.75rem;
+        padding-right: 0.5rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .waymaker-nav-bar-tray {
+        gap: 1rem;
+        padding-left: 1rem;
+        padding-right: 0;
+      }
     }
 
     #navbar {
@@ -613,6 +639,7 @@
       font-weight: 800;
       letter-spacing: 0.02em;
       text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+      background: transparent !important;
     }
 
     .animate-on-scroll { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
@@ -723,24 +750,26 @@
 
   <header id="navbar" class="waymaker-site-header fixed top-0 left-0 right-0 z-50 transition-all duration-300">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full max-w-full min-w-0" aria-label="Main navigation">
-      <div class="flex items-center justify-between gap-2 sm:gap-3 min-w-0 min-h-[4.25rem] h-20">
-        <a href="#hero" class="logo-brand inline-flex min-w-0 flex-1 items-center self-center py-1.5 pr-1 lg:flex-none lg:shrink-0 lg:pr-0 lg:py-0 transition-all">
+      <div class="flex items-stretch min-w-0 min-h-[4.25rem] h-20 gap-0">
+        <a href="#hero" class="logo-brand inline-flex min-w-0 flex-1 items-center self-center py-1.5 pr-1 lg:flex-none lg:shrink-0 lg:pr-0 lg:py-0 transition-all bg-transparent">
           <img src="assets/waymaker-logo.png" alt="Way Maker Rubbish Solutions logo" class="h-20 sm:h-24 md:h-36 lg:h-48 xl:h-56 w-auto max-w-full sm:max-w-[min(100%,28rem)] md:max-w-none object-contain object-left" loading="eager" decoding="async" />
         </a>
 
-        <div class="hidden lg:flex shrink-0 items-center gap-3 xl:gap-4">
-          <a href="#about" class="text-white/90 hover:text-primary transition font-medium text-lg">About</a>
-          <a href="#pricing" class="text-white/90 hover:text-primary transition font-medium text-lg">Pricing</a>
-          <a href="#areas" class="text-white/90 hover:text-primary transition font-medium text-lg">Service Areas</a>
-          <a href="#google-reviews" class="text-white/90 hover:text-primary transition font-medium text-lg">Reviews</a>
-          <a href="#contact" class="text-white/90 hover:text-primary transition font-medium text-lg">Contact Us</a>
-          <a href="#contact" class="nav-quote-cta" aria-label="Request a quote">Get a Quote</a>
-        </div>
+        <div class="waymaker-nav-bar-tray">
+          <div class="hidden lg:flex shrink-0 items-center gap-3 xl:gap-4">
+            <a href="#about" class="text-white/90 hover:text-primary transition font-medium text-lg">About</a>
+            <a href="#pricing" class="text-white/90 hover:text-primary transition font-medium text-lg">Pricing</a>
+            <a href="#areas" class="text-white/90 hover:text-primary transition font-medium text-lg">Service Areas</a>
+            <a href="#google-reviews" class="text-white/90 hover:text-primary transition font-medium text-lg">Reviews</a>
+            <a href="#contact" class="text-white/90 hover:text-primary transition font-medium text-lg">Contact Us</a>
+            <a href="#contact" class="nav-quote-cta" aria-label="Request a quote">Get a Quote</a>
+          </div>
 
-        <button id="menu-toggle" type="button" class="lg:hidden shrink-0 self-center text-white p-2.5 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-          <i class="fa-solid fa-bars text-2xl" id="menu-icon-open" aria-hidden="true"></i>
-          <i class="fa-solid fa-xmark text-2xl hidden" id="menu-icon-close" aria-hidden="true"></i>
-        </button>
+          <button id="menu-toggle" type="button" class="lg:hidden shrink-0 self-center text-white p-2.5 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+            <i class="fa-solid fa-bars text-2xl" id="menu-icon-open" aria-hidden="true"></i>
+            <i class="fa-solid fa-xmark text-2xl hidden" id="menu-icon-close" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
     </nav>
   </header>
