@@ -142,11 +142,31 @@
         rgba(0, 0, 0, 0.45);
       pointer-events: none;
     }
-    /* Mobile only: full viewport height so About is below the fold (Tailwind md: is 768px+) */
-    @media (max-width: 767.98px) {
+    /*
+     * Below lg (1024px): hero is exactly one viewport — no white About strip on first view.
+     * Extends past 767px so sm/md Tailwind min-heights (80–90vh) cannot leave a gap.
+     */
+    @media (max-width: 1023.98px) {
+      body {
+        background-color: #0a0c0a !important;
+      }
       #hero {
-        min-height: 100svh;
-        min-height: 100dvh;
+        min-height: 100vh !important;
+        min-height: 100dvh !important;
+        min-height: 100svh !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        height: 100svh !important;
+        max-height: 100vh !important;
+        max-height: 100dvh !important;
+        max-height: 100svh !important;
+        overflow: hidden !important;
+        box-sizing: border-box;
+        background-color: #142818;
+      }
+      #hero > div.max-w-5xl {
+        padding-top: calc(4.25rem + env(safe-area-inset-top, 0px)) !important;
+        padding-bottom: 0.75rem !important;
       }
     }
     #hero .hero-text-contrast {
