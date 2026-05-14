@@ -1,0 +1,339 @@
+/* WayMaker — shared styles for location landing pages & /locations hub (subset of homepage header/nav) */
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+body.location-subpage {
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
+body.location-subpage h1,
+body.location-subpage h2,
+body.location-subpage h3,
+body.location-subpage h4,
+body.location-subpage .font-heading {
+  font-family: 'Poppins', sans-serif;
+}
+body.location-subpage > section,
+body.location-subpage > footer,
+body.location-subpage > main {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+body.location-subpage header#navbar.waymaker-site-header {
+  background-color: #000000 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+header#navbar.waymaker-site-header {
+  width: 100%;
+  left: 0;
+  right: 0;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+header#navbar.waymaker-site-header.nav-scrolled {
+  background-color: #000000 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.waymaker-nav-bar-tray {
+  background-color: transparent;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.25rem;
+}
+@media (min-width: 640px) {
+  .waymaker-nav-bar-tray {
+    gap: 0.75rem;
+    padding-left: 0.75rem;
+    padding-right: 0.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .waymaker-nav-bar-tray {
+    gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 0;
+  }
+}
+#navbar {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.logo-brand {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  background: transparent !important;
+}
+
+.nav-quote-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: #ffffff !important;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 0.625rem;
+  background: linear-gradient(165deg, #8fd94e 0%, #6dba2e 38%, #52a322 100%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.12) inset,
+    0 4px 16px rgba(0, 0, 0, 0.35),
+    0 6px 24px rgba(82, 163, 34, 0.32);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease, border-color 0.22s ease;
+}
+@media (min-width: 640px) {
+  .nav-quote-cta {
+    padding: 0.625rem 1.125rem;
+    font-size: 0.9375rem;
+    border-radius: 0.75rem;
+  }
+}
+.nav-quote-cta:hover {
+  transform: scale(1.035) translateY(-2px);
+  filter: brightness(1.09) saturate(1.05);
+  border-color: rgba(255, 255, 255, 0.42);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.2) inset,
+    0 8px 24px rgba(0, 0, 0, 0.45),
+    0 10px 36px rgba(109, 186, 46, 0.5);
+}
+.nav-quote-cta:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px #ffffff,
+    0 0 0 6px rgba(109, 186, 46, 0.65),
+    0 6px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* Locations dropdown (desktop) */
+.wm-loc-dropdown-panel {
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+.wm-loc-dropdown:focus-within .wm-loc-dropdown-panel,
+.wm-loc-dropdown:hover .wm-loc-dropdown-panel {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+#mobile-menu.waymaker-mobile-nav {
+  display: none;
+  -webkit-overflow-scrolling: touch;
+}
+#mobile-menu.waymaker-mobile-nav[data-open='true'] {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 1024px) {
+  #mobile-menu.waymaker-mobile-nav,
+  #mobile-menu.waymaker-mobile-nav[data-open='true'] {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  header#navbar.waymaker-site-header {
+    z-index: 10001 !important;
+  }
+  #mobile-menu.waymaker-mobile-nav[data-open='true'] {
+    display: flex !important;
+    flex-direction: column !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    height: 100% !important;
+    max-height: none !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 10000 !important;
+    overflow: hidden !important;
+    overscroll-behavior: contain !important;
+    isolation: isolate !important;
+    background: #000000 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  #mobile-menu.waymaker-mobile-nav .waymaker-mobile-nav-panel {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    max-width: 24rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    min-height: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-y: contain !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    padding-top: max(6rem, calc(env(safe-area-inset-top, 0px) + 5.25rem)) !important;
+    padding-bottom: max(2rem, env(safe-area-inset-bottom, 0px)) !important;
+    gap: 0.25rem !important;
+    box-sizing: border-box !important;
+  }
+  #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-link {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-family: 'Poppins', system-ui, sans-serif !important;
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    line-height: 1.35 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    min-height: 3.25rem !important;
+    padding: 0.875rem 1rem !important;
+    border-radius: 0.75rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    background: transparent !important;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.12);
+  }
+
+  #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-link:active,
+  #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-link:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #6ee7b7 !important;
+  }
+
+  #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-family: 'Poppins', system-ui, sans-serif !important;
+    font-size: 1.125rem !important;
+    font-weight: 700 !important;
+    min-height: 3.5rem !important;
+    padding: 0.875rem 1.25rem !important;
+    margin-top: 0.75rem !important;
+    border-radius: 0.875rem !important;
+    text-decoration: none !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call,
+  #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote {
+    background: linear-gradient(165deg, #8fd94e 0%, #6dba2e 38%, #52a322 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    box-shadow:
+      0 2px 0 rgba(255, 255, 255, 0.12) inset,
+      0 4px 16px rgba(0, 0, 0, 0.35),
+      0 6px 24px rgba(82, 163, 34, 0.32) !important;
+    color: #ffffff !important;
+  }
+
+  #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call i {
+    color: #ffffff !important;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+  }
+
+  #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call {
+    margin-top: 1.25rem !important;
+  }
+
+  #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote {
+    margin-bottom: 0.5rem !important;
+  }
+
+  #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call:active,
+  #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call:hover,
+  #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote:active,
+  #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote:hover {
+    filter: brightness(1.09) saturate(1.05);
+    border-color: rgba(255, 255, 255, 0.42) !important;
+    box-shadow:
+      0 2px 0 rgba(255, 255, 255, 0.2) inset,
+      0 8px 24px rgba(0, 0, 0, 0.45),
+      0 10px 36px rgba(109, 186, 46, 0.5) !important;
+  }
+
+  html.waymaker-menu-open,
+  body.waymaker-menu-open {
+    overflow: hidden !important;
+    height: 100% !important;
+    touch-action: none !important;
+    overscroll-behavior: none !important;
+  }
+
+  #menu-toggle {
+    border: 2px solid #8fd94e !important;
+    box-sizing: border-box !important;
+  }
+  #menu-toggle:focus,
+  #menu-toggle:focus-visible {
+    --tw-ring-color: #8fd94e !important;
+    --tw-ring-opacity: 1 !important;
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.12);
+}
+
+/* FAQ on location pages */
+.loc-faq-btn[aria-expanded='true'] .loc-faq-icon {
+  transform: rotate(180deg);
+}
+.loc-faq-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.loc-faq-panel.open {
+  max-height: 48rem;
+}
