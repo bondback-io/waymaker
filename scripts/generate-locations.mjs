@@ -260,6 +260,7 @@ function buildLocationPage(loc) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>${esc(loc.title)}</title>
+  <meta name="google-site-verification" content="58aDHM72qS6SwXVsT_tugAWntXOrw8_XsQqvhvdy3pY" />
   <meta name="description" content="${esc(loc.meta)}" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#10B981" />
@@ -408,6 +409,7 @@ function buildHubPage() {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sunshine Coast suburbs | Rubbish removal pages | WayMaker</title>
+  <meta name="google-site-verification" content="58aDHM72qS6SwXVsT_tugAWntXOrw8_XsQqvhvdy3pY" />
   <meta name="description" content="WayMaker Rubbish Solutions services Maroochydore, Caloundra, Noosa, Aura, Buderim, Mooloolaba, Coolum Beach, Kawana Waters, Peregian Beach, Nambour and more. Family-owned Sunshine Coast junk removal." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="${canonical}" />
