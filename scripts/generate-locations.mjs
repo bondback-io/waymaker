@@ -64,17 +64,9 @@ function reviewsCarousel(prefix) {
       </p>`;
 }
 
-function locationDropdownLinks(prefix) {
-  return LOCATIONS.map(
-    (l) =>
-      `<a href="${prefix}${l.slug}/" class="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-white rounded-lg">${esc(l.place)}</a>`
-  ).join('\n');
-}
-
 function navFragment(prefix, currentSlug, isHub) {
   const home = `${prefix}index.html`;
   const locHub = `${prefix}locations/`;
-  const drop = locationDropdownLinks(prefix);
   return `
   <header id="navbar" class="waymaker-site-header fixed top-0 left-0 right-0 z-50 nav-scrolled">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full max-w-full min-w-0" aria-label="Main navigation">
@@ -86,14 +78,6 @@ function navFragment(prefix, currentSlug, isHub) {
           <div class="hidden lg:flex shrink-0 items-center gap-2 xl:gap-3 flex-wrap justify-end">
             <a href="${home}#about" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">About</a>
             <a href="${home}#pricing" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">What&apos;s included</a>
-            <div class="relative wm-loc-dropdown group">
-              <button type="button" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg inline-flex items-center gap-1 py-2" aria-expanded="false" aria-haspopup="true">Locations <i class="fa-solid fa-chevron-down text-xs opacity-80" aria-hidden="true"></i></button>
-              <div class="wm-loc-dropdown-panel invisible opacity-0 pointer-events-none translate-y-1 absolute right-0 top-full z-50 w-64 max-h-[70vh] overflow-y-auto rounded-xl border border-white/15 bg-dark shadow-2xl p-2" role="menu">
-                <a href="${locHub}" class="block px-4 py-2 text-sm font-heading font-bold text-logo hover:bg-white/5 rounded-lg">All locations</a>
-                <div class="border-t border-white/10 my-1"></div>
-                ${drop}
-              </div>
-            </div>
             <a href="${home}#google-reviews" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Reviews</a>
             <a href="${home}#areas" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Service Areas</a>
             <a href="${home}#contact" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Contact</a>
@@ -111,8 +95,7 @@ function navFragment(prefix, currentSlug, isHub) {
     <div class="waymaker-mobile-nav-panel mobile-menu-panel">
       <a href="${home}#about" class="waymaker-mobile-nav-link">About</a>
       <a href="${home}#pricing" class="waymaker-mobile-nav-link">What&apos;s included</a>
-      <p class="text-logo font-heading font-bold text-sm uppercase tracking-wider px-3 pt-3 pb-1">Locations</p>
-      <a href="${locHub}" class="waymaker-mobile-nav-link text-base !min-h-0 !py-2 !text-white/90">All locations</a>
+      <a href="${locHub}" class="waymaker-mobile-nav-link text-base !min-h-0 !py-2 !text-white/90">All suburbs</a>
       ${LOCATIONS.map((l) => `<a href="${prefix}${l.slug}/" class="waymaker-mobile-nav-link text-base !min-h-0 !py-2 pl-6 !text-white/85 !font-medium">${esc(l.place)}</a>`).join('\n')}
       <a href="${home}#google-reviews" class="waymaker-mobile-nav-link">Reviews</a>
       <a href="${home}#areas" class="waymaker-mobile-nav-link">Service Areas</a>
@@ -144,12 +127,11 @@ function footerFragment(prefix) {
           <a href="${home}" class="text-white/90 hover:text-primary font-medium">Home</a>
           <a href="${home}#about" class="text-white/90 hover:text-primary font-medium">About</a>
           <a href="${home}#contact" class="text-white/90 hover:text-primary font-medium">Contact</a>
-          <a href="${prefix}locations/" class="text-white/90 hover:text-primary font-medium">Locations hub</a>
         </nav>
       </div>
       <div class="mt-10 pt-8 border-t border-white/10">
         <p class="text-center text-logo font-heading font-bold text-sm uppercase tracking-wider mb-4">Service area pages</p>
-        <div class="flex flex-wrap justify-center gap-x-4 gap-y-2">${locLinks}</div>
+        <div class="flex flex-wrap justify-center gap-x-4 gap-y-2"><a href="${prefix}locations/" class="text-white/75 hover:text-primary text-sm font-medium">All suburbs</a>${locLinks}</div>
       </div>
       <p class="text-center text-white/45 text-sm mt-10">&copy; ${new Date().getFullYear()} Waymaker Rubbish Solutions</p>
     </div>
@@ -217,7 +199,7 @@ function jsonLdPage(loc) {
       '@id': pageUrl + '#breadcrumb',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' },
-        { '@type': 'ListItem', position: 2, name: 'Locations', item: SITE + '/locations/' },
+        { '@type': 'ListItem', position: 2, name: 'Suburbs', item: SITE + '/locations/' },
         { '@type': 'ListItem', position: 3, name: loc.place + ' rubbish removal', item: pageUrl },
       ],
     },
@@ -319,7 +301,7 @@ function buildLocationPage(loc) {
   <main id="main" class="flex-1 pt-24">
     <section class="bg-dark text-white py-12 sm:py-16" aria-labelledby="page-h1">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav class="text-sm text-white/60 mb-4" aria-label="Breadcrumb"><a href="${prefix}index.html" class="hover:text-primary">Home</a> <span class="mx-1">/</span> <a href="${prefix}locations/" class="hover:text-primary">Locations</a> <span class="mx-1">/</span> <span class="text-white/90">${esc(loc.place)}</span></nav>
+        <nav class="text-sm text-white/60 mb-4" aria-label="Breadcrumb"><a href="${prefix}index.html" class="hover:text-primary">Home</a> <span class="mx-1">/</span> <a href="${prefix}locations/" class="hover:text-primary">Suburbs</a> <span class="mx-1">/</span> <span class="text-white/90">${esc(loc.place)}</span></nav>
         <h1 id="page-h1" class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl leading-tight mb-4">${esc(loc.h1)}</h1>
         <p class="text-lg text-white/85 max-w-3xl leading-relaxed mb-6">Owner-operated <strong class="text-white">rubbish removal ${esc(loc.place)}</strong> and <strong class="text-white">junk removal ${esc(loc.place)}</strong> — plus transparent <strong class="text-white">rubbish removal Sunshine Coast ${esc(loc.place)}</strong> quotes from a Christian family business you can recommend with confidence.</p>
         <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-wrap">
@@ -420,13 +402,13 @@ function buildHubPage() {
       '@id': canonical + '#breadcrumb',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' },
-        { '@type': 'ListItem', position: 2, name: 'Locations', item: canonical },
+        { '@type': 'ListItem', position: 2, name: 'Suburbs', item: canonical },
       ],
     },
     {
       '@type': 'CollectionPage',
       '@id': canonical + '#page',
-      name: 'WayMaker Sunshine Coast service locations',
+      name: 'WayMaker Sunshine Coast suburb pages',
       url: canonical,
       description: 'Local rubbish and junk removal landing pages for Maroochydore, Caloundra, Noosa, Aura, and more.',
       provider: { '@type': 'LocalBusiness', name: 'Way Maker Rubbish Solutions', telephone: '+61-423-101-334', url: SITE + '/' },
@@ -437,7 +419,7 @@ function buildHubPage() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Service Locations | Rubbish Removal Sunshine Coast | WayMaker</title>
+  <title>Sunshine Coast suburbs | Rubbish removal pages | WayMaker</title>
   <meta name="description" content="WayMaker Rubbish Solutions services Maroochydore, Caloundra, Noosa, Aura, Buderim, Mooloolaba, Coolum Beach, Kawana Waters, Peregian Beach, Nambour and more. Family-owned Sunshine Coast junk removal." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="${canonical}" />
@@ -454,7 +436,7 @@ function buildHubPage() {
   ${navFragment(prefix, null, true)}
   <main class="flex-1 pt-24 pb-8">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-4">Sunshine Coast locations</h1>
+      <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-4">Sunshine Coast suburbs</h1>
       <p class="text-lg text-dark/80 max-w-3xl mb-10">Choose your suburb for location-specific <strong>rubbish removal</strong> and <strong>junk removal</strong> guidance, FAQs, and pricing context. Christian family–owned WayMaker — call <a href="tel:${PHONE_TEL}" class="text-logo font-semibold">${PHONE_DISP}</a> or use the <a href="${prefix}index.html#contact" class="text-logo font-semibold underline">quote form</a>.</p>
       <ul class="grid sm:grid-cols-2 gap-6">${cards}</ul>
     </div>

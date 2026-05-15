@@ -314,18 +314,6 @@
         0 6px 24px rgba(0, 0, 0, 0.45);
     }
 
-    /* Locations dropdown (desktop nav) */
-    .wm-loc-dropdown-panel {
-      transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
-    }
-    .wm-loc-dropdown:focus-within .wm-loc-dropdown-panel,
-    .wm-loc-dropdown:hover .wm-loc-dropdown-panel {
-      opacity: 1 !important;
-      visibility: visible !important;
-      pointer-events: auto !important;
-      transform: translateY(0) !important;
-    }
-
     /* Pricing cards: BOOK NOW — same gradient / chrome as hero “CALL NOW FOR A QUOTE” */
     .pricing-book-cta {
       display: inline-flex;
@@ -833,23 +821,6 @@
           <div class="hidden lg:flex shrink-0 items-center gap-3 xl:gap-4">
             <a href="#about" class="text-white/90 hover:text-primary transition font-medium text-lg">About</a>
             <a href="#pricing" class="text-white/90 hover:text-primary transition font-medium text-lg">What's included</a>
-            <div class="relative wm-loc-dropdown group">
-              <button type="button" class="text-white/90 hover:text-primary transition font-medium text-lg inline-flex items-center gap-1 py-2" aria-expanded="false" aria-haspopup="true">Locations <i class="fa-solid fa-chevron-down text-xs opacity-80" aria-hidden="true"></i></button>
-              <div class="wm-loc-dropdown-panel invisible opacity-0 pointer-events-none translate-y-1 absolute right-0 top-full z-50 w-64 max-h-[70vh] overflow-y-auto rounded-xl border border-white/15 bg-dark shadow-2xl p-2" role="menu">
-                <a href="locations/" class="block px-4 py-2 text-sm font-heading font-bold text-logo hover:bg-white/5 rounded-lg">All locations</a>
-                <div class="border-t border-white/10 my-1"></div>
-                <a href="rubbish-removal-maroochydore/" class="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-white rounded-lg">Maroochydore</a>
-                <a href="rubbish-removal-caloundra/" class="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-white rounded-lg">Caloundra</a>
-                <a href="rubbish-removal-nambour/" class="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-white rounded-lg">Nambour</a>
-                <a href="junk-removal-aura/" class="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-white rounded-lg">Aura</a>
-                <a href="rubbish-removal-buderim/" class="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-white rounded-lg">Buderim</a>
-                <a href="rubbish-removal-mooloolaba/" class="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-white rounded-lg">Mooloolaba</a>
-                <a href="rubbish-removal-coolum-beach/" class="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-white rounded-lg">Coolum Beach</a>
-                <a href="rubbish-removal-noosa/" class="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-white rounded-lg">Noosa</a>
-                <a href="rubbish-removal-kawana-waters/" class="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-white rounded-lg">Kawana Waters</a>
-                <a href="rubbish-removal-peregian-beach/" class="block px-4 py-2.5 text-sm text-white/90 hover:bg-white/10 hover:text-white rounded-lg">Peregian Beach</a>
-              </div>
-            </div>
             <a href="#google-reviews" class="text-white/90 hover:text-primary transition font-medium text-lg">Reviews</a>
             <a href="#areas" class="text-white/90 hover:text-primary transition font-medium text-lg">Service Areas</a>
             <a href="#contact" class="text-white/90 hover:text-primary transition font-medium text-lg">Contact Us</a>
@@ -878,8 +849,7 @@
     <div class="waymaker-mobile-nav-panel mobile-menu-panel">
       <a href="#about" class="waymaker-mobile-nav-link">About</a>
       <a href="#pricing" class="waymaker-mobile-nav-link">What's included</a>
-      <p class="text-logo font-heading font-bold text-sm uppercase tracking-wider px-3 pt-3 pb-1">Locations</p>
-      <a href="locations/" class="waymaker-mobile-nav-link text-base !min-h-0 !py-2 !text-white/90">All locations</a>
+      <a href="locations/" class="waymaker-mobile-nav-link text-base !min-h-0 !py-2 !text-white/90">All suburbs</a>
       <a href="rubbish-removal-maroochydore/" class="waymaker-mobile-nav-link text-base !min-h-0 !py-2 pl-6 !text-white/85 !font-medium">Maroochydore</a>
       <a href="rubbish-removal-caloundra/" class="waymaker-mobile-nav-link text-base !min-h-0 !py-2 pl-6 !text-white/85 !font-medium">Caloundra</a>
       <a href="rubbish-removal-nambour/" class="waymaker-mobile-nav-link text-base !min-h-0 !py-2 pl-6 !text-white/85 !font-medium">Nambour</a>
@@ -944,7 +914,7 @@
         Rubbish removal &amp; junk removal near you — honest quotes, family-owned.
       </p>
       <div class="flex flex-wrap justify-center gap-2 sm:gap-2.5 text-xs sm:text-sm">
-        <a href="locations/" class="inline-flex items-center px-3 py-1.5 rounded-full border border-logo/50 bg-logo/15 text-white font-heading font-semibold hover:bg-logo/25 transition">All locations</a>
+        <a href="locations/" class="inline-flex items-center px-3 py-1.5 rounded-full border border-logo/50 bg-logo/15 text-white font-heading font-semibold hover:bg-logo/25 transition">All suburbs</a>
         <a href="rubbish-removal-maroochydore/" class="inline-flex items-center px-3 py-1.5 rounded-full border border-white/20 text-white/90 hover:border-primary hover:text-primary transition">Maroochydore</a>
         <a href="rubbish-removal-caloundra/" class="inline-flex items-center px-3 py-1.5 rounded-full border border-white/20 text-white/90 hover:border-primary hover:text-primary transition">Caloundra</a>
         <a href="rubbish-removal-nambour/" class="inline-flex items-center px-3 py-1.5 rounded-full border border-white/20 text-white/90 hover:border-primary hover:text-primary transition">Nambour</a>
@@ -1549,7 +1519,6 @@
         <nav class="flex flex-wrap justify-center md:justify-end items-center gap-x-3 gap-y-3 xl:gap-x-4" aria-label="Footer navigation">
           <a href="#about" class="text-white/90 hover:text-primary transition font-medium text-lg">About</a>
           <a href="#pricing" class="text-white/90 hover:text-primary transition font-medium text-lg">What's included</a>
-          <a href="locations/" class="text-white/90 hover:text-primary transition font-medium text-lg">Locations</a>
           <a href="#google-reviews" class="text-white/90 hover:text-primary transition font-medium text-lg">Reviews</a>
           <a href="#areas" class="text-white/90 hover:text-primary transition font-medium text-lg">Service Areas</a>
           <a href="#contact" class="text-white/90 hover:text-primary transition font-medium text-lg">Contact Us</a>
@@ -1559,6 +1528,7 @@
       <div class="mt-10 pt-8 border-t border-white/10">
         <p class="text-center text-logo font-heading font-bold text-sm uppercase tracking-wider mb-4">Rubbish removal by suburb</p>
         <div class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
+          <a href="locations/" class="text-white/75 hover:text-primary font-medium">All suburbs</a>
           <a href="rubbish-removal-maroochydore/" class="text-white/75 hover:text-primary font-medium">Maroochydore</a>
           <a href="rubbish-removal-caloundra/" class="text-white/75 hover:text-primary font-medium">Caloundra</a>
           <a href="rubbish-removal-nambour/" class="text-white/75 hover:text-primary font-medium">Nambour</a>
