@@ -112,20 +112,11 @@ function footerFragment(prefix) {
   return `
   <footer class="bg-dark border-t border-white/10 py-12 mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col lg:flex-row justify-between gap-10">
-        <div>
-          <p class="font-heading font-extrabold text-xl text-logo uppercase">Waymaker</p>
-          <p class="font-heading font-extrabold text-xl text-logo uppercase mb-3">Rubbish Solutions</p>
-          <p class="text-white/70 text-sm max-w-xs">Christian family–owned rubbish &amp; junk removal across the Sunshine Coast. Honest quotes, licensed disposal.</p>
-          <p class="mt-4 text-white font-heading font-semibold"><a href="tel:${PHONE_TEL}" class="hover:text-primary">${PHONE_DISP}</a></p>
-          <p class="text-white/70 text-sm"><a href="mailto:${EMAIL}" class="hover:text-primary underline">${EMAIL}</a></p>
-        </div>
-        <nav class="flex flex-wrap gap-x-4 gap-y-2 items-center justify-center lg:justify-end" aria-label="Footer navigation">
+      <nav class="flex flex-wrap gap-x-4 gap-y-2 items-center justify-center" aria-label="Footer navigation">
           <a href="${home}" class="text-white/90 hover:text-primary font-medium">Home</a>
           <a href="${home}#about" class="text-white/90 hover:text-primary font-medium">About</a>
           <a href="${home}#contact" class="text-white/90 hover:text-primary font-medium">Contact</a>
-        </nav>
-      </div>
+      </nav>
       <div class="mt-10 pt-8 border-t border-white/10">
         <p class="text-center text-logo font-heading font-bold text-sm uppercase tracking-wider mb-4">Service area pages</p>
         <div class="flex flex-wrap justify-center gap-x-4 gap-y-2"><a href="${prefix}locations/" class="text-white/75 hover:text-primary text-sm font-medium">All suburbs</a>${locLinks}</div>
