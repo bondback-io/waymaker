@@ -66,7 +66,6 @@ function reviewsCarousel(prefix) {
 
 function navFragment(prefix, currentSlug, isHub) {
   const home = `${prefix}index.html`;
-  const locHub = `${prefix}locations/`;
   return `
   <header id="navbar" class="waymaker-site-header fixed top-0 left-0 right-0 z-50 nav-scrolled">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full max-w-full min-w-0" aria-label="Main navigation">
@@ -95,11 +94,9 @@ function navFragment(prefix, currentSlug, isHub) {
     <div class="waymaker-mobile-nav-panel mobile-menu-panel">
       <a href="${home}#about" class="waymaker-mobile-nav-link">About</a>
       <a href="${home}#pricing" class="waymaker-mobile-nav-link">What&apos;s included</a>
-      <a href="${locHub}" class="waymaker-mobile-nav-link text-base !min-h-0 !py-2 !text-white/90">All suburbs</a>
-      ${LOCATIONS.map((l) => `<a href="${prefix}${l.slug}/" class="waymaker-mobile-nav-link text-base !min-h-0 !py-2 pl-6 !text-white/85 !font-medium">${esc(l.place)}</a>`).join('\n')}
       <a href="${home}#google-reviews" class="waymaker-mobile-nav-link">Reviews</a>
       <a href="${home}#areas" class="waymaker-mobile-nav-link">Service Areas</a>
-      <a href="${home}#contact" class="waymaker-mobile-nav-link">Contact</a>
+      <a href="${home}#contact" class="waymaker-mobile-nav-link">Contact Us</a>
       <a href="tel:${PHONE_TEL}" class="waymaker-mobile-nav-cta waymaker-mobile-nav-cta--call"><i class="fa-solid fa-phone shrink-0" aria-hidden="true"></i> Call ${PHONE_DISP}</a>
       <a href="${home}#contact" class="waymaker-mobile-nav-cta waymaker-mobile-nav-cta--quote">Get a Quote</a>
     </div>
