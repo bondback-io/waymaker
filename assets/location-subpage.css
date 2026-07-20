@@ -1,4 +1,70 @@
 /* WayMaker — shared styles for location landing pages & /locations hub (subset of homepage header/nav) */
+
+/* Page background — charcoal #282a2e (replaces former white/off-white surfaces) */
+:root {
+  --waymaker-page-bg: #282a2e;
+  --waymaker-page-surface: rgba(255, 255, 255, 0.07);
+  --waymaker-page-border: rgba(255, 255, 255, 0.12);
+}
+
+body.bg-offwhite,
+body.location-subpage.bg-offwhite {
+  background-color: var(--waymaker-page-bg);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+body.bg-offwhite > section.bg-white,
+body.bg-offwhite > section.bg-offwhite,
+body.location-subpage.bg-offwhite main > section.bg-white,
+body.location-subpage.bg-offwhite main > section.bg-offwhite {
+  background-color: var(--waymaker-page-bg);
+}
+
+body.bg-offwhite > section .bg-offwhite,
+body.location-subpage.bg-offwhite main > section .bg-offwhite {
+  background-color: var(--waymaker-page-surface) !important;
+}
+
+body.bg-offwhite > section.border-dark\/10,
+body.location-subpage.bg-offwhite main > section.border-dark\/10 {
+  border-color: var(--waymaker-page-border);
+}
+
+body.bg-offwhite > section .border-dark\/10,
+body.location-subpage.bg-offwhite main > section .border-dark\/10 {
+  border-color: var(--waymaker-page-border);
+}
+
+body.bg-offwhite > section .text-dark,
+body.bg-offwhite > section .text-black,
+body.location-subpage.bg-offwhite main .text-dark,
+body.location-subpage.bg-offwhite main .text-black {
+  color: #ffffff;
+}
+
+body.bg-offwhite > section [class*="text-dark/"],
+body.location-subpage.bg-offwhite main [class*="text-dark/"] {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+body.bg-offwhite .bg-white .text-dark,
+body.bg-offwhite .bg-white .text-black,
+body.bg-offwhite article.bg-white .text-dark,
+body.bg-offwhite article.bg-white .text-black,
+body.location-subpage .bg-white .text-dark,
+body.location-subpage .bg-white .text-black,
+body.location-subpage article.bg-white .text-dark,
+body.location-subpage article.bg-white .text-black {
+  color: #232529;
+}
+
+body.bg-offwhite .bg-white [class*="text-dark/"],
+body.bg-offwhite article.bg-white [class*="text-dark/"],
+body.location-subpage .bg-white [class*="text-dark/"],
+body.location-subpage article.bg-white [class*="text-dark/"] {
+  color: rgba(35, 37, 41, 0.75);
+}
+
 html {
   scroll-behavior: smooth;
   width: 100%;
