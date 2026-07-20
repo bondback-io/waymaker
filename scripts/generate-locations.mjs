@@ -76,7 +76,7 @@ function navFragment(prefix, currentSlug, isHub) {
         <div class="waymaker-nav-bar-tray">
           <div class="hidden lg:flex shrink-0 items-center gap-2 xl:gap-3 flex-wrap justify-end">
             <a href="${home}#about" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">About</a>
-            <a href="${home}#pricing" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">What&apos;s included</a>
+            <a href="${home}#services" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Our Services</a>
             <a href="${home}#google-reviews" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Reviews</a>
             <a href="${home}#areas" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Service Areas</a>
             <a href="${home}#contact" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Contact</a>
