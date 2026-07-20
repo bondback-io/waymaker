@@ -78,7 +78,7 @@ function navFragment(prefix, currentSlug, isHub) {
             <a href="${home}#about" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">About</a>
             <a href="${home}#services" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Our Services</a>
             <a href="${home}#google-reviews" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Reviews</a>
-            <a href="${home}#areas" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Service Areas</a>
+            <a href="${home}#areas" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Coverage Areas</a>
             <a href="${home}#contact" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Contact</a>
             <a href="${home}#contact" class="nav-quote-cta" aria-label="Request a quote">Get a Quote</a>
           </div>
