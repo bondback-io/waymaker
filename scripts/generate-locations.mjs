@@ -95,7 +95,7 @@ function navFragment(prefix, currentSlug, isHub) {
       <a href="${home}#about" class="waymaker-mobile-nav-link">About</a>
       <a href="${home}#services" class="waymaker-mobile-nav-link">Our Services</a>
       <a href="${home}#google-reviews" class="waymaker-mobile-nav-link">Reviews</a>
-      <a href="${home}#areas" class="waymaker-mobile-nav-link">Service Areas</a>
+      <a href="${home}#areas" class="waymaker-mobile-nav-link">Coverage Areas</a>
       <a href="${home}#contact" class="waymaker-mobile-nav-link">Contact Us</a>
       <a href="tel:${PHONE_TEL}" class="waymaker-mobile-nav-cta waymaker-mobile-nav-cta--call"><i class="fa-solid fa-phone shrink-0" aria-hidden="true"></i> Call ${PHONE_DISP}</a>
       <a href="${home}#contact" class="waymaker-mobile-nav-cta waymaker-mobile-nav-cta--quote">Get a Quote</a>
