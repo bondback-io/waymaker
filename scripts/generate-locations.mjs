@@ -281,7 +281,7 @@ function buildLocationPage(loc) {
   <link rel="stylesheet" href="${prefix}assets/location-subpage.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = { theme: { extend: { colors: { primary: '#10B981', accent: '#F97316', logo: '#6DBA2E', dark: '#232529', offwhite: '#282a2e' }, fontFamily: { heading: ['Poppins','sans-serif'], body: ['Inter','sans-serif'] } } } };
+    tailwind.config = { theme: { extend: { colors: { primary: '#10B981', accent: '#F97316', logo: '#6DBA2E', dark: '#232529', offwhite: '#F8FAFC' }, fontFamily: { heading: ['Poppins','sans-serif'], body: ['Inter','sans-serif'] } } } };
   </script>
   ${jsonLdPage(loc)}
 </head>
@@ -419,7 +419,7 @@ function buildHubPage() {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="${prefix}assets/location-subpage.css" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{primary:'#10B981',logo:'#6DBA2E',dark:'#232529',offwhite:'#282a2e'},fontFamily:{heading:['Poppins','sans-serif'],body:['Inter','sans-serif']}}}};</script>
+  <script>tailwind.config={theme:{extend:{colors:{primary:'#10B981',logo:'#6DBA2E',dark:'#232529',offwhite:'#F8FAFC'},fontFamily:{heading:['Poppins','sans-serif'],body:['Inter','sans-serif']}}}};</script>
   <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}</script>
 </head>
 <body class="location-subpage bg-offwhite text-dark font-body antialiased overflow-x-hidden w-full flex flex-col min-h-screen">
