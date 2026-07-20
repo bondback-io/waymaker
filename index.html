@@ -177,6 +177,21 @@
         padding-bottom: 0.75rem !important;
       }
     }
+    @media (max-width: 1023.98px) and (max-height: 700px) {
+      #hero {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        min-height: 100svh !important;
+      }
+      #hero h1.hero-headline-impact {
+        font-size: clamp(2.25rem, 11vw, 3.25rem);
+      }
+      .hero-cta {
+        min-height: 3.75rem;
+        padding: 0.875rem 1.25rem;
+      }
+    }
     #hero .hero-text-contrast {
       text-shadow:
         1px 1px 5px rgba(0, 0, 0, 0.92),
@@ -1385,7 +1400,7 @@
               <dt>Friday</dt>
               <dd class="font-heading font-semibold text-right text-white tabular-nums whitespace-nowrap">7am-5pm</dd>
               <dt>Saturday</dt>
-              <dd class="font-heading font-semibold text-right text-white whitespace-nowrap uppercase text-sm sm:text-base leading-tight">Afterhours bookings available upon request</dd>
+              <dd class="font-heading font-semibold text-right text-white text-sm sm:text-base leading-snug max-w-[12rem] sm:max-w-none ml-auto">Afterhours bookings available upon request</dd>
               <dt>Sunday</dt>
               <dd class="font-heading font-semibold text-right text-white whitespace-nowrap">CLOSED</dd>
             </dl>
@@ -1430,13 +1445,15 @@
             </div>
             <div>
               <span class="block text-sm font-medium text-white/80 mb-2">Photos (optional)</span>
-              <input
-                type="file"
-                id="contact-photos-input"
-                multiple
-                accept="image/jpeg,image/png,image/webp,image/gif,image/heic,.heic"
-                class="block w-full text-sm text-white/80 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-logo file:text-white file:font-medium file:cursor-pointer hover:file:brightness-110"
-              />
+              <div class="max-w-full overflow-hidden">
+                <input
+                  type="file"
+                  id="contact-photos-input"
+                  multiple
+                  accept="image/jpeg,image/png,image/webp,image/gif,image/heic,.heic"
+                  class="block w-full max-w-full text-sm text-white/80 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-logo file:text-white file:font-medium file:cursor-pointer hover:file:brightness-110"
+                />
+              </div>
               <p class="text-white/40 text-xs mt-1.5">Choose files once or add more in batches. Remove any row before sending if it’s the wrong photo.</p>
               <ul id="photos-preview-list" class="mt-3 space-y-2 empty:hidden" aria-label="Selected photos"></ul>
               <div id="contact-upload-panel" class="hidden mt-4 rounded-xl bg-white/5 border border-white/10 p-4" aria-hidden="true">

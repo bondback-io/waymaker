@@ -30,6 +30,14 @@ body.location-subpage > main {
   box-sizing: border-box;
 }
 
+body.location-subpage main,
+body.location-subpage main > section {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
 body.location-subpage header#navbar.waymaker-site-header {
   background-color: #000000 !important;
   backdrop-filter: none !important;
@@ -336,4 +344,8 @@ header#navbar.waymaker-site-header.nav-scrolled {
 }
 .loc-faq-panel.open {
   max-height: 48rem;
+}
+.loc-faq-btn > span:first-child {
+  min-width: 0;
+  flex: 1 1 auto;
 }

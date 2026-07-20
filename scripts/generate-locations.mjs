@@ -33,7 +33,7 @@ function otherSlugs(current) {
 
 function reviewsCarousel(prefix) {
   return `
-      <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-1 px-1 scroll-smooth" aria-label="Customer reviews carousel">
+      <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 max-w-full scroll-smooth" aria-label="Customer reviews carousel">
         <article class="snap-start shrink-0 w-[min(100%,22rem)] sm:w-80 card-hover bg-white rounded-2xl p-5 shadow-lg border-2 border-logo/45">
           <div class="flex gap-1 mb-2 text-[#fbbc04]" aria-hidden="true">${'<i class="fa-solid fa-star"></i>'.repeat(5)}</div>
           <p class="text-dark/85 text-sm leading-relaxed mb-3">&ldquo;Awesome service from Matt and his team — fast response, excellent communication, and went over and above to accommodate our needs quickly. Would highly recommend!&rdquo;</p>
@@ -156,7 +156,7 @@ function faqSection(loc) {
       (f, i) => `
     <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
       <button type="button" class="loc-faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-offwhite transition" aria-expanded="false" id="faq-btn-${i}">
-        <span>${esc(f.q)}</span>
+        <span class="min-w-0 pr-2">${esc(f.q)}</span>
         <i class="fa-solid fa-chevron-down loc-faq-icon text-logo transition-transform shrink-0" aria-hidden="true"></i>
       </button>
       <div class="loc-faq-panel px-5"><p class="pb-4 text-dark/75 leading-relaxed">${esc(f.a)}</p></div>
@@ -295,8 +295,8 @@ function buildLocationPage(loc) {
         <p class="text-lg text-white/85 max-w-3xl leading-relaxed mb-6">Owner-operated <strong class="text-white">rubbish removal ${esc(loc.place)}</strong> and <strong class="text-white">junk removal ${esc(loc.place)}</strong> — plus transparent <strong class="text-white">rubbish removal Sunshine Coast ${esc(loc.place)}</strong> quotes from a Christian family business you can recommend with confidence.</p>
         <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-wrap">
           <a href="tel:${PHONE_TEL}" class="nav-quote-cta w-full sm:w-auto justify-center"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call ${PHONE_DISP}</a>
-          <a href="https://wa.me/61423101334" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-white/30 text-white font-heading font-semibold hover:bg-white/10">WhatsApp</a>
-          <a href="${prefix}index.html#contact" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-primary text-white font-heading font-semibold hover:bg-emerald-500">Quote form</a>
+          <a href="https://wa.me/61423101334" target="_blank" rel="noopener noreferrer" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-5 py-3 rounded-lg border border-white/30 text-white font-heading font-semibold hover:bg-white/10">WhatsApp</a>
+          <a href="${prefix}index.html#contact" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-5 py-3 rounded-lg bg-primary text-white font-heading font-semibold hover:bg-emerald-500">Quote form</a>
         </div>
       </div>
     </section>
@@ -324,7 +324,7 @@ function buildLocationPage(loc) {
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="font-heading font-bold text-2xl text-dark mb-4">Quote-based pricing (${esc(loc.place)})</h2>
         <p class="text-dark/80 mb-6">Every load is quoted upfront after we understand volume, access, and materials. Tip fees and labour are included in the examples below — final price confirmed on-site or via clear photos.</p>
-        <div class="overflow-x-auto rounded-xl border border-dark/10">
+        <div class="overflow-x-auto max-w-full rounded-xl border border-dark/10">
           <table class="w-full text-left text-sm sm:text-base min-w-[32rem]">
             <thead><tr class="bg-dark text-white"><th class="py-3 px-4">Job type</th><th class="py-3 px-4">Typical range (AUD)</th><th class="py-3 px-4">Notes</th></tr></thead>
             <tbody>${pricingRows}</tbody>
@@ -407,7 +407,7 @@ function buildHubPage() {
 <html lang="en-AU">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Sunshine Coast suburbs | Rubbish removal pages | WayMaker</title>
   <meta name="google-site-verification" content="58aDHM72qS6SwXVsT_tugAWntXOrw8_XsQqvhvdy3pY" />
   <meta name="description" content="WayMaker Rubbish Solutions services Maroochydore, Caloundra, Noosa, Aura, Buderim, Mooloolaba, Coolum Beach, Kawana Waters, Peregian Beach, Nambour and more. Family-owned Sunshine Coast junk removal." />
@@ -422,7 +422,7 @@ function buildHubPage() {
   <script>tailwind.config={theme:{extend:{colors:{primary:'#10B981',logo:'#6DBA2E',dark:'#232529',offwhite:'#F8FAFC'},fontFamily:{heading:['Poppins','sans-serif'],body:['Inter','sans-serif']}}}};</script>
   <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}</script>
 </head>
-<body class="location-subpage bg-offwhite text-dark font-body antialiased flex flex-col min-h-screen">
+<body class="location-subpage bg-offwhite text-dark font-body antialiased overflow-x-hidden w-full flex flex-col min-h-screen">
   ${navFragment(prefix, null, true)}
   <main class="flex-1 pt-24 pb-8">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
