@@ -223,15 +223,39 @@
       margin-left: auto;
       margin-right: auto;
     }
+    #hero h1.hero-headline-impact .hero-headline-lead {
+      font-size: 0.62em;
+      letter-spacing: 0.06em;
+      opacity: 0.92;
+      text-shadow:
+        1px 1px 4px rgba(0, 0, 0, 0.88),
+        0 2px 16px rgba(0, 0, 0, 0.55);
+    }
+    #hero h1.hero-headline-impact .hero-headline-focus {
+      font-size: 1.12em;
+      letter-spacing: 0.03em;
+      font-weight: 700;
+      text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.55),
+        1px 1px 6px rgba(0, 0, 0, 0.95),
+        0 4px 28px rgba(0, 0, 0, 0.75),
+        0 0 40px rgba(0, 0, 0, 0.35);
+    }
     @media (min-width: 640px) {
       #hero h1.hero-headline-impact {
         font-size: clamp(3.5rem, 12vw, 7.5rem);
         letter-spacing: 0.05em;
       }
+      #hero h1.hero-headline-impact .hero-headline-focus {
+        font-size: 1.18em;
+      }
     }
     @media (min-width: 1024px) {
       #hero h1.hero-headline-impact {
         font-size: clamp(4.5rem, 9vw, 8.5rem);
+      }
+      #hero h1.hero-headline-impact .hero-headline-focus {
+        font-size: 1.22em;
       }
     }
 
@@ -876,8 +900,8 @@
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-[calc(5rem+env(safe-area-inset-top,0px))] sm:pt-24 pb-12">
       <p class="sr-only">Way Maker Rubbish Solutions — Sunshine Coast rubbish removal.</p>
       <h1 class="hero-headline-impact animate-on-scroll hero-text-contrast mb-5 sm:mb-6 md:mb-8 px-1">
-        <span class="block whitespace-normal">Stop waiting.</span>
-        <span class="block whitespace-normal">Start clearing.</span>
+        <span class="hero-headline-lead block whitespace-normal">Forget the skip bin.</span>
+        <span class="hero-headline-focus block whitespace-normal">Get it gone today.</span>
       </h1>
       <p class="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-white mb-8 sm:mb-10 animate-on-scroll hero-text-contrast">
         Fast, reliable rubbish solutions servicing the Sunshine Coast
