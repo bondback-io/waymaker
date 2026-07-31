@@ -223,13 +223,19 @@
       margin-left: auto;
       margin-right: auto;
     }
+    #hero h1.hero-headline-impact .hero-headline-stack {
+      display: inline-block;
+      text-align: center;
+      max-width: 100%;
+    }
     #hero h1.hero-headline-impact .hero-headline-lead {
       font-size: 0.62em;
       letter-spacing: 0.06em;
-      opacity: 0.92;
+      opacity: 1;
+      color: #ffffff;
       text-shadow:
-        1px 1px 4px rgba(0, 0, 0, 0.88),
-        0 2px 16px rgba(0, 0, 0, 0.55);
+        1px 1px 3px rgba(0, 0, 0, 0.75),
+        0 2px 14px rgba(0, 0, 0, 0.45);
     }
     #hero h1.hero-headline-impact .hero-headline-focus {
       font-size: 1.12em;
@@ -900,8 +906,10 @@
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-[calc(5rem+env(safe-area-inset-top,0px))] sm:pt-24 pb-12">
       <p class="sr-only">Way Maker Rubbish Solutions — Sunshine Coast rubbish removal.</p>
       <h1 class="hero-headline-impact animate-on-scroll hero-text-contrast mb-5 sm:mb-6 md:mb-8 px-1">
-        <span class="hero-headline-lead block whitespace-normal">Forget the skip bin.</span>
-        <span class="hero-headline-focus block whitespace-normal">Get it gone today.</span>
+        <span class="hero-headline-stack">
+          <span class="hero-headline-lead block whitespace-normal">Forget the skip bin</span>
+          <span class="hero-headline-focus block whitespace-normal">Get it gone today</span>
+        </span>
       </h1>
       <p class="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-white mb-8 sm:mb-10 animate-on-scroll hero-text-contrast">
         Fast, reliable rubbish solutions servicing the Sunshine Coast and Brisbane
