@@ -925,7 +925,7 @@
       </p>
       <!-- Hero CTAs: brand green (.hero-cta), matching pulse on both -->
       <div class="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center items-stretch sm:items-center animate-on-scroll">
-        <a href="#get-in-touch" class="hero-cta hero-cta--pulse shrink-0" aria-label="Get a quote now">
+        <a href="#get-in-touch" data-mobile-href="#quote" class="hero-cta hero-cta--pulse shrink-0" aria-label="Get a quote now">
           <span class="hero-cta-emoji shrink-0" aria-hidden="true">📋</span>
           GET A QUOTE NOW
         </a>
@@ -1610,6 +1610,10 @@
       document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
           var targetId = anchor.getAttribute('href');
+          var mobileHref = anchor.getAttribute('data-mobile-href');
+          if (mobileHref && window.matchMedia('(max-width: 1023.98px)').matches) {
+            targetId = mobileHref;
+          }
           if (!targetId || targetId === '#') return;
           var target = document.querySelector(targetId);
           if (target) {
