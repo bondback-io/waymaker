@@ -54,12 +54,12 @@ const HUB_RUBBISH_ITEMS = [
 
 const LOCATION_RUBBISH_ITEMS = [
   'Household rubbish',
-  'Furniture',
+  'Old furniture',
   'Mattresses',
   'Whitegoods',
-  'Garage clutter',
+  'Garage and shed clutter',
   'Green waste',
-  'Moving rubbish',
+  'Moving and downsizing rubbish',
   'Renovation waste',
   'End of lease rubbish',
   'Office furniture',
@@ -85,7 +85,7 @@ function standardFaqs(place) {
   return [
     {
       q: `How much does rubbish removal cost in ${place}?`,
-      a: 'Pricing depends on the amount of rubbish, the type of materials and access to the property. Small collections generally start from our standard small load pricing, while larger clean outs are quoted according to volume. Send us a few photos for a quick estimate.',
+      a: 'Pricing depends on how much rubbish needs to be removed, the type of materials and access to the property. Smaller collections generally start from our standard small load pricing, while larger clean outs are quoted according to volume. Send us a few photos for a quick estimate.',
     },
     {
       q: 'Do you load the rubbish for me?',
@@ -97,7 +97,7 @@ function standardFaqs(place) {
     },
     {
       q: 'What types of rubbish do you remove?',
-      a: 'We remove many common types of household, furniture, property, green and renovation waste. Heavy materials and specialised waste may require a separate quote. Send us a photo if you are unsure about a particular item.',
+      a: 'We remove many common types of household rubbish, furniture, green waste, property waste and renovation rubbish. Heavy materials and specialised waste may require a separate quote. Send us a photo if you are unsure about a particular item.',
     },
     {
       q: 'Can you remove furniture and mattresses?',
@@ -105,10 +105,10 @@ function standardFaqs(place) {
     },
     {
       q: `Do you provide commercial rubbish removal in ${place}?`,
-      a: 'Yes. We assist businesses, property managers, real estate agencies and commercial clients with rubbish removal and property clearances.',
+      a: 'Yes. Waymaker assists businesses, property managers, real estate agencies and commercial clients with rubbish removal and property clearances.',
     },
     {
-      q: 'How do I get a quote?',
+      q: 'How do I get a rubbish removal quote?',
       a: `Call Waymaker on ${PHONE_DISP} or send us photos showing what needs to be removed along with the property location. We will provide a straightforward quote based on the job.`,
     },
   ];
@@ -157,7 +157,7 @@ function pricingTableHtml() {
           </tr></tbody>
           </table>
         </div>
-        <p class="text-dark/80 text-sm sm:text-base leading-relaxed mt-6">Heavy materials such as concrete, soil, bricks and tiles require a custom quote due to their weight and disposal costs. Other specialised or regulated waste may also require separate disposal arrangements.</p>
+        <p class="text-dark/80 text-sm sm:text-base leading-relaxed mt-6">Heavy materials such as concrete, soil, bricks and tiles require a custom quote due to their weight and disposal costs. Specialised or regulated waste may also require separate disposal arrangements.</p>
         <figure class="mt-6 rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
           <img src="../assets/location-full-load.jpg" alt="Waymaker ute and caged trailer fully loaded with mattresses and furniture for rubbish removal" class="block w-full h-auto object-cover" width="1024" height="517" loading="lazy" decoding="async" />
         </figure>`;
@@ -473,15 +473,15 @@ function buildLocationPage(loc) {
         <h2 class="font-heading font-bold text-2xl text-dark mb-4">Rubbish Removal Near ${esc(loc.place)}</h2>
         <p class="text-dark/80 mb-4">We also provide rubbish removal throughout surrounding Sunshine Coast suburbs including:</p>
         <div class="flex flex-wrap gap-2 justify-center lg:justify-start">${nearbyPills(loc.nearby)}</div>
-        <p class="text-center lg:text-left text-sm text-dark/60 mt-6">More service areas: ${hubLinksHtml(loc.slug)} &middot; <a href="${prefix}locations/" class="text-logo font-semibold hover:underline">rubbish removal across the Sunshine Coast</a></p>
+        <p class="text-center lg:text-left text-sm text-dark/60 mt-6">More service areas: ${hubLinksHtml(loc.slug)} &middot; <a href="${prefix}locations/" class="text-logo font-semibold hover:underline">View all Sunshine Coast rubbish removal areas</a></p>
       </div>
     </section>
     <section class="py-12 sm:py-16 bg-white border-t border-dark/10">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="font-heading font-bold text-2xl text-dark mb-4">Rubbish Removal Prices in ${esc(loc.place)}</h2>
         <div class="text-dark/80 mb-6 space-y-4">
-          <p>Rubbish removal pricing depends on how much needs to be removed, the type of waste and access to the property. Waymaker provides upfront quotes so you know the expected cost before work begins.</p>
-          <p>Our standard pricing includes loading, transport and base disposal fees. Send us a few photos of your rubbish and your location and we can usually provide a straightforward quote before booking.</p>
+          <p>Rubbish removal pricing depends on the amount of rubbish, the type of materials and access to the property. Waymaker provides upfront quotes so you know the expected cost before work begins.</p>
+          <p>Our standard pricing includes loading, transport and base disposal fees. Send us a few photos of what needs to go and your location and we can usually provide a straightforward quote before booking.</p>
         </div>
         ${pricingTableHtml()}
       </div>
@@ -501,7 +501,7 @@ function buildLocationPage(loc) {
     <section class="py-12 sm:py-16 bg-white border-t border-dark/10" aria-labelledby="remove-h">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 id="remove-h" class="font-heading font-bold text-2xl text-dark mb-4">What Rubbish Can We Remove in ${esc(loc.place)}?</h2>
-        <p class="text-dark/80 text-lg leading-relaxed mb-6">Every clean up is different. We regularly help customers remove a mixture of household, property and renovation rubbish.</p>
+        <p class="text-dark/80 text-lg leading-relaxed mb-6">Every clean up is different. Waymaker can remove a wide range of common household, property, commercial and renovation rubbish, with the lifting, loading and transport taken care of.</p>
         ${rubbishGrid(LOCATION_RUBBISH_ITEMS)}
         <p class="text-dark/70 text-sm sm:text-base leading-relaxed mt-6">Not sure whether we can take something? Send us a photo and we will let you know before booking.</p>
       </div>
@@ -510,8 +510,8 @@ function buildLocationPage(loc) {
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 id="skip-h" class="font-heading font-bold text-2xl text-dark mb-4">Rubbish Removal or Skip Bin Hire in ${esc(loc.place)}?</h2>
         <div class="text-dark/80 text-lg leading-relaxed space-y-4">
-          <p>A skip bin can make sense when you need a container on site for several days and want to load the rubbish gradually. For jobs where the rubbish is already ready to go, a full service rubbish removal team can be much easier.</p>
-          <p>With Waymaker, there is no skip to load yourself and no need to leave a bin sitting on the property. We arrive, load the rubbish, take it away and handle the disposal.</p>
+          <p>A skip bin can be useful when you need a container on site for several days and want to load the rubbish gradually. If your rubbish is already ready to go, a full service rubbish removal team can be a more convenient option.</p>
+          <p>With Waymaker, there is no skip bin to load yourself. We arrive, load the rubbish, take it away and handle the disposal.</p>
           <p>For furniture removal, household clean outs, rental clearances and smaller renovation clean ups, this can save considerable time and physical work.</p>
         </div>
       </div>
