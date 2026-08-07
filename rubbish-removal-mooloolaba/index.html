@@ -214,55 +214,6 @@
       </p>
       </div>
     </section>
-    
-    <section class="py-14 sm:py-20 bg-white border-t border-dark/10" aria-labelledby="faq-h">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 id="faq-h" class="font-heading font-extrabold text-2xl sm:text-3xl text-dark text-center mb-8">Mooloolaba rubbish removal FAQ</h2>
-        <div>
-    <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
-      <button type="button" class="loc-faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-offwhite transition" aria-expanded="false" id="faq-btn-0">
-        <span class="min-w-0 pr-2">Can you work with body corporate lift bookings?</span>
-        <i class="fa-solid fa-chevron-down loc-faq-icon text-logo transition-transform shrink-0" aria-hidden="true"></i>
-      </button>
-      <div class="loc-faq-panel px-5"><p class="pb-4 text-dark/75 leading-relaxed">Yes—share the BC contact or booking window and we’ll align our crew.</p></div>
-    </div>
-    <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
-      <button type="button" class="loc-faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-offwhite transition" aria-expanded="false" id="faq-btn-1">
-        <span class="min-w-0 pr-2">Do you remove old jet-ski trailers or metal scrap near boat ramps?</span>
-        <i class="fa-solid fa-chevron-down loc-faq-icon text-logo transition-transform shrink-0" aria-hidden="true"></i>
-      </button>
-      <div class="loc-faq-panel px-5"><p class="pb-4 text-dark/75 leading-relaxed">Often yes; metal goes to appropriate recyclers. Send photos for weight estimates.</p></div>
-    </div>
-    <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
-      <button type="button" class="loc-faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-offwhite transition" aria-expanded="false" id="faq-btn-2">
-        <span class="min-w-0 pr-2">Is same-day rubbish removal Mooloolaba realistic?</span>
-        <i class="fa-solid fa-chevron-down loc-faq-icon text-logo transition-transform shrink-0" aria-hidden="true"></i>
-      </button>
-      <div class="loc-faq-panel px-5"><p class="pb-4 text-dark/75 leading-relaxed">When traffic and access cooperate—call before 9am for the best chance.</p></div>
-    </div>
-    <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
-      <button type="button" class="loc-faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-offwhite transition" aria-expanded="false" id="faq-btn-3">
-        <span class="min-w-0 pr-2">What about parking fines?</span>
-        <i class="fa-solid fa-chevron-down loc-faq-icon text-logo transition-transform shrink-0" aria-hidden="true"></i>
-      </button>
-      <div class="loc-faq-panel px-5"><p class="pb-4 text-dark/75 leading-relaxed">Clients cover approved loading zones; we advise legal options before starting.</p></div>
-    </div>
-    <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
-      <button type="button" class="loc-faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-offwhite transition" aria-expanded="false" id="faq-btn-4">
-        <span class="min-w-0 pr-2">Can tourists book junk removal Mooloolaba for holiday units?</span>
-        <i class="fa-solid fa-chevron-down loc-faq-icon text-logo transition-transform shrink-0" aria-hidden="true"></i>
-      </button>
-      <div class="loc-faq-panel px-5"><p class="pb-4 text-dark/75 leading-relaxed">Yes with owner/agent approval—we document access instructions.</p></div>
-    </div>
-    <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
-      <button type="button" class="loc-faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-offwhite transition" aria-expanded="false" id="faq-btn-5">
-        <span class="min-w-0 pr-2">Do you service Minyama canals?</span>
-        <i class="fa-solid fa-chevron-down loc-faq-icon text-logo transition-transform shrink-0" aria-hidden="true"></i>
-      </button>
-      <div class="loc-faq-panel px-5"><p class="pb-4 text-dark/75 leading-relaxed">Regularly—expect longer carries from pontoons to be reflected in labour.</p></div>
-    </div></div>
-      </div>
-    </section>
   </main>
   
   <footer class="bg-dark border-t border-white/10 py-12 mt-auto">
@@ -293,7 +244,6 @@
     function set(v){if(!p||!m)return;p.setAttribute('data-open',v?'true':'false');p.setAttribute('aria-hidden',v?'false':'true');m.setAttribute('aria-expanded',v?'true':'false');document.body.classList.toggle('overflow-hidden',v);document.documentElement.classList.toggle('waymaker-menu-open',v);document.body.classList.toggle('waymaker-menu-open',v);if(o)o.classList.toggle('hidden',v);if(c)c.classList.toggle('hidden',!v);if(n)n.classList.toggle('nav-scrolled',v||window.scrollY>20);}
     if(m&&p){m.addEventListener('click',function(){set(p.getAttribute('data-open')!=='true');});p.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});}
     window.addEventListener('resize',function(){if(window.innerWidth>=1024&&p&&p.getAttribute('data-open')==='true')set(false);});
-    document.querySelectorAll('.loc-faq-btn').forEach(function(btn){btn.addEventListener('click',function(){var ex=btn.getAttribute('aria-expanded')==='true';document.querySelectorAll('.loc-faq-btn').forEach(function(b){b.setAttribute('aria-expanded','false');var pan=b.nextElementSibling;if(pan)pan.classList.remove('open');});if(!ex){btn.setAttribute('aria-expanded','true');var p2=btn.nextElementSibling;if(p2)p2.classList.add('open');}});});
     var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08});
     document.querySelectorAll('.animate-on-scroll').forEach(function(el){ob.observe(el);});
     })();

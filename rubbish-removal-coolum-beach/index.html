@@ -214,55 +214,6 @@
       </p>
       </div>
     </section>
-    
-    <section class="py-14 sm:py-20 bg-white border-t border-dark/10" aria-labelledby="faq-h">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 id="faq-h" class="font-heading font-extrabold text-2xl sm:text-3xl text-dark text-center mb-8">Coolum Beach rubbish removal FAQ</h2>
-        <div>
-    <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
-      <button type="button" class="loc-faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-offwhite transition" aria-expanded="false" id="faq-btn-0">
-        <span class="min-w-0 pr-2">Do you climb Mount Coolum–side roads with heavy trucks?</span>
-        <i class="fa-solid fa-chevron-down loc-faq-icon text-logo transition-transform shrink-0" aria-hidden="true"></i>
-      </button>
-      <div class="loc-faq-panel px-5"><p class="pb-4 text-dark/75 leading-relaxed">We choose vehicle class per access—sometimes a ute + trailer beats a rigid truck.</p></div>
-    </div>
-    <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
-      <button type="button" class="loc-faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-offwhite transition" aria-expanded="false" id="faq-btn-1">
-        <span class="min-w-0 pr-2">Can you clear holiday homes near the esplanade?</span>
-        <i class="fa-solid fa-chevron-down loc-faq-icon text-logo transition-transform shrink-0" aria-hidden="true"></i>
-      </button>
-      <div class="loc-faq-panel px-5"><p class="pb-4 text-dark/75 leading-relaxed">Yes—coordinate remote access codes with your agent.</p></div>
-    </div>
-    <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
-      <button type="button" class="loc-faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-offwhite transition" aria-expanded="false" id="faq-btn-2">
-        <span class="min-w-0 pr-2">Is green waste removal Coolum Beach different from inland?</span>
-        <i class="fa-solid fa-chevron-down loc-faq-icon text-logo transition-transform shrink-0" aria-hidden="true"></i>
-      </button>
-      <div class="loc-faq-panel px-5"><p class="pb-4 text-dark/75 leading-relaxed">Salt-affected palms and vine loads still go to licensed green processors—volume pricing applies.</p></div>
-    </div>
-    <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
-      <button type="button" class="loc-faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-offwhite transition" aria-expanded="false" id="faq-btn-3">
-        <span class="min-w-0 pr-2">What if seagulls scattered rubbish overnight?</span>
-        <i class="fa-solid fa-chevron-down loc-faq-icon text-logo transition-transform shrink-0" aria-hidden="true"></i>
-      </button>
-      <div class="loc-faq-panel px-5"><p class="pb-4 text-dark/75 leading-relaxed">We’ll rebag scattered waste before loading—small labour fee if excessive.</p></div>
-    </div>
-    <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
-      <button type="button" class="loc-faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-offwhite transition" aria-expanded="false" id="faq-btn-4">
-        <span class="min-w-0 pr-2">Do you donate kids’ bikes and toys?</span>
-        <i class="fa-solid fa-chevron-down loc-faq-icon text-logo transition-transform shrink-0" aria-hidden="true"></i>
-      </button>
-      <div class="loc-faq-panel px-5"><p class="pb-4 text-dark/75 leading-relaxed">When clean and safe—otherwise we recycle metals and dispose responsibly.</p></div>
-    </div>
-    <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
-      <button type="button" class="loc-faq-btn w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-heading font-bold text-dark hover:bg-offwhite transition" aria-expanded="false" id="faq-btn-5">
-        <span class="min-w-0 pr-2">Can I book junk removal Coolum Beach via WhatsApp?</span>
-        <i class="fa-solid fa-chevron-down loc-faq-icon text-logo transition-transform shrink-0" aria-hidden="true"></i>
-      </button>
-      <div class="loc-faq-panel px-5"><p class="pb-4 text-dark/75 leading-relaxed">Yes—0423 101 334 on WhatsApp with photos works great.</p></div>
-    </div></div>
-      </div>
-    </section>
   </main>
   
   <footer class="bg-dark border-t border-white/10 py-12 mt-auto">
@@ -293,7 +244,6 @@
     function set(v){if(!p||!m)return;p.setAttribute('data-open',v?'true':'false');p.setAttribute('aria-hidden',v?'false':'true');m.setAttribute('aria-expanded',v?'true':'false');document.body.classList.toggle('overflow-hidden',v);document.documentElement.classList.toggle('waymaker-menu-open',v);document.body.classList.toggle('waymaker-menu-open',v);if(o)o.classList.toggle('hidden',v);if(c)c.classList.toggle('hidden',!v);if(n)n.classList.toggle('nav-scrolled',v||window.scrollY>20);}
     if(m&&p){m.addEventListener('click',function(){set(p.getAttribute('data-open')!=='true');});p.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});}
     window.addEventListener('resize',function(){if(window.innerWidth>=1024&&p&&p.getAttribute('data-open')==='true')set(false);});
-    document.querySelectorAll('.loc-faq-btn').forEach(function(btn){btn.addEventListener('click',function(){var ex=btn.getAttribute('aria-expanded')==='true';document.querySelectorAll('.loc-faq-btn').forEach(function(b){b.setAttribute('aria-expanded','false');var pan=b.nextElementSibling;if(pan)pan.classList.remove('open');});if(!ex){btn.setAttribute('aria-expanded','true');var p2=btn.nextElementSibling;if(p2)p2.classList.add('open');}});});
     var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08});
     document.querySelectorAll('.animate-on-scroll').forEach(function(el){ob.observe(el);});
     })();
