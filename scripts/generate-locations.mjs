@@ -12,12 +12,62 @@ const SITE = 'https://waymakerrubbishsolutions.com.au';
 const PHONE_TEL = '0423101334';
 const PHONE_DISP = '0423 101 334';
 const EMAIL = 'mattpascua89@gmail.com';
-const LASTMOD = '2026-05-15';
+const LASTMOD = '2026-08-07';
 const GOOGLE_REVIEWS_URL =
   'https://www.google.com/search?q=Waymaker+Rubbish+Solutions+Reviews&hl=en';
 
 const dataPath = path.join(__dirname, 'location-seo-data.json');
 const LOCATIONS = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+
+/** Slugs with dedicated before/after images; others use location-before.jpg / location-after.jpg */
+const CUSTOM_BEFORE_AFTER = {
+  'rubbish-removal-maroochydore': 'maroochydore',
+  'rubbish-removal-nambour': 'nambour',
+  'junk-removal-aura': 'aura',
+  'rubbish-removal-buderim': 'buderim',
+  'rubbish-removal-noosa': 'noosa',
+  'rubbish-removal-coolum-beach': 'coolum-beach',
+  'rubbish-removal-kawana-waters': 'kawana-waters',
+};
+
+const HUB_INTRO = [
+  'Looking for reliable rubbish removal on the Sunshine Coast? Waymaker Rubbish Solutions provides straightforward rubbish removal for homes, businesses, real estate agencies, builders and property managers across the region.',
+  'From unwanted furniture and household rubbish to renovation waste, property clean outs and larger commercial clearances, our team handles the lifting, loading and disposal from start to finish.',
+  'We are an owner operated Sunshine Coast business offering upfront quotes, professional service and a simple alternative to hiring and loading a skip bin yourself.',
+  'Choose your area below to learn more about our rubbish removal services near you, or send us photos of what needs to go for a quick quote.',
+];
+
+const HUB_RUBBISH_ITEMS = [
+  'Household rubbish',
+  'Old furniture',
+  'Mattresses',
+  'Whitegoods',
+  'Garage and shed clutter',
+  'Green waste',
+  'Renovation waste',
+  'Moving and downsizing rubbish',
+  'End of lease rubbish',
+  'Deceased estate rubbish',
+  'Office and commercial rubbish',
+  'Property clean out waste',
+];
+
+const LOCATION_RUBBISH_ITEMS = [
+  'Household rubbish',
+  'Furniture',
+  'Mattresses',
+  'Whitegoods',
+  'Garage clutter',
+  'Green waste',
+  'Moving rubbish',
+  'Renovation waste',
+  'End of lease rubbish',
+  'Office furniture',
+  'General commercial rubbish',
+  'Deceased estate rubbish',
+];
+
+const PLACE_TO_SLUG = Object.fromEntries(LOCATIONS.map((l) => [l.place, l.slug]));
 
 function esc(s) {
   return String(s)
@@ -31,7 +81,133 @@ function otherSlugs(current) {
   return LOCATIONS.filter((l) => l.slug !== current).map((l) => l.slug);
 }
 
-function reviewsCarousel(prefix) {
+function standardFaqs(place) {
+  return [
+    {
+      q: `How much does rubbish removal cost in ${place}?`,
+      a: 'Pricing depends on the amount of rubbish, the type of materials and access to the property. Small collections generally start from our standard small load pricing, while larger clean outs are quoted according to volume. Send us a few photos for a quick estimate.',
+    },
+    {
+      q: 'Do you load the rubbish for me?',
+      a: 'Yes. Our team handles the lifting and loading as part of the service. You simply show us what needs to go and we take care of the rest.',
+    },
+    {
+      q: 'Do I need to hire a skip bin?',
+      a: 'No. Waymaker provides a full rubbish removal service, so there is no need to hire or load a skip bin. We load the rubbish directly and take it away.',
+    },
+    {
+      q: 'What types of rubbish do you remove?',
+      a: 'We remove many common types of household, furniture, property, green and renovation waste. Heavy materials and specialised waste may require a separate quote. Send us a photo if you are unsure about a particular item.',
+    },
+    {
+      q: 'Can you remove furniture and mattresses?',
+      a: 'Yes. We can remove unwanted furniture, mattresses and other bulky household items as part of a larger clean out or as a smaller collection.',
+    },
+    {
+      q: `Do you provide commercial rubbish removal in ${place}?`,
+      a: 'Yes. We assist businesses, property managers, real estate agencies and commercial clients with rubbish removal and property clearances.',
+    },
+    {
+      q: 'How do I get a quote?',
+      a: `Call Waymaker on ${PHONE_DISP} or send us photos showing what needs to be removed along with the property location. We will provide a straightforward quote based on the job.`,
+    },
+  ];
+}
+
+function pricingTableHtml() {
+  return `
+        <div class="overflow-x-auto max-w-full rounded-xl border border-dark/10">
+          <table class="w-full text-left text-sm sm:text-base min-w-[32rem]">
+            <thead><tr class="bg-dark text-white"><th class="py-3 px-4">Load size</th><th class="py-3 px-4">Typical price</th><th class="py-3 px-4">Good for</th></tr></thead>
+            <tbody>
+          <tr class="border-b border-dark/10">
+            <td class="py-3 pr-4 font-medium text-dark">Small Load</td>
+            <td class="py-3 pr-4 font-heading font-bold text-logo whitespace-nowrap">$120 to $180</td>
+            <td class="py-3 text-dark/70 text-sm">A few items, boxes or a small cleanup</td>
+          </tr>
+          <tr class="border-b border-dark/10">
+            <td class="py-3 pr-4 font-medium text-dark">1/4 10 x 5 Trailer Load</td>
+            <td class="py-3 pr-4 font-heading font-bold text-logo whitespace-nowrap">$180 to $250</td>
+            <td class="py-3 text-dark/70 text-sm">Small household cleanouts or bulky items</td>
+          </tr>
+          <tr class="border-b border-dark/10">
+            <td class="py-3 pr-4 font-medium text-dark">1/2 10 x 5 Trailer Load</td>
+            <td class="py-3 pr-4 font-heading font-bold text-logo whitespace-nowrap">$250 to $300</td>
+            <td class="py-3 text-dark/70 text-sm">Furniture, household junk or renovation waste</td>
+          </tr>
+          <tr class="border-b border-dark/10">
+            <td class="py-3 pr-4 font-medium text-dark">3/4 10 x 5 Trailer Load</td>
+            <td class="py-3 pr-4 font-heading font-bold text-logo whitespace-nowrap">$300 to $350</td>
+            <td class="py-3 text-dark/70 text-sm">Larger cleanouts and mixed rubbish</td>
+          </tr>
+          <tr class="border-b border-dark/10">
+            <td class="py-3 pr-4 font-medium text-dark">Full 10 x 5 Trailer Load</td>
+            <td class="py-3 pr-4 font-heading font-bold text-logo whitespace-nowrap">$350 to $450</td>
+            <td class="py-3 text-dark/70 text-sm">Maximum standard load for bigger cleanups</td>
+          </tr>
+          <tr class="border-b border-dark/10 bg-logo/10">
+            <td class="py-3 pr-4 font-medium text-dark">Full Ute Load and 10 x 5 Trailer Load</td>
+            <td class="py-3 pr-4 font-heading font-bold text-logo whitespace-nowrap">from $650</td>
+            <td class="py-3 text-dark/70 text-sm">Maximum standard load for bigger cleanups</td>
+          </tr>
+          <tr class="border-b border-dark/10">
+            <td class="py-3 pr-4 font-medium text-dark">Heavy Materials</td>
+            <td class="py-3 pr-4 font-heading font-bold text-logo whitespace-nowrap">Custom quote</td>
+            <td class="py-3 text-dark/70 text-sm">Concrete, soil, bricks, tiles and other heavy waste</td>
+          </tr></tbody>
+          </table>
+        </div>
+        <p class="text-dark/80 text-sm sm:text-base leading-relaxed mt-6">Heavy materials such as concrete, soil, bricks and tiles require a custom quote due to their weight and disposal costs. Other specialised or regulated waste may also require separate disposal arrangements.</p>
+        <figure class="mt-6 rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="../assets/location-full-load.jpg" alt="Waymaker ute and caged trailer fully loaded with mattresses and furniture for rubbish removal" class="block w-full h-auto object-cover" width="1024" height="517" loading="lazy" decoding="async" />
+        </figure>`;
+}
+
+function rubbishGrid(items) {
+  return `<ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">${items
+    .map(
+      (item) =>
+        `<li class="rounded-xl border border-dark/10 bg-white px-4 py-3 text-dark/80 text-sm sm:text-base shadow-sm">${esc(item)}</li>`
+    )
+    .join('')}</ul>`;
+}
+
+function nearbyPills(nearby) {
+  return nearby
+    .map((n) => {
+      const slug = PLACE_TO_SLUG[n];
+      if (slug) {
+        return `<a href="../${slug}/" class="inline-flex items-center px-3 py-1 rounded-full bg-white border border-primary/25 text-dark text-sm font-medium hover:border-logo hover:text-logo transition">${esc(n)}</a>`;
+      }
+      return `<span class="inline-flex items-center px-3 py-1 rounded-full bg-white border border-primary/25 text-dark text-sm font-medium">${esc(n)}</span>`;
+    })
+    .join('\n');
+}
+
+function hubLinksHtml(currentSlug) {
+  return otherSlugs(currentSlug)
+    .slice(0, 6)
+    .map((s) => {
+      const p = LOCATIONS.find((x) => x.slug === s);
+      return `<a href="../${s}/" class="text-logo font-semibold hover:underline">${esc(p.place)}</a>`;
+    })
+    .join(' &middot; ');
+}
+
+function beforeAfterImages(loc) {
+  const custom = CUSTOM_BEFORE_AFTER[loc.slug];
+  const beforeFile = custom ? `${custom}-before.jpg` : 'location-before.jpg';
+  const afterFile = custom ? `${custom}-after.jpg` : 'location-after.jpg';
+  const beforeAlt = custom
+    ? `Household rubbish piled before removal in ${loc.place}`
+    : 'Household rubbish piled before removal';
+  const afterAlt = custom
+    ? `Cleared area after rubbish removal in ${loc.place}`
+    : 'Cleared area after rubbish removal';
+  return { beforeFile, afterFile, beforeAlt, afterAlt };
+}
+
+function reviewsCarousel() {
   return `
       <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 max-w-full scroll-smooth" aria-label="Customer reviews carousel">
         <article class="snap-start shrink-0 w-[min(100%,22rem)] sm:w-80 card-hover bg-white rounded-2xl p-5 shadow-lg border-2 border-logo/45">
@@ -64,7 +240,7 @@ function reviewsCarousel(prefix) {
       </p>`;
 }
 
-function navFragment(prefix, currentSlug, isHub) {
+function navFragment(prefix) {
   const home = `${prefix}index.html`;
   return `
   <header id="navbar" class="waymaker-site-header fixed top-0 left-0 right-0 z-50 nav-scrolled">
@@ -114,6 +290,7 @@ function footerFragment(prefix) {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <nav class="flex flex-wrap gap-x-4 gap-y-2 items-center justify-center" aria-label="Footer navigation">
           <a href="${home}" class="text-white/90 hover:text-primary font-medium">Home</a>
+          <a href="${prefix}locations/" class="text-white/90 hover:text-primary font-medium">Service areas</a>
           <a href="${home}#about" class="text-white/90 hover:text-primary font-medium">About</a>
           <a href="${home}#contact" class="text-white/90 hover:text-primary font-medium">Contact</a>
       </nav>
@@ -126,32 +303,8 @@ function footerFragment(prefix) {
   </footer>`;
 }
 
-function servicesSection(place, slug) {
-  const angle =
-    slug.includes('aura')
-      ? 'new-build packaging, display-home strip-outs, and moving-day cardboard'
-      : slug.includes('nambour')
-        ? 'hinterland estates, acreage sheds, and post-storm green waste'
-        : slug.includes('noosa')
-          ? 'prestige homes, holiday lets, and discreet office purges'
-          : 'units, houses, and local businesses';
-  return `
-    <section class="py-14 sm:py-20 bg-offwhite border-t border-primary/15" aria-labelledby="svc-h">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 id="svc-h" class="font-heading font-extrabold text-2xl sm:text-3xl text-dark mb-6">Rubbish &amp; junk services near ${esc(place)}</h2>
-        <p class="text-dark/80 text-lg leading-relaxed mb-8">WayMaker tailors each load for ${esc(place)}—${angle}. Every job includes labour, responsible disposal, and clear communication from Matt&apos;s crew.</p>
-        <ul class="grid sm:grid-cols-2 gap-4">
-          <li class="rounded-xl border border-dark/10 bg-white p-5 shadow-sm"><h3 class="font-heading font-bold text-dark mb-2">Residential</h3><p class="text-dark/75 text-sm leading-relaxed">Garage clean-outs, pre-move purges, mattress &amp; whitegoods, green waste, vermin-safe bagged waste.</p></li>
-          <li class="rounded-xl border border-dark/10 bg-white p-5 shadow-sm"><h3 class="font-heading font-bold text-dark mb-2">Commercial &amp; strata</h3><p class="text-dark/75 text-sm leading-relaxed">Retail back-of-house, office furniture, archived files (non-confidential unless arranged), shop fit-out debris.</p></li>
-          <li class="rounded-xl border border-dark/10 bg-white p-5 shadow-sm"><h3 class="font-heading font-bold text-dark mb-2">Real estate &amp; rentals</h3><p class="text-dark/75 text-sm leading-relaxed">End-of-lease clears, bond cleans support, tenant left-behinds, open-home tidy-ups.</p></li>
-          <li class="rounded-xl border border-dark/10 bg-white p-5 shadow-sm"><h3 class="font-heading font-bold text-dark mb-2">Deceased estates</h3><p class="text-dark/75 text-sm leading-relaxed">Respectful sorting, donation-first mindset where practical, and prompt removal of true rubbish.</p></li>
-        </ul>
-      </div>
-    </section>`;
-}
-
-function faqSection(loc) {
-  const items = loc.faqs
+function faqSection(loc, faqs) {
+  const items = faqs
     .map(
       (f, i) => `
     <div class="border border-dark/10 rounded-xl overflow-hidden bg-white mb-3">
@@ -166,28 +319,48 @@ function faqSection(loc) {
   return `
     <section class="py-14 sm:py-20 bg-white border-t border-dark/10" aria-labelledby="faq-h">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 id="faq-h" class="font-heading font-extrabold text-2xl sm:text-3xl text-dark text-center mb-8">${esc(loc.place)} rubbish removal FAQ</h2>
+        <h2 id="faq-h" class="font-heading font-extrabold text-2xl sm:text-3xl text-dark text-center mb-8">Rubbish Removal ${esc(loc.place)} FAQs</h2>
         <div>${items}</div>
       </div>
     </section>`;
 }
 
-function jsonLdPage(loc) {
+function ctaSection(place) {
+  return `
+    <section class="py-14 sm:py-20 bg-offwhite border-t border-dark/10" aria-labelledby="cta-h">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 id="cta-h" class="font-heading font-extrabold text-2xl sm:text-3xl text-dark mb-4">Need Rubbish Gone in ${esc(place)}?</h2>
+        <p class="text-dark/80 text-lg leading-relaxed mb-8">Send Waymaker a few photos of what needs to go and we can provide a straightforward quote. We handle the lifting, loading and disposal so you can get the space cleared without the hassle.</p>
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap">
+          <a href="../index.html#contact" class="nav-quote-cta w-full sm:w-auto justify-center">Get a Quote</a>
+          <a href="tel:${PHONE_TEL}" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-5 py-3 rounded-lg border-2 border-dark/15 bg-white text-dark font-heading font-semibold hover:border-logo hover:text-logo transition"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call ${PHONE_DISP}</a>
+        </div>
+      </div>
+    </section>`;
+}
+
+function jsonLdPage(loc, faqs) {
   const pageUrl = `${SITE}/${loc.slug}/`;
   const bizId = pageUrl + '#business';
-  const faqEntities = loc.faqs.map((f) => ({
+  const faqEntities = faqs.map((f) => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   }));
-  const reviewSnippet = (body) => ({ '@type': 'Review', reviewBody: body, itemReviewed: { '@id': bizId }, author: { '@type': 'Person' }, reviewRating: { '@type': 'Rating', ratingValue: 5, bestRating: 5 } });
+  const reviewSnippet = (body) => ({
+    '@type': 'Review',
+    reviewBody: body,
+    itemReviewed: { '@id': bizId },
+    author: { '@type': 'Person' },
+    reviewRating: { '@type': 'Rating', ratingValue: 5, bestRating: 5 },
+  });
   const graph = [
     {
       '@type': 'BreadcrumbList',
       '@id': pageUrl + '#breadcrumb',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' },
-        { '@type': 'ListItem', position: 2, name: 'Suburbs', item: SITE + '/locations/' },
+        { '@type': 'ListItem', position: 2, name: 'Service areas', item: SITE + '/locations/' },
         { '@type': 'ListItem', position: 3, name: loc.place + ' rubbish removal', item: pageUrl },
       ],
     },
@@ -215,7 +388,7 @@ function jsonLdPage(loc) {
       '@type': 'Service',
       '@id': pageUrl + '#service',
       name: 'Rubbish removal ' + loc.place,
-      serviceType: 'Rubbish removal and junk removal',
+      serviceType: 'Rubbish removal',
       provider: { '@id': bizId },
       areaServed: loc.nearby.map((n) => ({ '@type': 'City', name: n })),
       url: pageUrl,
@@ -233,26 +406,9 @@ function buildLocationPage(loc) {
   const prefix = '../';
   const canonical = `${SITE}/${loc.slug}/`;
   const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(loc.mapQuery.replace(/\+/g, ' '))}&z=13&output=embed`;
-  const internalOthers = otherSlugs(loc.slug)
-    .slice(0, 6)
-    .map((s) => {
-      const p = LOCATIONS.find((x) => x.slug === s);
-      return `<a href="${prefix}${s}/" class="text-logo font-semibold hover:underline">${esc(p.place)}</a>`;
-    })
-    .join(' &middot; ');
-
-  const pricingRows = loc.pricingExamples
-    .map(
-      (r) => `
-          <tr class="border-b border-dark/10">
-            <td class="py-3 pr-4 font-medium text-dark">${esc(r.label)}</td>
-            <td class="py-3 pr-4 font-heading font-bold text-logo whitespace-nowrap">${esc(r.range)}</td>
-            <td class="py-3 text-dark/70 text-sm">${esc(r.note)}</td>
-          </tr>`
-    )
-    .join('');
-
-  const nearby = loc.nearby.map((n) => `<span class="inline-flex items-center px-3 py-1 rounded-full bg-white border border-primary/25 text-dark text-sm font-medium">${esc(n)}</span>`).join('\n');
+  const faqs = standardFaqs(loc.place);
+  const imgs = beforeAfterImages(loc);
+  const heroParagraphs = Array.isArray(loc.heroIntro) ? loc.heroIntro : [loc.heroIntro];
 
   return `<!DOCTYPE html>
 <html lang="en-AU">
@@ -283,79 +439,109 @@ function buildLocationPage(loc) {
   <script>
     tailwind.config = { theme: { extend: { colors: { primary: '#10B981', accent: '#F97316', logo: '#6DBA2E', dark: '#232529', offwhite: '#F8FAFC' }, fontFamily: { heading: ['Poppins','sans-serif'], body: ['Inter','sans-serif'] } } } };
   </script>
-  ${jsonLdPage(loc)}
+  ${jsonLdPage(loc, faqs)}
 </head>
 <body class="location-subpage bg-offwhite text-dark font-body antialiased overflow-x-hidden w-full min-h-screen flex flex-col">
-  ${navFragment(prefix, loc.slug, false)}
+  ${navFragment(prefix)}
   <main id="main" class="flex-1 pt-24">
     <section class="bg-dark text-white py-12 sm:py-16" aria-labelledby="page-h1">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav class="text-sm text-white/60 mb-4" aria-label="Breadcrumb"><a href="${prefix}index.html" class="hover:text-primary">Home</a> <span class="mx-1">/</span> <a href="${prefix}locations/" class="hover:text-primary">Suburbs</a> <span class="mx-1">/</span> <span class="text-white/90">${esc(loc.place)}</span></nav>
+        <nav class="text-sm text-white/60 mb-4" aria-label="Breadcrumb"><a href="${prefix}index.html" class="hover:text-primary">Home</a> <span class="mx-1">/</span> <a href="${prefix}locations/" class="hover:text-primary">Service areas</a> <span class="mx-1">/</span> <span class="text-white/90">${esc(loc.place)}</span></nav>
         <h1 id="page-h1" class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl leading-tight mb-4">${esc(loc.h1)}</h1>
-        <p class="text-lg text-white/85 max-w-3xl leading-relaxed mb-6">Owner-operated <strong class="text-white">rubbish removal ${esc(loc.place)}</strong> and <strong class="text-white">junk removal ${esc(loc.place)}</strong> — plus transparent <strong class="text-white">rubbish removal Sunshine Coast ${esc(loc.place)}</strong> quotes from a Christian family business you can recommend with confidence.</p>
+        <div class="text-lg text-white/85 max-w-3xl leading-relaxed mb-6 space-y-4">
+          ${heroParagraphs.map((p) => `<p>${esc(p)}</p>`).join('\n          ')}
+        </div>
         <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-wrap">
           <a href="tel:${PHONE_TEL}" class="nav-quote-cta w-full sm:w-auto justify-center"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call ${PHONE_DISP}</a>
-          <a href="https://wa.me/61423101334" target="_blank" rel="noopener noreferrer" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-5 py-3 rounded-lg border border-white/30 text-white font-heading font-semibold hover:bg-white/10">WhatsApp</a>
-          <a href="${prefix}index.html#contact" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-5 py-3 rounded-lg bg-primary text-white font-heading font-semibold hover:bg-emerald-500">Quote form</a>
+          <a href="${prefix}index.html#contact" class="nav-quote-cta w-full sm:w-auto justify-center">Get a quote now</a>
         </div>
       </div>
     </section>
     <section class="py-12 sm:py-16 bg-white">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
         <div>
-          <h2 class="font-heading font-bold text-2xl text-dark mb-4">Why ${esc(loc.place)} homeowners choose WayMaker</h2>
-          ${loc.intro.map((p) => `<p class="text-dark/80 text-lg leading-relaxed mb-4">${esc(p)}</p>`).join('')}
-          <p class="text-dark/70 text-sm leading-relaxed">${esc(loc.pricingNote)}</p>
+          <h2 class="font-heading font-bold text-2xl text-dark mb-4">${esc(loc.localSection.heading)}</h2>
+          ${loc.localSection.paragraphs.map((p) => `<p class="text-dark/80 text-lg leading-relaxed mb-4">${esc(p)}</p>`).join('\n          ')}
         </div>
         <div class="rounded-2xl overflow-hidden border border-dark/10 shadow-lg aspect-video bg-dark/5">
-          <iframe title="Map of ${esc(loc.place)} Queensland — WayMaker service area" src="${esc(mapSrc)}" class="w-full h-full min-h-[240px]" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe title="Map of ${esc(loc.place)} Queensland — Waymaker service area" src="${esc(mapSrc)}" class="w-full h-full min-h-[240px]" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
-      <p class="text-center text-dark/75 text-sm mt-8 max-w-3xl mx-auto px-4">We service <strong>${esc(loc.place)}</strong> and all surrounding Sunshine Coast areas — book rubbish removal or junk removal and we&apos;ll confirm access before we arrive.</p>
     </section>
     <section class="py-12 bg-offwhite border-t border-dark/10">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="font-heading font-bold text-2xl text-dark mb-4">Nearby suburbs we run to from ${esc(loc.place)}</h2>
-        <div class="flex flex-wrap gap-2 justify-center lg:justify-start">${nearby}</div>
-        <p class="text-center lg:text-left text-sm text-dark/60 mt-6">More hubs: ${internalOthers}</p>
+        <h2 class="font-heading font-bold text-2xl text-dark mb-4">Rubbish Removal Near ${esc(loc.place)}</h2>
+        <p class="text-dark/80 mb-4">We also provide rubbish removal throughout surrounding Sunshine Coast suburbs including:</p>
+        <div class="flex flex-wrap gap-2 justify-center lg:justify-start">${nearbyPills(loc.nearby)}</div>
+        <p class="text-center lg:text-left text-sm text-dark/60 mt-6">More service areas: ${hubLinksHtml(loc.slug)} &middot; <a href="${prefix}locations/" class="text-logo font-semibold hover:underline">rubbish removal across the Sunshine Coast</a></p>
       </div>
     </section>
     <section class="py-12 sm:py-16 bg-white border-t border-dark/10">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="font-heading font-bold text-2xl text-dark mb-4">Quote-based pricing (${esc(loc.place)})</h2>
-        <p class="text-dark/80 mb-6">Every load is quoted upfront after we understand volume, access, and materials. Tip fees and labour are included in the examples below — final price confirmed on-site or via clear photos.</p>
-        <div class="overflow-x-auto max-w-full rounded-xl border border-dark/10">
-          <table class="w-full text-left text-sm sm:text-base min-w-[32rem]">
-            <thead><tr class="bg-dark text-white"><th class="py-3 px-4">Job type</th><th class="py-3 px-4">Typical range (AUD)</th><th class="py-3 px-4">Notes</th></tr></thead>
-            <tbody>${pricingRows}</tbody>
-          </table>
+        <h2 class="font-heading font-bold text-2xl text-dark mb-4">Rubbish Removal Prices in ${esc(loc.place)}</h2>
+        <div class="text-dark/80 mb-6 space-y-4">
+          <p>Rubbish removal pricing depends on how much needs to be removed, the type of waste and access to the property. Waymaker provides upfront quotes so you know the expected cost before work begins.</p>
+          <p>Our standard pricing includes loading, transport and base disposal fees. Send us a few photos of your rubbish and your location and we can usually provide a straightforward quote before booking.</p>
+        </div>
+        ${pricingTableHtml()}
+      </div>
+    </section>
+    <section class="py-14 sm:py-20 bg-offwhite border-t border-primary/15" aria-labelledby="svc-h">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 id="svc-h" class="font-heading font-extrabold text-2xl sm:text-3xl text-dark mb-6">Rubbish Removal Services in ${esc(loc.place)}</h2>
+        <p class="text-dark/80 text-lg leading-relaxed mb-8">Waymaker provides rubbish removal for everything from a few unwanted household items to larger property and commercial clean outs. Our team handles the lifting and loading, then transports the rubbish for appropriate disposal.</p>
+        <ul class="grid sm:grid-cols-2 gap-4">
+          <li class="rounded-xl border border-dark/10 bg-white p-5 shadow-sm"><h3 class="font-heading font-bold text-dark mb-2">Residential Rubbish Removal</h3><p class="text-dark/75 text-sm leading-relaxed">Clear unwanted furniture, household rubbish, garage clutter, mattresses, whitegoods, moving waste and other unwanted items without having to load and transport everything yourself.</p></li>
+          <li class="rounded-xl border border-dark/10 bg-white p-5 shadow-sm"><h3 class="font-heading font-bold text-dark mb-2">Commercial Rubbish Removal</h3><p class="text-dark/75 text-sm leading-relaxed">Rubbish removal for offices, retail premises, hospitality businesses, property managers and commercial sites, including furniture, general waste and clearances.</p></li>
+          <li class="rounded-xl border border-dark/10 bg-white p-5 shadow-sm"><h3 class="font-heading font-bold text-dark mb-2">Real Estate &amp; Rental Clean Outs</h3><p class="text-dark/75 text-sm leading-relaxed">Fast property clearances for end of lease situations, abandoned belongings, pre sale clean ups and properties that need to be cleared before the next tenant or owner.</p></li>
+          <li class="rounded-xl border border-dark/10 bg-white p-5 shadow-sm"><h3 class="font-heading font-bold text-dark mb-2">Deceased Estate Clean Outs</h3><p class="text-dark/75 text-sm leading-relaxed">Respectful assistance clearing unwanted items and rubbish from deceased estates, with care taken around the property and belongings throughout the process.</p></li>
+        </ul>
+      </div>
+    </section>
+    <section class="py-12 sm:py-16 bg-white border-t border-dark/10" aria-labelledby="remove-h">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 id="remove-h" class="font-heading font-bold text-2xl text-dark mb-4">What Rubbish Can We Remove in ${esc(loc.place)}?</h2>
+        <p class="text-dark/80 text-lg leading-relaxed mb-6">Every clean up is different. We regularly help customers remove a mixture of household, property and renovation rubbish.</p>
+        ${rubbishGrid(LOCATION_RUBBISH_ITEMS)}
+        <p class="text-dark/70 text-sm sm:text-base leading-relaxed mt-6">Not sure whether we can take something? Send us a photo and we will let you know before booking.</p>
+      </div>
+    </section>
+    <section class="py-12 sm:py-16 bg-offwhite border-t border-dark/10" aria-labelledby="skip-h">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 id="skip-h" class="font-heading font-bold text-2xl text-dark mb-4">Rubbish Removal or Skip Bin Hire in ${esc(loc.place)}?</h2>
+        <div class="text-dark/80 text-lg leading-relaxed space-y-4">
+          <p>A skip bin can make sense when you need a container on site for several days and want to load the rubbish gradually. For jobs where the rubbish is already ready to go, a full service rubbish removal team can be much easier.</p>
+          <p>With Waymaker, there is no skip to load yourself and no need to leave a bin sitting on the property. We arrive, load the rubbish, take it away and handle the disposal.</p>
+          <p>For furniture removal, household clean outs, rental clearances and smaller renovation clean ups, this can save considerable time and physical work.</p>
         </div>
       </div>
     </section>
-    ${servicesSection(loc.place, loc.slug)}
     <section class="py-12 sm:py-16 bg-white border-t border-dark/10">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="font-heading font-bold text-2xl text-dark mb-6 text-center">Before &amp; after (${esc(loc.place)} rubbish removal)</h2>
+        <h2 class="font-heading font-bold text-2xl text-dark mb-6 text-center">Before and After</h2>
         <div class="grid sm:grid-cols-2 gap-6">
-          <figure class="rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
-            <div class="aspect-[4/3] bg-gradient-to-br from-dark/10 to-logo/20 flex items-center justify-center text-dark/40 text-sm font-medium">Before — ${esc(loc.place)}</div>
-            <figcaption class="p-3 text-xs text-dark/60">Placeholder: upload WebP before photo — <strong>rubbish removal ${esc(loc.place)}</strong> garage clean-out.</figcaption>
+          <figure class="rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full flex flex-col">
+            <div class="aspect-[4/3] overflow-hidden bg-offwhite">
+              <img src="${prefix}assets/${imgs.beforeFile}" alt="${esc(imgs.beforeAlt)}" class="block w-full h-full object-cover object-center" width="768" height="1024" loading="lazy" decoding="async" />
+            </div>
           </figure>
-          <figure class="rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
-            <div class="aspect-[4/3] bg-gradient-to-br from-logo/30 to-primary/20 flex items-center justify-center text-dark/40 text-sm font-medium">After — ${esc(loc.place)}</div>
-            <figcaption class="p-3 text-xs text-dark/60">Placeholder: upload WebP after photo — <strong>junk removal ${esc(loc.place)}</strong> site clear.</figcaption>
+          <figure class="rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full flex flex-col">
+            <div class="aspect-[4/3] overflow-hidden bg-offwhite">
+              <img src="${prefix}assets/${imgs.afterFile}" alt="${esc(imgs.afterAlt)}" class="block w-full h-full object-cover object-center" width="768" height="1024" loading="lazy" decoding="async" />
+            </div>
           </figure>
         </div>
       </div>
     </section>
+    ${faqSection(loc, faqs)}
+    ${ctaSection(loc.place)}
     <section class="py-14 sm:py-20 bg-offwhite border-t border-dark/10" aria-labelledby="rev-h">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 id="rev-h" class="font-heading font-bold text-logo text-center uppercase tracking-widest text-sm mb-2">Google Reviews</h2>
         <p class="text-center text-dark/80 font-heading font-semibold text-lg mb-8">Real Sunshine Coast feedback</p>
-        ${reviewsCarousel(prefix)}
+        ${reviewsCarousel()}
       </div>
     </section>
-    ${faqSection(loc)}
   </main>
   ${footerFragment(prefix)}
   <script>
@@ -379,8 +565,8 @@ function buildHubPage() {
     (l) => `
     <li class="rounded-2xl border border-dark/10 bg-white p-6 shadow-sm hover:shadow-md transition">
       <a href="${prefix}${l.slug}/" class="block group">
-        <h2 class="font-heading font-bold text-xl text-dark group-hover:text-logo mb-2">${esc(l.place)}</h2>
-        <p class="text-dark/75 text-sm leading-relaxed line-clamp-3">${esc(l.meta)}</p>
+        <h3 class="font-heading font-bold text-xl text-dark group-hover:text-logo mb-2">${esc(l.place)}</h3>
+        <p class="text-dark/75 text-sm leading-relaxed">${esc(l.cardDescription)}</p>
         <span class="inline-flex mt-4 text-logo font-heading font-semibold text-sm">View ${esc(l.place)} page &rarr;</span>
       </a>
     </li>`
@@ -391,15 +577,15 @@ function buildHubPage() {
       '@id': canonical + '#breadcrumb',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' },
-        { '@type': 'ListItem', position: 2, name: 'Suburbs', item: canonical },
+        { '@type': 'ListItem', position: 2, name: 'Service areas', item: canonical },
       ],
     },
     {
       '@type': 'CollectionPage',
       '@id': canonical + '#page',
-      name: 'WayMaker Sunshine Coast suburb pages',
+      name: 'Rubbish Removal Sunshine Coast service areas',
       url: canonical,
-      description: 'Local rubbish and junk removal landing pages for Maroochydore, Caloundra, Noosa, Aura, and more.',
+      description: 'Waymaker provides rubbish removal across the Sunshine Coast for homes, businesses and property clean outs. View our service areas and request a quote.',
       provider: { '@type': 'LocalBusiness', name: 'Way Maker Rubbish Solutions', telephone: '+61-423-101-334', url: SITE + '/' },
     },
   ];
@@ -408,9 +594,9 @@ function buildHubPage() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Sunshine Coast suburbs | Rubbish removal pages | WayMaker</title>
+  <title>Rubbish Removal Sunshine Coast | Areas We Service</title>
   <meta name="google-site-verification" content="58aDHM72qS6SwXVsT_tugAWntXOrw8_XsQqvhvdy3pY" />
-  <meta name="description" content="WayMaker Rubbish Solutions services Maroochydore, Caloundra, Noosa, Aura, Buderim, Mooloolaba, Coolum Beach, Kawana Waters, Peregian Beach, Nambour and more. Family-owned Sunshine Coast junk removal." />
+  <meta name="description" content="Waymaker provides rubbish removal across the Sunshine Coast for homes, businesses and property clean outs. View our service areas and request a quote." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="${canonical}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -423,12 +609,26 @@ function buildHubPage() {
   <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}</script>
 </head>
 <body class="location-subpage bg-offwhite text-dark font-body antialiased overflow-x-hidden w-full flex flex-col min-h-screen">
-  ${navFragment(prefix, null, true)}
+  ${navFragment(prefix)}
   <main class="flex-1 pt-24 pb-8">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-4">Sunshine Coast suburbs</h1>
-      <p class="text-lg text-dark/80 max-w-3xl mb-10">Choose your suburb for location-specific <strong>rubbish removal</strong> and <strong>junk removal</strong> guidance, FAQs, and pricing context. Christian family–owned WayMaker — call <a href="tel:${PHONE_TEL}" class="text-logo font-semibold">${PHONE_DISP}</a> or use the <a href="${prefix}index.html#contact" class="text-logo font-semibold underline">quote form</a>.</p>
+      <nav class="text-sm text-dark/60 mb-4" aria-label="Breadcrumb"><a href="${prefix}index.html" class="hover:text-logo">Home</a> <span class="mx-1">/</span> <span class="text-dark/90">Service areas</span></nav>
+      <h1 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-6">Rubbish Removal Across the Sunshine Coast</h1>
+      ${HUB_INTRO.map((p) => `<p class="text-lg text-dark/80 max-w-3xl mb-4">${esc(p)}</p>`).join('\n      ')}
+      <h2 class="font-heading font-bold text-2xl sm:text-3xl text-dark mt-10 mb-6">Rubbish Removal Areas We Service</h2>
       <ul class="grid sm:grid-cols-2 gap-6">${cards}</ul>
+      <section class="mt-16 pt-12 border-t border-dark/10" aria-labelledby="skip-hub-h">
+        <h2 id="skip-hub-h" class="font-heading font-bold text-2xl sm:text-3xl text-dark mb-4">Sunshine Coast Rubbish Removal Without the Skip Bin</h2>
+        <div class="text-dark/80 text-lg leading-relaxed space-y-4 max-w-3xl">
+          <p>Getting rid of unwanted rubbish does not always need to mean hiring a skip, finding somewhere to put it and spending your weekend loading it yourself.</p>
+          <p>With Waymaker, you show us what needs to go and we take care of the rest. Our rubbish removal service includes the labour, loading, transport and disposal, making it a practical option for household clean outs, bulky furniture, rental clearances, renovation waste and jobs where a skip bin is difficult to place.</p>
+          <p>We service suburbs across the Sunshine Coast and provide upfront quotes based on the volume and type of rubbish, site access and any special disposal requirements.</p>
+        </div>
+      </section>
+      <section class="mt-16 pt-12 border-t border-dark/10" aria-labelledby="hub-rubbish-h">
+        <h2 id="hub-rubbish-h" class="font-heading font-bold text-2xl sm:text-3xl text-dark mb-6">Rubbish We Can Remove Across the Sunshine Coast</h2>
+        ${rubbishGrid(HUB_RUBBISH_ITEMS)}
+      </section>
     </div>
   </main>
   ${footerFragment(prefix)}
