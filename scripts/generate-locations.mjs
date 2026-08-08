@@ -13,8 +13,21 @@ const PHONE_TEL = '0423101334';
 const PHONE_DISP = '0423 101 334';
 const EMAIL = 'mattpascua89@gmail.com';
 const LASTMOD = '2026-08-07';
+const GA_MEASUREMENT_ID = 'G-TFJ9YL2H0B';
 const GOOGLE_REVIEWS_URL =
   'https://www.google.com/search?q=Waymaker+Rubbish+Solutions+Reviews&hl=en';
+
+/** Google Analytics 4 — injected once in every generated page <head> */
+function gaTagHtml() {
+  return `<!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${GA_MEASUREMENT_ID}');
+  </script>`;
+}
 
 const dataPath = path.join(__dirname, 'location-seo-data.json');
 const LOCATIONS = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
@@ -415,6 +428,7 @@ function buildLocationPage(loc) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  ${gaTagHtml()}
   <title>${esc(loc.title)}</title>
   <meta name="google-site-verification" content="58aDHM72qS6SwXVsT_tugAWntXOrw8_XsQqvhvdy3pY" />
   <meta name="description" content="${esc(loc.meta)}" />
@@ -594,6 +608,7 @@ function buildHubPage() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  ${gaTagHtml()}
   <title>Rubbish Removal Sunshine Coast | Areas We Service</title>
   <meta name="google-site-verification" content="58aDHM72qS6SwXVsT_tugAWntXOrw8_XsQqvhvdy3pY" />
   <meta name="description" content="Waymaker provides rubbish removal across the Sunshine Coast for homes, businesses and property clean outs. View our service areas and request a quote." />
