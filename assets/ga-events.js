@@ -1,10 +1,11 @@
 /**
- * GA4 phone click tracking for Waymaker Rubbish Solutions.
- * Sends one phone_call_click event per tel: link click.
+ * GA4 event tracking for Waymaker Rubbish Solutions.
+ * - phone_call_click: one event per tel: link click
+ * - generate_lead: call waymakerTrackGenerateLead() only after a confirmed successful enquiry
  */
 (function () {
-  if (window.__waymakerPhoneClickTracking) return;
-  window.__waymakerPhoneClickTracking = true;
+  if (window.__waymakerGaEventsInit) return;
+  window.__waymakerGaEventsInit = true;
 
   document.addEventListener(
     'click',
@@ -19,4 +20,18 @@
     },
     false
   );
+
+  /**
+   * Fire generate_lead once per successful enquiry.
+   * Uses a short lock so the same success path cannot double-fire.
+   */
+  var leadLockUntil = 0;
+  window.waymakerTrackGenerateLead = function () {
+    var now = Date.now();
+    if (now < leadLockUntil) return;
+    leadLockUntil = now + 2000;
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead');
+    }
+  };
 })();

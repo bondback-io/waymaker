@@ -1960,6 +1960,9 @@
                   'Enquiry sent',
                   'Thank you for contacting Way Maker Rubbish Solutions. We’ve received your message and will respond as soon as we can.'
                 );
+                if (typeof window.waymakerTrackGenerateLead === 'function') {
+                  window.waymakerTrackGenerateLead();
+                }
               })
               .catch(function (err) {
                 showContactModal(
