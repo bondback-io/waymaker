@@ -29,6 +29,11 @@ function gaTagHtml() {
   </script>`;
 }
 
+/** Phone click event tracking — load once per page after GA */
+function gaEventsScriptHtml(prefix) {
+  return `<script src="${prefix}assets/ga-events.js" defer></script>`;
+}
+
 const dataPath = path.join(__dirname, 'location-seo-data.json');
 const LOCATIONS = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 
@@ -429,6 +434,7 @@ function buildLocationPage(loc) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   ${gaTagHtml()}
+  ${gaEventsScriptHtml(prefix)}
   <title>${esc(loc.title)}</title>
   <meta name="google-site-verification" content="58aDHM72qS6SwXVsT_tugAWntXOrw8_XsQqvhvdy3pY" />
   <meta name="description" content="${esc(loc.meta)}" />
@@ -609,6 +615,7 @@ function buildHubPage() {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   ${gaTagHtml()}
+  ${gaEventsScriptHtml(prefix)}
   <title>Rubbish Removal Sunshine Coast | Areas We Service</title>
   <meta name="google-site-verification" content="58aDHM72qS6SwXVsT_tugAWntXOrw8_XsQqvhvdy3pY" />
   <meta name="description" content="Waymaker provides rubbish removal across the Sunshine Coast for homes, businesses and property clean outs. View our service areas and request a quote." />
