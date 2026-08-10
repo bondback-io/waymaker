@@ -292,10 +292,10 @@
     #hero .hero-service-row {
       margin: 1.75rem 0 0;
       width: 100%;
-      max-width: 56rem;
+      max-width: 48rem;
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      column-gap: 0.5rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 0.75rem;
       row-gap: 1rem;
       align-items: start;
       list-style: none;
@@ -313,13 +313,6 @@
       min-width: 0;
       text-align: center;
       position: relative;
-      grid-column: span 2;
-    }
-    #hero .hero-service-item:nth-child(4) {
-      grid-column: 2 / span 2;
-    }
-    #hero .hero-service-item:nth-child(5) {
-      grid-column: 4 / span 2;
     }
     #hero .hero-service-item i {
       color: #6dba2e;
@@ -339,16 +332,11 @@
     }
     @media (min-width: 768px) {
       #hero .hero-service-row {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         column-gap: 0;
         row-gap: 0;
         margin-top: 2rem;
-        max-width: 60rem;
-      }
-      #hero .hero-service-item,
-      #hero .hero-service-item:nth-child(4),
-      #hero .hero-service-item:nth-child(5) {
-        grid-column: auto;
+        max-width: 52rem;
       }
       #hero .hero-service-item {
         padding: 0 0.65rem;
@@ -468,43 +456,6 @@
       color: #ffffff !important;
       font-size: 1.2rem;
       filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
-    }
-
-    /* Trust points */
-    #hero .hero-trust-row {
-      margin: 1.35rem 0 0;
-      width: 100%;
-      max-width: 48rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.85rem 1.5rem;
-      list-style: none;
-      padding: 0;
-    }
-    #hero .hero-trust-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      font-family: 'Poppins', system-ui, sans-serif;
-      font-weight: 700;
-      font-size: clamp(0.8rem, 2.4vw, 0.95rem);
-      color: #ffffff;
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
-      white-space: nowrap;
-    }
-    #hero .hero-trust-item i {
-      color: #6dba2e;
-      font-size: 1.05rem;
-    }
-    @media (min-width: 768px) {
-      #hero .hero-trust-row {
-        margin-top: 1.6rem;
-        justify-content: space-between;
-        max-width: 42rem;
-        gap: 1rem;
-      }
     }
 
     /* Header/footer "Get a Quote" — same brand green gradient as hero CTAs */
@@ -1107,10 +1058,6 @@
           <span>Green Waste</span>
         </li>
         <li class="hero-service-item">
-          <i class="fa-solid fa-broom" aria-hidden="true"></i>
-          <span>Cleanouts</span>
-        </li>
-        <li class="hero-service-item">
           <i class="fa-solid fa-circle-plus" aria-hidden="true"></i>
           <span>More</span>
         </li>
@@ -1125,20 +1072,6 @@
           <span class="text-center leading-snug">CALL OR TEXT PHOTOS FOR A QUOTE</span>
         </a>
       </div>
-      <ul class="hero-trust-row animate-on-scroll" aria-label="Why customers trust Waymaker">
-        <li class="hero-trust-item">
-          <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-          <span>Fast &amp; Reliable</span>
-        </li>
-        <li class="hero-trust-item">
-          <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-          <span>Affordable Pricing</span>
-        </li>
-        <li class="hero-trust-item">
-          <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-          <span>Eco Friendly Disposal</span>
-        </li>
-      </ul>
     </div>
 
     <div class="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
