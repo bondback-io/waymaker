@@ -208,7 +208,8 @@
         min-height: 100svh !important;
       }
       #hero h1.hero-headline-impact {
-        font-size: clamp(2.25rem, 11vw, 3.25rem);
+        font-size: clamp(2rem, 9.5vw, 3rem);
+        line-height: 0.82;
       }
       .hero-cta {
         min-height: 3.75rem;
@@ -226,24 +227,38 @@
       font-weight: 400;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      line-height: 0.92;
+      line-height: 0.82;
       color: #ffffff !important;
-      font-size: clamp(2.35rem, 11vw, 6.75rem);
+      font-size: clamp(2.15rem, 10.5vw, 6.5rem);
+      text-align: left;
+      width: max-content;
+      max-width: min(100%, 42rem);
       margin: 0 auto;
-      max-width: 50rem;
+      padding: 0;
+      box-sizing: border-box;
     }
     #hero h1.hero-headline-impact > span {
+      display: block;
       white-space: nowrap;
+      text-align: left;
+      width: auto;
+      max-width: 100%;
+      transform: none;
     }
     @media (min-width: 640px) {
       #hero h1.hero-headline-impact {
-        font-size: clamp(3.5rem, 12vw, 7.5rem);
-        letter-spacing: 0.05em;
+        font-size: clamp(3.25rem, 9.5vw, 6.75rem);
+        letter-spacing: 0.045em;
+        line-height: 0.8;
+        max-width: min(100%, 46rem);
       }
     }
     @media (min-width: 1024px) {
       #hero h1.hero-headline-impact {
-        font-size: clamp(4.5rem, 9vw, 8.5rem);
+        font-size: clamp(4.25rem, 7.5vw, 7.25rem);
+        letter-spacing: 0.05em;
+        line-height: 0.78;
+        max-width: min(100%, 48rem);
       }
     }
 
@@ -940,9 +955,9 @@
 
     <div class="relative z-10 hero-copy mx-auto px-5 sm:px-6 lg:px-8 text-center pt-[calc(5rem+env(safe-area-inset-top,0px))] sm:pt-24 pb-12">
       <p class="sr-only">Way Maker Rubbish Solutions — Sunshine Coast rubbish removal.</p>
-      <h1 class="hero-headline-impact animate-on-scroll hero-text-contrast px-1">
-        <span class="block">Stop waiting.</span>
-        <span class="block">Start clearing.</span>
+      <h1 class="hero-headline-impact animate-on-scroll hero-text-contrast">
+        <span>Stop waiting.</span>
+        <span>Start clearing.</span>
       </h1>
       <p class="hero-supporting animate-on-scroll hero-text-contrast">
         Got rubbish? We’ll load it, remove it and take it away.
