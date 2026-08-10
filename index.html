@@ -327,6 +327,12 @@
       line-height: 1;
       filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
     }
+    #hero .hero-service-icon-spacer {
+      display: block;
+      width: 1.55rem;
+      height: 1.55rem;
+      flex-shrink: 0;
+    }
     #hero .hero-service-item span {
       font-family: 'Poppins', system-ui, sans-serif;
       font-weight: 700;
@@ -365,6 +371,10 @@
       #hero .hero-service-item i {
         font-size: 1.85rem;
       }
+      #hero .hero-service-icon-spacer {
+        width: 1.85rem;
+        height: 1.85rem;
+      }
       #hero .hero-service-item span {
         font-size: 0.78rem;
       }
@@ -372,6 +382,10 @@
     @media (min-width: 1024px) {
       #hero .hero-service-item i {
         font-size: 2.05rem;
+      }
+      #hero .hero-service-icon-spacer {
+        width: 2.05rem;
+        height: 2.05rem;
       }
       #hero .hero-service-item span {
         font-size: 0.85rem;
@@ -1107,7 +1121,7 @@
           <span>Green Waste</span>
         </li>
         <li class="hero-service-item">
-          <i class="fa-solid fa-broom" aria-hidden="true"></i>
+          <span class="hero-service-icon-spacer" aria-hidden="true"></span>
           <span>Cleanouts</span>
         </li>
         <li class="hero-service-item">
