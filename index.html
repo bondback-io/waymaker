@@ -290,7 +290,7 @@
 
     /* Service icon row */
     #hero .hero-service-row {
-      margin: 1.75rem 0 0;
+      margin: 1.35rem 0 0;
       width: 100%;
       max-width: 48rem;
       display: grid;
@@ -335,7 +335,7 @@
         grid-template-columns: repeat(4, minmax(0, 1fr));
         column-gap: 0;
         row-gap: 0;
-        margin-top: 2rem;
+        margin-top: 1.6rem;
         max-width: 52rem;
       }
       #hero .hero-service-item {
@@ -384,6 +384,45 @@
         gap: 1rem;
         margin-top: 2.15rem;
         max-width: 52rem;
+      }
+    }
+
+    #hero .hero-cta-hint {
+      margin: 0.5rem 0 0;
+      width: 100%;
+      max-width: 52rem;
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: clamp(0.72rem, 2.35vw, 0.875rem);
+      line-height: 1.35;
+      color: rgba(255, 255, 255, 0.92);
+      text-align: center;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+    }
+    #hero .hero-cta-hint .hero-cta-sms-mobile {
+      display: inline;
+      color: #ffffff;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    #hero .hero-cta-hint .hero-cta-sms-mobile:hover,
+    #hero .hero-cta-hint .hero-cta-sms-mobile:focus-visible {
+      color: #b8e86a;
+    }
+    #hero .hero-cta-hint .hero-cta-sms-desktop {
+      display: none;
+      font-weight: 600;
+    }
+    @media (min-width: 768px) {
+      #hero .hero-cta-hint {
+        margin-top: 0.55rem;
+      }
+      #hero .hero-cta-hint .hero-cta-sms-mobile {
+        display: none;
+      }
+      #hero .hero-cta-hint .hero-cta-sms-desktop {
+        display: inline;
       }
     }
 
@@ -1054,6 +1093,9 @@
           <span class="text-center leading-snug">CALL 0423 101 334</span>
         </a>
       </div>
+      <p class="hero-cta-hint animate-on-scroll hero-text-contrast">
+        Prefer to text? <span class="hero-cta-sms-desktop">Send us photos</span><a href="sms:0423101334" class="hero-cta-sms-mobile">Send us photos</a> for a quick quote.
+      </p>
       <ul class="hero-service-row animate-on-scroll" aria-label="Services we handle">
         <li class="hero-service-item">
           <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
