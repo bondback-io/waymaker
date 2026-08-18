@@ -173,35 +173,6 @@
         rgba(0, 0, 0, 0.42);
       pointer-events: none;
     }
-
-    /* Mattress promo — desktop-only overlay; does not affect hero flow or height */
-    .hero-mattress-promo {
-      display: none;
-    }
-    @media (min-width: 1024px) {
-      .hero-mattress-promo {
-        display: block;
-        position: absolute;
-        top: calc(5rem + env(safe-area-inset-top, 0px) + 1.875rem);
-        left: 0;
-        right: 0;
-        z-index: 20;
-        pointer-events: none;
-      }
-      .hero-mattress-promo__inner {
-        max-width: 80rem;
-        margin: 0 auto;
-        padding: 0 2rem;
-        display: flex;
-        justify-content: flex-end;
-      }
-      .hero-mattress-promo img {
-        width: 240px;
-        height: auto;
-        display: block;
-        filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
-      }
-    }
     /*
      * Below lg (1024px): hero is exactly one viewport — no white About strip on first view.
      * Extends past 767px so sm/md Tailwind min-heights (80–90vh) cannot leave a gap.
@@ -1102,17 +1073,6 @@
       <div class="hero-static-bg__layer"></div>
     </div>
     <div class="hero-gradient-overlay absolute inset-0 z-[1]" aria-hidden="true"></div>
-
-    <div class="hero-mattress-promo">
-      <div class="hero-mattress-promo__inner">
-        <img
-          src="assets/mattress-removal-special.png"
-          alt="Mattress removal special: $90 queen mattress, local pickup"
-          width="1753"
-          height="897"
-        />
-      </div>
-    </div>
 
     <div class="relative z-10 hero-copy mx-auto px-5 sm:px-6 lg:px-8 text-center pt-[calc(5rem+env(safe-area-inset-top,0px))] sm:pt-24 pb-12">
       <p class="sr-only">Way Maker Rubbish Solutions — Sunshine Coast rubbish removal.</p>
