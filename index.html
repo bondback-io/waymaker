@@ -399,19 +399,30 @@
       text-align: center;
       text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
     }
-    #hero .hero-cta-hint a {
+    #hero .hero-cta-hint .hero-cta-sms-mobile {
+      display: inline;
       color: #ffffff;
       font-weight: 600;
       text-decoration: underline;
       text-underline-offset: 2px;
     }
-    #hero .hero-cta-hint a:hover,
-    #hero .hero-cta-hint a:focus-visible {
+    #hero .hero-cta-hint .hero-cta-sms-mobile:hover,
+    #hero .hero-cta-hint .hero-cta-sms-mobile:focus-visible {
       color: #b8e86a;
+    }
+    #hero .hero-cta-hint .hero-cta-sms-desktop {
+      display: none;
+      font-weight: 600;
     }
     @media (min-width: 768px) {
       #hero .hero-cta-hint {
         margin-top: 0.85rem;
+      }
+      #hero .hero-cta-hint .hero-cta-sms-mobile {
+        display: none;
+      }
+      #hero .hero-cta-hint .hero-cta-sms-desktop {
+        display: inline;
       }
     }
 
@@ -942,27 +953,13 @@
         max-width: none;
       }
     }
-    .what-we-remove-grid li span {
-      line-height: 1.25;
-    }
-    @media (min-width: 1024px) {
-      .what-we-remove-grid li span {
-        white-space: nowrap;
-      }
-      .what-we-remove-grid li:nth-child(9) span {
-        white-space: normal;
-      }
-    }
-    #work-in-action-more.hidden {
-      display: none !important;
-    }
     .homepage-trust-strip {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 0.45rem 1.75rem;
-      margin: 0 auto 1.15rem;
+      margin: 0 auto 1.75rem;
       padding: 0;
       list-style: none;
       font-family: 'Poppins', system-ui, sans-serif;
@@ -1022,8 +1019,6 @@
       position: relative;
       width: 100%;
       max-width: 480px;
-      max-height: min(78vh, 36rem);
-      overflow-y: auto;
       margin: 0 auto;
       padding: 1.75rem 1.5rem 1.35rem;
       background: #0a0c0a;
@@ -1185,20 +1180,6 @@
       font-size: 0.7rem;
       letter-spacing: 0.01em;
       color: rgba(255, 255, 255, 0.38);
-    }
-    @media (max-width: 639px) {
-      #mattress-special-dialog {
-        padding: 1.2rem 1.1rem 1rem;
-        max-height: min(72vh, 32rem);
-      }
-      .mattress-special-now {
-        font-size: 2.35rem;
-      }
-      .mattress-special-cta {
-        min-height: 2.85rem;
-        font-size: 0.88rem;
-        padding: 0.7rem 0.9rem;
-      }
     }
     @media (min-width: 640px) {
       #mattress-special-dialog {
@@ -1386,7 +1367,7 @@
         </a>
       </div>
       <p class="hero-cta-hint animate-on-scroll hero-text-contrast">
-        Prefer to text? <a href="sms:0423101334">Send us photos</a> for a quick quote.
+        Prefer to text? <span class="hero-cta-sms-desktop">Send us photos</span><a href="sms:0423101334" class="hero-cta-sms-mobile">Send us photos</a> for a quick quote.
       </p>
     </div>
 
@@ -1399,31 +1380,25 @@
 
   <section id="services" class="py-14 sm:py-20 bg-white border-t border-dark/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-5 sm:mb-6 animate-on-scroll">
+      <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-on-scroll">
         <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-4">What We Remove</h2>
         <p class="text-dark/80 text-base sm:text-lg leading-relaxed">
           From single items to full cleanouts, we can take care of the loading, removal and disposal for you.
         </p>
       </div>
-      <ul class="what-we-remove-grid grid grid-cols-2 lg:grid-cols-5 gap-x-2 gap-y-2.5 sm:gap-y-3 max-w-3xl mx-auto mb-5 sm:mb-6">
-        <li class="flex items-center justify-start gap-2 font-heading font-semibold text-sm sm:text-base text-dark min-w-0"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Furniture</span></li>
-        <li class="flex items-center justify-start gap-2 font-heading font-semibold text-sm sm:text-base text-dark min-w-0"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Mattresses</span></li>
-        <li class="flex items-center justify-start gap-2 font-heading font-semibold text-sm sm:text-base text-dark min-w-0"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Household rubbish</span></li>
-        <li class="flex items-center justify-start gap-2 font-heading font-semibold text-sm sm:text-base text-dark min-w-0"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Green waste</span></li>
-        <li class="flex items-center justify-start gap-2 font-heading font-semibold text-sm sm:text-base text-dark min-w-0"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>White goods</span></li>
-        <li class="flex items-center justify-start gap-2 font-heading font-semibold text-sm sm:text-base text-dark min-w-0"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Renovation waste</span></li>
-        <li class="flex items-center justify-start gap-2 font-heading font-semibold text-sm sm:text-base text-dark min-w-0"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Garage cleanouts</span></li>
-        <li class="flex items-center justify-start gap-2 font-heading font-semibold text-sm sm:text-base text-dark min-w-0"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>End of lease rubbish</span></li>
-        <li class="flex items-center justify-start gap-2 font-heading font-semibold text-sm sm:text-base text-dark min-w-0"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Deceased estate items</span></li>
-        <li class="flex items-center justify-start gap-2 font-heading font-semibold text-sm sm:text-base text-dark min-w-0"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>General junk</span></li>
+      <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-3 gap-y-3 sm:gap-y-4 max-w-5xl mx-auto mb-8 sm:mb-10">
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Furniture</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Mattresses</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Household rubbish</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Green waste</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>White goods</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Renovation waste</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Garage cleanouts</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>End of lease rubbish</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Deceased estate items</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>General junk</span></li>
       </ul>
-      <div class="text-center max-w-2xl mx-auto mb-5 sm:mb-6 animate-on-scroll">
-        <p class="text-dark/80 text-base sm:text-lg leading-relaxed mb-4">Not sure if we can take it? Send us a photo and we'll let you know.</p>
-        <div class="page-cta-row max-w-md">
-          <a href="sms:0423101334" class="hero-cta" aria-label="Text photos for a quote">TEXT PHOTOS FOR A QUOTE</a>
-        </div>
-      </div>
-      <figure class="mx-auto w-full max-w-sm sm:max-w-md animate-on-scroll">
+      <figure class="mx-auto mb-8 sm:mb-10 w-full max-w-sm sm:max-w-md animate-on-scroll">
         <img
           src="assets/what-we-remove.jpg"
           alt="WayMaker ute and caged trailer loaded with mattresses and furniture for removal"
@@ -1434,6 +1409,12 @@
           decoding="async"
         />
       </figure>
+      <div class="text-center max-w-2xl mx-auto animate-on-scroll">
+        <p class="text-dark/80 text-base sm:text-lg leading-relaxed mb-5">Not sure if we can take it? Send us a photo and we'll let you know.</p>
+        <div class="page-cta-row max-w-md">
+          <a href="sms:0423101334" class="hero-cta" aria-label="Text photos for a quote">TEXT PHOTOS FOR A QUOTE</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1444,25 +1425,8 @@
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4 max-w-5xl mx-auto animate-on-scroll">
         <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
-          <img src="assets/work-in-action-16.jpg" alt="WayMaker ute and caged trailer loaded with mattresses for removal" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
           <img src="assets/work-in-action-01.jpg" alt="WayMaker team member with a fully loaded rubbish trailer at a disposal facility" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
-          <img src="assets/work-in-action-10.jpg" alt="WayMaker ute loaded with bathroom renovation debris including vanity and bathtub" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
-          <img src="assets/work-in-action-14.jpg" alt="Renovation tile and debris piled on a tarp before rubbish removal" class="absolute inset-0 w-full h-full object-cover object-[center_62%]" width="768" height="1024" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
-          <img src="assets/work-in-action-15.jpg" alt="Cleared backyard after tile and rubbish removal beside a pool" class="absolute inset-0 w-full h-full object-cover object-[center_58%]" width="768" height="1024" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
-          <img src="assets/work-in-action-09.jpg" alt="Caged trailer loaded with household items, furniture and rubbish for removal" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
-        </figure>
-      </div>
-      <div id="work-in-action-more" class="hidden grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4 max-w-5xl mx-auto mt-2.5 sm:mt-4">
         <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
           <img src="assets/work-in-action-02.jpg" alt="Renovation and strip-out debris piled for removal beside a Sunshine Coast home" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
@@ -1479,10 +1443,16 @@
           <img src="assets/work-in-action-05.jpg" alt="Site clearance beside a shipping container with fence materials removed" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
         <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-09.jpg" alt="Caged trailer loaded with household items, furniture and rubbish for removal" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
           <img src="assets/work-in-action-06.jpg" alt="Balcony carpet and underlay strip-out during a restoration clean up" class="absolute inset-0 w-full h-full object-cover object-center" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
         <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
           <img src="assets/work-in-action-07.jpg" alt="Cleared balcony tiles after carpet removal and site clean up" class="absolute inset-0 w-full h-full object-cover object-center" width="768" height="1024" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-10.jpg" alt="WayMaker ute loaded with bathroom renovation debris including vanity and bathtub" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
         <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
           <img src="assets/work-in-action-11.jpg" alt="Large rubbish pile ready for removal beside a shipping container" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
@@ -1494,14 +1464,20 @@
           <img src="assets/work-in-action-13.jpg" alt="Caged trailer loaded with household rubbish and waste for removal" class="absolute inset-0 w-full h-full object-cover object-[center_40%]" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
         <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-14.jpg" alt="Renovation tile and debris piled on a tarp before rubbish removal" class="absolute inset-0 w-full h-full object-cover object-[center_62%]" width="768" height="1024" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-15.jpg" alt="Cleared backyard after tile and rubbish removal beside a pool" class="absolute inset-0 w-full h-full object-cover object-[center_58%]" width="768" height="1024" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-16.jpg" alt="WayMaker ute and caged trailer loaded with mattresses for removal" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
           <img src="assets/work-in-action-17.jpg" alt="Pile of timber and building waste ready for rubbish removal" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
         <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
           <img src="assets/work-in-action-18.jpg" alt="Cleared garden path and gravel border after rubbish removal" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-      </div>
-      <div class="page-cta-row max-w-xs mt-6">
-        <button type="button" id="work-in-action-toggle" class="hero-cta" aria-expanded="false" aria-controls="work-in-action-more">VIEW MORE WORK</button>
       </div>
     </div>
   </section>
@@ -1531,8 +1507,8 @@
         </div>
       </div>
       <div class="mx-auto max-w-4xl">
-        <p class="text-dark/55 text-sm leading-relaxed text-center max-w-2xl mx-auto">
-          <strong class="text-dark/70 font-semibold">Please note:</strong> Pricing may vary depending on waste type, weight, location and site accessibility. Send us photos or complete the quote form for an accurate price.
+        <p class="text-dark/70 text-sm sm:text-base leading-relaxed text-center sm:text-left">
+          <strong class="text-dark">Please note:</strong> Prices may vary depending on waste type, weight, location, commercial work and site accessibility. Please fill out the quote form for a more accurate price. All prices include loading, transport (first 30kms) &amp; responsible eco-disposal.
         </p>
       </div>
     </div>
@@ -1694,13 +1670,13 @@
           </h2>
           <div class="space-y-4 text-dark/80 text-lg leading-relaxed text-left">
             <p>
-              Waymaker Rubbish Solutions is a family owned and operated business founded by Matt and his wife, Shannen, proudly servicing the Sunshine Coast and surrounding areas.
+              Waymaker Rubbish Solutions is a family owned and operated Christian business founded by Matt and his wife, Shannen, proudly servicing the Sunshine Coast and Brisbane regions.
             </p>
             <p>
-              We started Waymaker with a simple goal: to provide reliable, straightforward rubbish removal with good communication and service people can depend on. Whether it's a single item, a household cleanout or support for a larger project, we aim to make the process as easy as possible from the first enquiry through to the final clean up.
+              We provide rapid response disposal services to restoration companies, insurance builders and the general public. Our services include general waste removal, water affected carpet and underlay removal, smooth edge removal, non structural strip outs and contents disposal.
             </p>
             <p>
-              As an owner operated business, you'll deal directly with people who care about turning up when promised, treating your property with respect and getting the job done properly.
+              Our focus is on delivering reliable support across insurance and restoration projects through prompt attendance, clear communication, and dependable service. As an owner operated business, we are committed to helping our clients keep projects moving efficiently while maintaining a professional and responsive approach at every stage.
             </p>
             <p>
               Matthew 6:33 &ndash; &ldquo;Seek first the kingdom of God and His righteousness, and all these things will be added to you.&rdquo;
@@ -1830,7 +1806,7 @@
             <p class="text-white/80 text-lg leading-relaxed">We’re happy to discuss your job over the phone and arrange a time that suits your family or business.</p>
           </div>
           <div class="mt-6 rounded-2xl bg-white/5 border border-white/10 p-6 w-full min-w-0 overflow-x-auto">
-            <p class="font-heading font-bold text-logo text-lg mb-4">Operating Hours</p>
+            <p class="font-heading font-bold text-logo text-lg mb-4">Operation Hours</p>
             <dl class="grid grid-cols-[1fr_auto] gap-x-4 sm:gap-x-6 gap-y-2 text-lg leading-relaxed text-white/85 items-center w-full">
               <dt>Monday</dt>
               <dd class="font-heading font-semibold text-right text-white tabular-nums whitespace-nowrap">7am-5pm</dd>
@@ -2514,17 +2490,6 @@
 
       var y = document.getElementById('year');
       if (y) y.textContent = new Date().getFullYear();
-
-      var workMore = document.getElementById('work-in-action-more');
-      var workToggle = document.getElementById('work-in-action-toggle');
-      if (workMore && workToggle) {
-        workToggle.addEventListener('click', function () {
-          var expanded = workToggle.getAttribute('aria-expanded') === 'true';
-          workMore.classList.toggle('hidden', expanded);
-          workToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-          workToggle.textContent = expanded ? 'VIEW MORE WORK' : 'SHOW LESS';
-        });
-      }
     })();
   </script>
   <script>
