@@ -927,6 +927,56 @@
     .animate-on-scroll { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
+    .page-cta-row {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 40rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .page-cta-row .hero-cta {
+      width: 100%;
+      min-height: 3.25rem;
+      font-size: 0.92rem;
+    }
+    @media (min-width: 640px) {
+      .page-cta-row {
+        flex-direction: row;
+      }
+      .page-cta-row .hero-cta {
+        flex: 1 1 0;
+        width: auto;
+        max-width: none;
+      }
+    }
+    .homepage-trust-strip li {
+      display: inline-flex;
+      align-items: center;
+    }
+    @media (min-width: 640px) {
+      .homepage-trust-strip {
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: 0.9rem;
+        gap: 0.5rem 1.75rem;
+      }
+      .homepage-trust-strip li:not(:last-child)::after {
+        content: '';
+        display: inline-block;
+        width: 4px;
+        height: 4px;
+        margin-left: 1.75rem;
+        border-radius: 50%;
+        background: #6dba2e;
+        vertical-align: middle;
+        transform: translateY(-1px);
+      }
+    }
+
     /* August mattress special — overlay only; does not affect hero layout */
     #mattress-special-overlay {
       position: fixed;
@@ -1307,280 +1357,137 @@
     </div>
 
     <div class="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-      <a href="#about" class="text-white hover:text-primary transition drop-shadow-lg" aria-label="Scroll to about section">
+      <a href="#services" class="text-white hover:text-primary transition drop-shadow-lg" aria-label="Scroll to what we remove">
         <i class="fa-solid fa-chevron-down text-2xl" aria-hidden="true"></i>
       </a>
     </div>
   </section>
 
-  <section id="about" class="py-20 sm:py-28 bg-white">
+  <section id="services" class="py-14 sm:py-20 bg-white border-t border-dark/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="order-2 lg:order-1 animate-on-scroll space-y-6">
-          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark leading-tight text-center">
-            Meet Matt and Shannen
-          </h2>
-          <div class="space-y-4 text-dark/80 text-lg leading-relaxed text-left">
-            <p>
-              Waymaker Rubbish Solutions is a family owned and operated Christian business founded by Matt and his wife, Shannen, proudly servicing the Sunshine Coast and Brisbane regions.
-            </p>
-            <p>
-              We provide rapid response disposal services to restoration companies, insurance builders and the general public. Our services include general waste removal, water affected carpet and underlay removal, smooth edge removal, non structural strip outs and contents disposal.
-            </p>
-            <p>
-              Our focus is on delivering reliable support across insurance and restoration projects through prompt attendance, clear communication, and dependable service. As an owner operated business, we are committed to helping our clients keep projects moving efficiently while maintaining a professional and responsive approach at every stage.
-            </p>
-            <p>
-              Matthew 6:33 &ndash; &ldquo;Seek first the kingdom of God and His righteousness, and all these things will be added to you.&rdquo;
-            </p>
-          </div>
-        </div>
-
-        <div class="order-1 lg:order-2 animate-on-scroll flex flex-col items-center lg:items-end">
-          <!-- Family photo: assets/family-photo.jpeg -->
-          <figure class="w-full max-w-[min(100%,480px)]">
-            <img
-              src="assets/family-photo.jpeg"
-              alt="Matthew, Shannen and their three children – owner-operated Way Maker Rubbish Solutions, Sunshine Coast Queensland backyard"
-              class="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3] border border-dark/5"
-              width="480"
-              height="360"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption class="mt-4 text-center text-dark/70 text-sm sm:text-base font-medium">
-              Matthew, Shannen and their 3 children.
-            </figcaption>
-          </figure>
-        </div>
+      <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-on-scroll">
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-4">What We Remove</h2>
+        <p class="text-dark/80 text-base sm:text-lg leading-relaxed">
+          From single items to full cleanouts, we can take care of the loading, removal and disposal for you.
+        </p>
       </div>
-    </div>
-  </section>
-
-  <section id="services" class="pt-20 sm:pt-28 pb-0 bg-white border-t border-dark/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-12 animate-on-scroll">
-        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-6">Our Services</h2>
-      </div>
-
-      <div class="grid sm:grid-cols-2 gap-8 items-stretch">
-        <article class="card-hover bg-white rounded-2xl p-8 shadow-md border border-dark/5 animate-on-scroll flex flex-col h-full min-h-0">
-          <h3 class="font-heading font-bold text-xl text-dark mb-4">Restoration Clean Ups</h3>
-          <ul class="space-y-2 text-dark/75 text-[15px] sm:text-base leading-relaxed flex-1 min-h-0">
-            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Carpet, underlay and non structural strip out services</span></li>
-            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Contents and rubbish disposal</span></li>
-            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Fast attendance for time sensitive insurance works</span></li>
-          </ul>
-          <div class="mt-auto pt-6 flex justify-center w-full shrink-0">
-            <img
-              src="assets/restoration-support.png"
-              alt="Interior room during restoration — carpet and underlay removal with hardwood floors exposed"
-              class="block w-full min-w-0 rounded-xl border border-dark/10 shadow-sm object-cover object-center h-52 sm:h-60"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </article>
-
-        <article class="card-hover bg-white rounded-2xl p-8 shadow-md border border-dark/5 animate-on-scroll flex flex-col h-full min-h-0">
-          <h3 class="font-heading font-bold text-xl text-dark mb-4">Real Estate &amp; Property Clean Outs</h3>
-          <ul class="space-y-2 text-dark/75 text-[15px] sm:text-base leading-relaxed flex-1 min-h-0">
-            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>End of lease and bond related clearances</span></li>
-            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Hoarding and clutter removal</span></li>
-            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Abandoned goods removal</span></li>
-          </ul>
-          <div class="mt-auto pt-6 flex justify-center w-full shrink-0">
-            <img
-              src="assets/real-estate-keys-house.png"
-              alt="Keys handed over at a sold property — real estate, lease, and property clean-outs"
-              class="block w-full min-w-0 rounded-xl border border-dark/10 shadow-sm object-cover object-center h-52 sm:h-60"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </article>
-
-        <article class="card-hover bg-white rounded-2xl p-8 shadow-md border border-dark/5 animate-on-scroll flex flex-col h-full min-h-0">
-          <h3 class="font-heading font-bold text-xl text-dark mb-4">Residential</h3>
-          <ul class="space-y-2 text-dark/75 text-[15px] sm:text-base leading-relaxed flex-1 min-h-0">
-            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Household junk removal</span></li>
-            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Deceased estate clean outs</span></li>
-            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>White goods and Mattress disposal</span></li>
-          </ul>
-          <div class="mt-auto pt-6 flex justify-center w-full shrink-0">
-            <img
-              src="assets/residential-rubbish.png"
-              alt="Driveway pile of household junk, furniture, and bins — typical residential rubbish removal job"
-              class="block w-full min-w-0 rounded-xl border border-dark/10 shadow-sm object-cover object-[center_45%] h-52 sm:h-60"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </article>
-
-        <article class="card-hover bg-white rounded-2xl p-8 shadow-md border border-dark/5 animate-on-scroll flex flex-col h-full min-h-0">
-          <h3 class="font-heading font-bold text-xl text-dark mb-4">Commercial</h3>
-          <ul class="space-y-2 text-dark/75 text-[15px] sm:text-base leading-relaxed flex-1 min-h-0">
-            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Office and restaurant clear outs</span></li>
-            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Retail premises clearances</span></li>
-            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Construction site waste removal</span></li>
-          </ul>
-          <div class="mt-auto pt-6 flex justify-center w-full shrink-0">
-            <img
-              src="assets/commercial-rubbish.png"
-              alt="Office relocation with packed boxes and furniture — commercial clean-out and rubbish removal"
-              class="block w-full min-w-0 rounded-xl border border-dark/10 shadow-sm object-cover object-center h-52 sm:h-60"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </article>
-      </div>
-
-      <div class="mt-16 sm:mt-20" aria-labelledby="every-job-includes-heading">
-        <h3 id="every-job-includes-heading" class="font-heading font-extrabold uppercase tracking-wide text-black text-left text-2xl sm:text-3xl mb-6 sm:mb-8">
-          Every job includes
-        </h3>
-        <!-- 4 tiles: balanced 2×2 from sm and up -->
-        <div class="mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:max-w-5xl">
-          <div class="flex gap-4 items-start rounded-xl border border-dark/10 bg-offwhite p-5 sm:p-6 shadow-sm">
-            <span class="shrink-0 w-12 h-12 rounded-lg bg-logo/10 flex items-center justify-center text-logo text-xl" aria-hidden="true"><i class="fa-solid fa-handshake"></i></span>
-            <div class="min-w-0 flex-1">
-              <p class="font-heading font-bold text-dark text-lg sm:text-xl mb-1">All Labour</p>
-              <p class="text-dark/70 text-[15px] sm:text-base leading-relaxed">We carry everything out - you don&apos;t touch a thing.</p>
-            </div>
-          </div>
-          <div class="flex gap-4 items-start rounded-xl border border-dark/10 bg-offwhite p-5 sm:p-6 shadow-sm">
-            <span class="shrink-0 w-12 h-12 rounded-lg bg-logo/10 flex items-center justify-center text-logo text-xl" aria-hidden="true"><i class="fa-solid fa-file-invoice-dollar"></i></span>
-            <div class="min-w-0 flex-1">
-              <p class="font-heading font-bold text-dark text-lg sm:text-xl mb-1">Disposal and Tip Fees</p>
-              <p class="text-dark/70 text-[15px] sm:text-base leading-relaxed">All base tip fees are included in our pricing.</p>
-            </div>
-          </div>
-          <div class="flex gap-4 items-start rounded-xl border border-dark/10 bg-offwhite p-5 sm:p-6 shadow-sm">
-            <span class="shrink-0 w-12 h-12 rounded-lg bg-logo/10 flex items-center justify-center text-logo text-xl" aria-hidden="true"><i class="fa-solid fa-truck-fast"></i></span>
-            <div class="min-w-0 flex-1">
-              <p class="font-heading font-bold text-dark text-lg sm:text-xl mb-1">Travel</p>
-              <p class="text-dark/70 text-[15px] sm:text-base leading-relaxed">We include the first 30 kilometres of travel in every quote.</p>
-            </div>
-          </div>
-          <div class="flex gap-4 items-start rounded-xl border border-dark/10 bg-offwhite p-5 sm:p-6 shadow-sm">
-            <span class="shrink-0 w-12 h-12 rounded-lg bg-logo/10 flex items-center justify-center text-logo text-xl" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></span>
-            <div class="min-w-0 flex-1">
-              <p class="font-heading font-bold text-dark text-lg sm:text-xl mb-1">Insurance</p>
-              <p class="text-dark/70 text-[15px] sm:text-base leading-relaxed">We have public liability insurance for your peace of mind.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mx-auto max-w-4xl lg:max-w-5xl mt-6 sm:mt-8">
-          <div class="rounded-2xl bg-white border border-primary/20 p-6 sm:p-8 shadow-md">
-            <p class="text-dark/75 text-base sm:text-lg leading-relaxed">
-              <strong class="text-dark">Please note:</strong> Prices may vary depending on waste type, weight, location, commercial work and site accessibility. Please fill out the quote form for a more accurate price. All prices include loading, transport (first 30kms) &amp; responsible eco-disposal.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="why" class="pt-16 sm:pt-20 pb-20 sm:pb-28 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark text-center mb-12 animate-on-scroll">
-        Why Choose Way Maker Rubbish Solutions?
-      </h2>
-      <ul class="space-y-5 animate-on-scroll">
-        <li class="flex gap-4 items-start p-5 rounded-2xl bg-offwhite border border-primary/10">
-          <span class="w-11 h-11 rounded-full bg-logo/15 flex items-center justify-center shrink-0"><i class="fa-solid fa-gauge-high text-logo text-lg" aria-hidden="true"></i></span>
-          <div class="min-w-0 flex-1">
-            <h3 class="font-heading font-bold text-dark text-lg mb-1">Rapid Response Service</h3>
-            <p class="text-dark/75 leading-relaxed">Fast attendance for urgent insurance and restoration works when time matters most.</p>
-          </div>
-        </li>
-        <li class="flex gap-4 items-start p-5 rounded-2xl bg-offwhite border border-primary/10">
-          <span class="w-11 h-11 rounded-full bg-logo/15 flex items-center justify-center shrink-0"><span class="why-icon-ban text-logo" aria-hidden="true"><i class="fa-solid fa-dumpster"></i><i class="fa-solid fa-ban text-lg"></i></span></span>
-          <div class="min-w-0 flex-1">
-            <h3 class="font-heading font-bold text-dark text-lg mb-1">No Skip Bins Required</h3>
-            <p class="text-dark/75 leading-relaxed">Our services are ideal for properties with limited access, space restrictions, or where skip bins are either impractical or council permits are required.</p>
-          </div>
-        </li>
-        <li class="flex gap-4 items-start p-5 rounded-2xl bg-offwhite border border-primary/10">
-          <span class="w-11 h-11 rounded-full bg-logo/15 flex items-center justify-center shrink-0"><i class="fa-solid fa-shield-halved text-logo text-lg" aria-hidden="true"></i></span>
-          <div class="min-w-0 flex-1">
-            <h3 class="font-heading font-bold text-dark text-lg mb-1">Fully insured</h3>
-            <p class="text-dark/75 leading-relaxed">We operate with the appropriate insurances and a commitment to safe, professional service.</p>
-          </div>
-        </li>
-        <li class="flex gap-4 items-start p-5 rounded-2xl bg-offwhite border border-primary/10">
-          <span class="w-11 h-11 rounded-full bg-logo/15 flex items-center justify-center shrink-0"><i class="fa-solid fa-phone text-logo text-lg" aria-hidden="true"></i></span>
-          <div class="min-w-0 flex-1">
-            <h3 class="font-heading font-bold text-dark text-lg mb-1">One Call, One Solution</h3>
-            <p class="text-dark/75 leading-relaxed">From carpet removal and strip outs to rubbish disposal and site clearance, we take care of it all.</p>
-          </div>
-        </li>
+      <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-3 gap-y-3 sm:gap-y-4 max-w-5xl mx-auto mb-8 sm:mb-10">
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Furniture</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Mattresses</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Household rubbish</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Green waste</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>White goods</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Renovation waste</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Garage cleanouts</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>End of lease rubbish</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Deceased estate items</span></li>
+        <li class="flex items-center justify-center gap-2 text-center font-heading font-semibold text-sm sm:text-base text-dark"><i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>General junk</span></li>
       </ul>
+      <div class="text-center max-w-2xl mx-auto animate-on-scroll">
+        <p class="text-dark/80 text-base sm:text-lg leading-relaxed mb-5">Not sure if we can take it? Send us a photo and we'll let you know.</p>
+        <div class="page-cta-row max-w-md">
+          <a href="sms:0423101334" class="hero-cta" aria-label="Text photos for a quote">TEXT PHOTOS FOR A QUOTE</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="work-in-action" class="py-20 sm:py-28 bg-white border-t border-dark/10" aria-labelledby="work-in-action-heading">
+  <section id="work-in-action" class="py-14 sm:py-20 bg-white border-t border-dark/10" aria-labelledby="work-in-action-heading">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-12 animate-on-scroll">
-        <h2 id="work-in-action-heading" class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-6">Our work in Action!</h2>
+      <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-on-scroll">
+        <h2 id="work-in-action-heading" class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-4">Our work in Action!</h2>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-5xl mx-auto animate-on-scroll">
-        <figure class="rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
-          <img src="assets/work-in-action-01.jpg" alt="WayMaker team member with a fully loaded rubbish trailer at a disposal facility" class="block w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4 max-w-5xl mx-auto animate-on-scroll">
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-01.jpg" alt="WayMaker team member with a fully loaded rubbish trailer at a disposal facility" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
-          <img src="assets/work-in-action-02.jpg" alt="Renovation and strip-out debris piled for removal beside a Sunshine Coast home" class="block w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-02.jpg" alt="Renovation and strip-out debris piled for removal beside a Sunshine Coast home" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
-          <img src="assets/work-in-action-03.jpg" alt="Cleared site along the side of a house after rubbish removal" class="block w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-03.jpg" alt="Cleared site along the side of a house after rubbish removal" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="relative aspect-[3/4] sm:aspect-auto rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
           <img src="assets/work-in-action-08.jpg" alt="WayMaker ute and caged trailer loaded with mattresses and furniture for disposal" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="relative aspect-[3/4] sm:aspect-auto rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
           <img src="assets/work-in-action-04.jpg" alt="Backyard clean-out with crates, boxes and household items ready for removal" class="absolute inset-0 w-full h-full object-cover object-center" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
-          <img src="assets/work-in-action-05.jpg" alt="Site clearance beside a shipping container with fence materials removed" class="block w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-05.jpg" alt="Site clearance beside a shipping container with fence materials removed" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
-          <img src="assets/work-in-action-09.jpg" alt="Caged trailer loaded with household items, furniture and rubbish for removal" class="block w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-09.jpg" alt="Caged trailer loaded with household items, furniture and rubbish for removal" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="relative aspect-[3/4] sm:aspect-auto rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
           <img src="assets/work-in-action-06.jpg" alt="Balcony carpet and underlay strip-out during a restoration clean up" class="absolute inset-0 w-full h-full object-cover object-center" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="relative aspect-[3/4] sm:aspect-auto rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
           <img src="assets/work-in-action-07.jpg" alt="Cleared balcony tiles after carpet removal and site clean up" class="absolute inset-0 w-full h-full object-cover object-center" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
-          <img src="assets/work-in-action-10.jpg" alt="WayMaker ute loaded with bathroom renovation debris including vanity and bathtub" class="block w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-10.jpg" alt="WayMaker ute loaded with bathroom renovation debris including vanity and bathtub" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
-          <img src="assets/work-in-action-11.jpg" alt="Large rubbish pile ready for removal beside a shipping container" class="block w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-11.jpg" alt="Large rubbish pile ready for removal beside a shipping container" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
-          <img src="assets/work-in-action-12.jpg" alt="Cleared site beside a shipping container after rubbish removal" class="block w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-12.jpg" alt="Cleared site beside a shipping container after rubbish removal" class="absolute inset-0 w-full h-full object-cover" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
-          <img src="assets/work-in-action-13.jpg" alt="Caged trailer loaded with household rubbish and waste for removal" class="block w-full h-full object-cover object-[center_40%]" width="768" height="1024" loading="lazy" decoding="async" />
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-13.jpg" alt="Caged trailer loaded with household rubbish and waste for removal" class="absolute inset-0 w-full h-full object-cover object-[center_40%]" width="768" height="1024" loading="lazy" decoding="async" />
         </figure>
-        <figure class="relative rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
-          <img src="assets/work-in-action-14.jpg" alt="Renovation tile and debris piled on a tarp before rubbish removal" class="block w-full h-full object-cover object-[center_62%]" width="768" height="1024" loading="lazy" decoding="async" />
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-14.jpg" alt="Renovation tile and debris piled on a tarp before rubbish removal" class="absolute inset-0 w-full h-full object-cover object-[center_62%]" width="768" height="1024" loading="lazy" decoding="async" />
           <figcaption class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 z-10 rounded-md bg-dark/55 px-2 py-0.5 text-[0.625rem] sm:text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-[2px] pointer-events-none">Before</figcaption>
         </figure>
-        <figure class="relative rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite h-full">
-          <img src="assets/work-in-action-15.jpg" alt="Cleared backyard after tile and rubbish removal beside a pool" class="block w-full h-full object-cover object-[center_58%]" width="768" height="1024" loading="lazy" decoding="async" />
+        <figure class="relative aspect-[3/4] rounded-xl overflow-hidden border border-dark/10 shadow-md bg-offwhite">
+          <img src="assets/work-in-action-15.jpg" alt="Cleared backyard after tile and rubbish removal beside a pool" class="absolute inset-0 w-full h-full object-cover object-[center_58%]" width="768" height="1024" loading="lazy" decoding="async" />
           <figcaption class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 z-10 rounded-md bg-dark/55 px-2 py-0.5 text-[0.625rem] sm:text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-[2px] pointer-events-none">After</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <section id="google-reviews" class="py-20 sm:py-28 bg-white border-t border-dark/10" aria-labelledby="google-reviews-heading">
+  <section id="why" class="py-14 sm:py-20 bg-white border-t border-dark/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-on-scroll">
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark mb-4">You point. We load. We take it away.</h2>
+        <p class="text-dark/80 text-base sm:text-lg leading-relaxed">Our rubbish removal service is designed to make the whole process simple.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 max-w-4xl mx-auto mb-6 sm:mb-8">
+        <div class="text-center sm:text-left">
+          <h3 class="font-heading font-bold text-dark text-lg mb-1">Loading Included</h3>
+          <p class="text-dark/70 text-[15px] sm:text-base leading-relaxed">We do the lifting and loading for you.</p>
+        </div>
+        <div class="text-center sm:text-left">
+          <h3 class="font-heading font-bold text-dark text-lg mb-1">Disposal Included</h3>
+          <p class="text-dark/70 text-[15px] sm:text-base leading-relaxed">Standard disposal fees are included in your quoted price.</p>
+        </div>
+        <div class="text-center sm:text-left">
+          <h3 class="font-heading font-bold text-dark text-lg mb-1">Travel Included</h3>
+          <p class="text-dark/70 text-[15px] sm:text-base leading-relaxed">The first 30 km of travel is included.</p>
+        </div>
+        <div class="text-center sm:text-left">
+          <h3 class="font-heading font-bold text-dark text-lg mb-1">Fully Insured</h3>
+          <p class="text-dark/70 text-[15px] sm:text-base leading-relaxed">Professional and fully insured rubbish removal.</p>
+        </div>
+      </div>
+      <div class="mx-auto max-w-4xl">
+        <p class="text-dark/70 text-sm sm:text-base leading-relaxed text-center sm:text-left">
+          <strong class="text-dark">Please note:</strong> Prices may vary depending on waste type, weight, location, commercial work and site accessibility. Please fill out the quote form for a more accurate price. All prices include loading, transport (first 30kms) &amp; responsible eco-disposal.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="google-reviews" class="py-14 sm:py-20 bg-white border-t border-dark/10" aria-labelledby="google-reviews-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ul class="homepage-trust-strip animate-on-scroll" aria-label="Trust points">
+        <li><span class="text-[#fbbc04] tracking-tight" aria-hidden="true">★★★★★</span> Google Reviews</li>
+        <li>Local Sunshine Coast Business</li>
+        <li>Fully Insured</li>
+      </ul>
       <div class="text-center max-w-3xl mx-auto mb-12 animate-on-scroll">
         <h2 id="google-reviews-heading" class="font-heading font-bold text-logo uppercase tracking-widest text-base sm:text-lg mb-4 inline-flex items-center justify-center gap-2.5">
           <img
@@ -1707,6 +1614,90 @@
         </a>
       </div>
 
+    </div>
+  </section>
+
+  <section id="quote-cta" class="py-12 sm:py-16 bg-dark text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-heading font-extrabold text-3xl sm:text-4xl mb-3">Got rubbish you need gone?</h2>
+      <p class="text-white/80 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">Send us a few photos and your location and we'll get back to you with a quote.</p>
+      <div class="page-cta-row">
+        <a href="#get-in-touch" data-mobile-href="#quote" class="hero-cta" aria-label="Get a fast quote">GET A FAST QUOTE</a>
+        <a href="sms:0423101334" class="hero-cta" aria-label="Text photos for a quote">TEXT PHOTOS FOR A QUOTE</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-14 sm:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 animate-on-scroll space-y-6">
+          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-dark leading-tight text-center">
+            Meet Matt and Shannen
+          </h2>
+          <div class="space-y-4 text-dark/80 text-lg leading-relaxed text-left">
+            <p>
+              Waymaker Rubbish Solutions is a family owned and operated Christian business founded by Matt and his wife, Shannen, proudly servicing the Sunshine Coast and Brisbane regions.
+            </p>
+            <p>
+              We provide rapid response disposal services to restoration companies, insurance builders and the general public. Our services include general waste removal, water affected carpet and underlay removal, smooth edge removal, non structural strip outs and contents disposal.
+            </p>
+            <p>
+              Our focus is on delivering reliable support across insurance and restoration projects through prompt attendance, clear communication, and dependable service. As an owner operated business, we are committed to helping our clients keep projects moving efficiently while maintaining a professional and responsive approach at every stage.
+            </p>
+            <p>
+              Matthew 6:33 &ndash; &ldquo;Seek first the kingdom of God and His righteousness, and all these things will be added to you.&rdquo;
+            </p>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2 animate-on-scroll flex flex-col items-center lg:items-end">
+          <!-- Family photo: assets/family-photo.jpeg -->
+          <figure class="w-full max-w-[min(100%,480px)]">
+            <img
+              src="assets/family-photo.jpeg"
+              alt="Matthew, Shannen and their three children – owner-operated Way Maker Rubbish Solutions, Sunshine Coast Queensland backyard"
+              class="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3] border border-dark/5"
+              width="480"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption class="mt-4 text-center text-dark/70 text-sm sm:text-base font-medium">
+              Matthew, Shannen and their 3 children.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="restoration" class="py-14 sm:py-20 bg-offwhite border-t border-dark/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="animate-on-scroll">
+          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-dark mb-4 text-center lg:text-left">Restoration &amp; Insurance Support</h2>
+          <p class="text-dark/80 text-base sm:text-lg leading-relaxed mb-6 text-center lg:text-left">
+            We also support restoration companies, insurance builders and contractors with responsive rubbish removal and non structural strip out services across the Sunshine Coast.
+          </p>
+          <ul class="space-y-2 text-dark/75 text-[15px] sm:text-base leading-relaxed max-w-lg mx-auto lg:mx-0">
+            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Carpet and underlay removal</span></li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Smooth edge removal</span></li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Contents disposal</span></li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Non structural strip outs</span></li>
+            <li class="flex gap-2"><i class="fa-solid fa-check text-logo mt-1 shrink-0" aria-hidden="true"></i><span>Rapid rubbish removal and site clearance</span></li>
+          </ul>
+        </div>
+        <div class="animate-on-scroll">
+          <img
+            src="assets/restoration-support.png"
+            alt="Interior room during restoration — carpet and underlay removal with hardwood floors exposed"
+            class="block w-full min-w-0 rounded-xl border border-dark/10 shadow-sm object-cover object-center h-52 sm:h-64 lg:h-72"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
