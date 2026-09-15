@@ -992,7 +992,7 @@
       }
     }
 
-    /* August mattress special — overlay only; does not affect hero layout */
+    /* Monthly rubbish removal promo — overlay only; does not affect hero layout */
     #mattress-special-overlay {
       position: fixed;
       inset: 0;
@@ -1923,6 +1923,8 @@
     id="mattress-special-overlay"
     hidden
     aria-hidden="true"
+    data-promotion="monthly-ten-percent-off"
+    data-promo-percent="10"
   >
     <div
       id="mattress-special-dialog"
@@ -1931,19 +1933,18 @@
       aria-labelledby="mattress-special-heading"
       aria-describedby="mattress-special-desc"
     >
-      <button type="button" id="mattress-special-close" aria-label="Close mattress special">
+      <button type="button" id="mattress-special-close" aria-label="Close monthly special offer">
         <i class="fa-solid fa-xmark" aria-hidden="true"></i>
       </button>
-      <p class="mattress-special-label">August special</p>
-      <h2 id="mattress-special-heading" class="mattress-special-heading">Queen Mattress Removal</h2>
+      <p class="mattress-special-label">Monthly special</p>
+      <h2 id="mattress-special-heading" class="mattress-special-heading">10% Off Rubbish Removal</h2>
       <div class="mattress-special-price-row">
-        <del class="mattress-special-was">$120</del>
-        <span class="mattress-special-now">$90</span>
+        <span class="mattress-special-now">10% OFF</span>
       </div>
-      <p class="mattress-special-save">Save $30 this August</p>
+      <p class="mattress-special-save">Save 10% on your rubbish removal this month</p>
       <p class="mattress-special-support">Local pickup • We load it • We take it away</p>
-      <p id="mattress-special-desc" class="mattress-special-note">Need a mattress gone? Book a pickup or send us a photo for a quick quote.</p>
-      <a href="#get-in-touch" data-mobile-href="#quote" id="mattress-special-cta" class="mattress-special-cta">Book $90 Mattress Pickup</a>
+      <p id="mattress-special-desc" class="mattress-special-note">Need rubbish gone? Book a pickup or send us a photo for a quick quote.</p>
+      <a href="#get-in-touch" data-mobile-href="#quote" id="mattress-special-cta" class="mattress-special-cta" aria-label="Claim 10 percent off rubbish removal">Claim 10% Off</a>
       <a href="sms:0423101334" id="mattress-special-sms" class="mattress-special-sms">Prefer to text? Send us a photo</a>
       <p class="mattress-special-timer" id="mattress-special-timer" aria-live="polite">Offer closes automatically in <span id="mattress-special-seconds">30</span> seconds</p>
     </div>
@@ -2160,8 +2161,8 @@
 
       document.addEventListener('keydown', function (ev) {
         if (ev.key !== 'Escape') return;
-        if (typeof window.waymakerCloseMattressSpecial === 'function' && window.waymakerMattressSpecialOpen) {
-          window.waymakerCloseMattressSpecial(true);
+        if (typeof window.waymakerClosePromoPopup === 'function' && window.waymakerPromoPopupOpen) {
+          window.waymakerClosePromoPopup(true);
           return;
         }
         if (modalOverlay && !modalOverlay.classList.contains('hidden')) {
@@ -2486,7 +2487,8 @@
   </script>
   <script>
     (function () {
-      var STORAGE_KEY = 'waymakerAugustMattressSpecialDismissed';
+      var STORAGE_KEY = 'waymakerMonthlyTenPercentPromoDismissed';
+      var PROMO_PERCENT_OFF = 10;
       var overlay = document.getElementById('mattress-special-overlay');
       var dialog = document.getElementById('mattress-special-dialog');
       var closeBtn = document.getElementById('mattress-special-close');
@@ -2551,7 +2553,7 @@
         overlay.hidden = true;
         overlay.classList.remove('is-open', 'is-closing');
         overlay.setAttribute('aria-hidden', 'true');
-        window.waymakerMattressSpecialOpen = false;
+        window.waymakerPromoPopupOpen = false;
         restoreBodyScroll();
         if (lastFocus && typeof lastFocus.focus === 'function' && document.contains(lastFocus)) {
           lastFocus.focus();
@@ -2560,14 +2562,14 @@
       }
 
       function closeSpecial(persist, immediate) {
-        if (!window.waymakerMattressSpecialOpen && overlay.hidden) {
+        if (!window.waymakerPromoPopupOpen && overlay.hidden) {
           clearTimers();
           if (persist) markDismissed();
           return;
         }
         clearTimers();
         if (persist) markDismissed();
-        window.waymakerMattressSpecialOpen = false;
+        window.waymakerPromoPopupOpen = false;
         if (immediate || reducedMotion) {
           hideOverlay();
           return;
@@ -2577,10 +2579,11 @@
         window.setTimeout(hideOverlay, 280);
       }
 
-      window.waymakerCloseMattressSpecial = closeSpecial;
+      window.waymakerClosePromoPopup = closeSpecial;
+      window.waymakerPromoPercentOff = PROMO_PERCENT_OFF;
 
       function openSpecial() {
-        if (wasDismissed() || window.waymakerMattressSpecialOpen) return;
+        if (wasDismissed() || window.waymakerPromoPopupOpen) return;
         lastFocus = document.activeElement;
         overlay.hidden = false;
         overlay.setAttribute('aria-hidden', 'false');
@@ -2588,7 +2591,7 @@
         remaining = 30;
         if (secondsEl) secondsEl.textContent = String(remaining);
         document.body.style.overflow = 'hidden';
-        window.waymakerMattressSpecialOpen = true;
+        window.waymakerPromoPopupOpen = true;
         window.requestAnimationFrame(function () {
           overlay.classList.add('is-open');
         });
@@ -2632,7 +2635,7 @@
       }
 
       dialog.addEventListener('keydown', function (ev) {
-        if (ev.key !== 'Tab' || !window.waymakerMattressSpecialOpen) return;
+        if (ev.key !== 'Tab' || !window.waymakerPromoPopupOpen) return;
         var nodes = getFocusable();
         if (!nodes.length) return;
         var first = nodes[0];
