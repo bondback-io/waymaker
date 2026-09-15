@@ -698,6 +698,23 @@
       transform: translateY(-6px);
       box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.12);
     }
+    .homepage-pricing-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    }
+    .homepage-pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.45);
+      border-color: rgba(109, 186, 46, 0.45);
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+    .homepage-pricing-card__desc {
+      flex: 1 1 auto;
+      min-height: 2.75rem;
+    }
 
     /* Top of page: transparent over hero. Scrolled (or mobile menu open): full-width solid black bar */
     header#navbar.waymaker-site-header {
@@ -1302,11 +1319,12 @@
 
         <div class="waymaker-nav-bar-tray">
           <div class="hidden lg:flex shrink-0 items-center gap-3 xl:gap-4">
-            <a href="#about" class="text-white/90 hover:text-primary transition font-medium text-xl">About</a>
-            <a href="#services" class="text-white/90 hover:text-primary transition font-medium text-xl">Our Services</a>
-            <a href="#google-reviews" class="text-white/90 hover:text-primary transition font-medium text-xl">Reviews</a>
-            <a href="#areas" class="text-white/90 hover:text-primary transition font-medium text-xl">Coverage Areas</a>
-            <a href="#contact" class="text-white/90 hover:text-primary transition font-medium text-xl">Contact Us</a>
+            <a href="#about" class="text-white/90 hover:text-primary transition font-medium text-lg xl:text-xl">About</a>
+            <a href="#services" class="text-white/90 hover:text-primary transition font-medium text-lg xl:text-xl">Our Services</a>
+            <a href="#pricing" class="text-white/90 hover:text-primary transition font-medium text-lg xl:text-xl">Pricing</a>
+            <a href="#google-reviews" class="text-white/90 hover:text-primary transition font-medium text-lg xl:text-xl">Reviews</a>
+            <a href="#areas" class="text-white/90 hover:text-primary transition font-medium text-lg xl:text-xl">Coverage Areas</a>
+            <a href="#contact" class="text-white/90 hover:text-primary transition font-medium text-lg xl:text-xl">Contact Us</a>
             <a href="#contact" class="nav-quote-cta" aria-label="Request a quote" data-mobile-href="#quote">Get a Quote</a>
           </div>
 
@@ -1332,6 +1350,7 @@
     <div class="waymaker-mobile-nav-panel mobile-menu-panel">
       <a href="#about" class="waymaker-mobile-nav-link">About</a>
       <a href="#services" class="waymaker-mobile-nav-link">Our Services</a>
+      <a href="#pricing" class="waymaker-mobile-nav-link">Pricing</a>
       <a href="#google-reviews" class="waymaker-mobile-nav-link">Reviews</a>
       <a href="#areas" class="waymaker-mobile-nav-link">Coverage Areas</a>
       <a href="#contact" class="waymaker-mobile-nav-link">Contact Us</a>
@@ -1401,6 +1420,103 @@
       <div class="text-center max-w-2xl mx-auto animate-on-scroll">
         <p class="text-dark/80 text-base sm:text-lg leading-relaxed mb-5">Not sure if we can take it? Send us a photo and we'll let you know.</p>
         <div class="page-cta-row max-w-md">
+          <a href="sms:0423101334" class="hero-cta" aria-label="Text photos for a quote">TEXT PHOTOS FOR A QUOTE</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="py-14 sm:py-20 bg-dark text-white border-t border-white/10 scroll-mt-28" aria-labelledby="pricing-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-w-0">
+      <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 animate-on-scroll">
+        <h2 id="pricing-heading" class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-white mb-4">Straightforward Rubbish Removal Pricing</h2>
+        <p class="text-white/85 text-base sm:text-lg leading-relaxed">
+          Know roughly what your rubbish removal will cost before we arrive. Our standard pricing includes loading, transport and base disposal fees.
+        </p>
+        <p class="text-white/65 text-sm sm:text-base leading-relaxed mt-4">
+          Final pricing can vary depending on waste type, weight, location and site access. Send us a few photos for an accurate quote.
+        </p>
+      </div>
+
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-6xl mx-auto mb-8 sm:mb-10 list-none p-0 m-0 animate-on-scroll" role="list">
+        <li class="min-w-0">
+          <article class="homepage-pricing-card rounded-xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-lg">
+            <h3 class="font-heading font-bold text-white text-base sm:text-lg leading-snug mb-2">Small Load</h3>
+            <p class="font-heading font-bold text-logo text-xl sm:text-2xl mb-3 tabular-nums">$120 &ndash; $180</p>
+            <p class="homepage-pricing-card__desc text-white/75 text-sm sm:text-[15px] leading-relaxed">A few items, boxes or a small cleanup</p>
+          </article>
+        </li>
+        <li class="min-w-0">
+          <article class="homepage-pricing-card rounded-xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-lg">
+            <h3 class="font-heading font-bold text-white text-base sm:text-lg leading-snug mb-2">&frac14; 10 x 5 Trailer Load</h3>
+            <p class="font-heading font-bold text-logo text-xl sm:text-2xl mb-3 tabular-nums">$180 &ndash; $250</p>
+            <p class="homepage-pricing-card__desc text-white/75 text-sm sm:text-[15px] leading-relaxed">Small household cleanouts or bulky items</p>
+          </article>
+        </li>
+        <li class="min-w-0">
+          <article class="homepage-pricing-card rounded-xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-lg">
+            <h3 class="font-heading font-bold text-white text-base sm:text-lg leading-snug mb-2">&frac12; 10 x 5 Trailer Load</h3>
+            <p class="font-heading font-bold text-logo text-xl sm:text-2xl mb-3 tabular-nums">$250 &ndash; $300</p>
+            <p class="homepage-pricing-card__desc text-white/75 text-sm sm:text-[15px] leading-relaxed">Furniture, household junk or renovation waste</p>
+          </article>
+        </li>
+        <li class="min-w-0">
+          <article class="homepage-pricing-card rounded-xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-lg">
+            <h3 class="font-heading font-bold text-white text-base sm:text-lg leading-snug mb-2">&frac34; 10 x 5 Trailer Load</h3>
+            <p class="font-heading font-bold text-logo text-xl sm:text-2xl mb-3 tabular-nums">$300 &ndash; $350</p>
+            <p class="homepage-pricing-card__desc text-white/75 text-sm sm:text-[15px] leading-relaxed">Larger cleanouts and mixed rubbish</p>
+          </article>
+        </li>
+        <li class="min-w-0">
+          <article class="homepage-pricing-card rounded-xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-lg">
+            <h3 class="font-heading font-bold text-white text-base sm:text-lg leading-snug mb-2">Full 10 x 5 Trailer Load</h3>
+            <p class="font-heading font-bold text-logo text-xl sm:text-2xl mb-3 tabular-nums">$350 &ndash; $450</p>
+            <p class="homepage-pricing-card__desc text-white/75 text-sm sm:text-[15px] leading-relaxed">Maximum standard trailer load for bigger cleanups</p>
+          </article>
+        </li>
+        <li class="min-w-0">
+          <article class="homepage-pricing-card rounded-xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-lg">
+            <h3 class="font-heading font-bold text-white text-base sm:text-lg leading-snug mb-2">Full Ute + 10 x 5 Trailer</h3>
+            <p class="font-heading font-bold text-logo text-xl sm:text-2xl mb-3 tabular-nums">From $650</p>
+            <p class="homepage-pricing-card__desc text-white/75 text-sm sm:text-[15px] leading-relaxed">For larger cleanouts requiring both the ute and trailer</p>
+          </article>
+        </li>
+        <li class="min-w-0 sm:col-span-2 lg:col-span-3">
+          <article class="homepage-pricing-card rounded-xl border border-logo/35 bg-logo/10 p-5 sm:p-6 shadow-lg max-w-2xl mx-auto w-full">
+            <h3 class="font-heading font-bold text-white text-base sm:text-lg leading-snug mb-2">Heavy Materials</h3>
+            <p class="font-heading font-bold text-logo text-xl sm:text-2xl mb-3">Custom Quote</p>
+            <p class="homepage-pricing-card__desc text-white/75 text-sm sm:text-[15px] leading-relaxed min-h-0">Concrete, soil, bricks, tiles and other heavy waste</p>
+          </article>
+        </li>
+      </ul>
+
+      <div class="max-w-4xl mx-auto space-y-6 mb-10 sm:mb-12 animate-on-scroll">
+        <p class="text-white/75 text-sm sm:text-base leading-relaxed text-center">
+          Heavy materials such as concrete, soil, bricks and tiles require a custom quote due to their weight and disposal costs. Specialised or regulated waste may also require separate disposal arrangements.
+        </p>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 list-none p-0 m-0" aria-label="What is included in standard pricing">
+          <li class="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white/85 min-w-0">
+            <i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Loading included</span>
+          </li>
+          <li class="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white/85 min-w-0">
+            <i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Transport included</span>
+          </li>
+          <li class="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white/85 min-w-0">
+            <i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>Base disposal fees included</span>
+          </li>
+          <li class="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-white/85 min-w-0">
+            <i class="fa-solid fa-check text-logo text-sm shrink-0" aria-hidden="true"></i><span>First 30 km travel included</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="max-w-3xl mx-auto text-center animate-on-scroll">
+        <h3 class="font-heading font-extrabold text-2xl sm:text-3xl text-white mb-3">Not sure how much rubbish you have?</h3>
+        <p class="text-white/80 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
+          Send us a few photos and your location and we&rsquo;ll give you a straightforward quote.
+        </p>
+        <div class="page-cta-row">
+          <a href="#get-in-touch" data-mobile-href="#quote" class="hero-cta" aria-label="Get a fast quote">GET A FAST QUOTE</a>
           <a href="sms:0423101334" class="hero-cta" aria-label="Text photos for a quote">TEXT PHOTOS FOR A QUOTE</a>
         </div>
       </div>
