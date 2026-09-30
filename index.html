@@ -715,6 +715,14 @@
       flex: 1 1 auto;
       min-height: 2.75rem;
     }
+    .homepage-pricing-card--featured {
+      border-color: rgba(109, 186, 46, 0.28);
+      background-color: rgba(109, 186, 46, 0.06);
+    }
+    .homepage-pricing-card--featured:hover {
+      border-color: rgba(109, 186, 46, 0.4);
+      background-color: rgba(109, 186, 46, 0.09);
+    }
 
     /* Top of page: transparent over hero. Scrolled (or mobile menu open): full-width solid black bar */
     header#navbar.waymaker-site-header {
@@ -1009,7 +1017,7 @@
       }
     }
 
-    /* Monthly rubbish removal promo — overlay only; does not affect hero layout */
+    /* Homepage rubbish removal popup — overlay only; does not affect hero layout */
     #mattress-special-overlay {
       position: fixed;
       inset: 0;
@@ -1120,6 +1128,21 @@
       line-height: 0.9;
       letter-spacing: 0.04em;
       color: #6dba2e;
+    }
+    .mattress-special-disposal-suffix {
+      font-family: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+      font-weight: 400;
+      font-size: clamp(1.45rem, 4.5vw, 2rem);
+      line-height: 1;
+      letter-spacing: 0.06em;
+      color: #6dba2e;
+    }
+    .mattress-special-secondary {
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.72);
+      margin: 0 0 0.85rem;
     }
     .mattress-special-save {
       font-family: 'Poppins', system-ui, sans-serif;
@@ -1468,7 +1491,7 @@
           </article>
         </li>
         <li class="min-w-0">
-          <article class="homepage-pricing-card rounded-xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-lg">
+          <article class="homepage-pricing-card homepage-pricing-card--featured rounded-xl border p-5 sm:p-6 shadow-lg">
             <h3 class="font-heading font-bold text-white text-base sm:text-lg leading-snug mb-2">Full 10 x 5 Trailer Load</h3>
             <p class="font-heading font-bold text-logo text-xl sm:text-2xl mb-3 tabular-nums">From $325 + disposal</p>
             <p class="homepage-pricing-card__desc text-white/75 text-sm sm:text-[15px] leading-relaxed">A full trailer load for larger household and property cleanups</p>
@@ -2045,8 +2068,7 @@
     id="mattress-special-overlay"
     hidden
     aria-hidden="true"
-    data-promotion="monthly-ten-percent-off"
-    data-promo-percent="10"
+    data-promotion="full-trailer-from-325"
   >
     <div
       id="mattress-special-dialog"
@@ -2055,17 +2077,20 @@
       aria-labelledby="mattress-special-heading"
       aria-describedby="mattress-special-desc"
     >
-      <button type="button" id="mattress-special-close" aria-label="Close monthly special offer">
+      <button type="button" id="mattress-special-close" aria-label="Close rubbish removal offer">
         <i class="fa-solid fa-xmark" aria-hidden="true"></i>
       </button>
-      <p class="mattress-special-label">Monthly special</p>
+      <p class="mattress-special-label">Local rubbish removal</p>
+      <h2 id="mattress-special-heading" class="mattress-special-heading">Full Trailer From</h2>
       <div class="mattress-special-price-row">
-        <span id="mattress-special-heading" class="mattress-special-now">10% OFF</span>
+        <span class="mattress-special-now">$325</span>
+        <span class="mattress-special-disposal-suffix">+ DISPOSAL</span>
       </div>
-      <p class="mattress-special-save">Save 10% on your rubbish removal this month</p>
+      <p class="mattress-special-save">Full 10 x 5 trailer removal from $325 plus disposal.</p>
+      <p class="mattress-special-secondary">Smaller loads from $120 plus disposal</p>
       <p class="mattress-special-support">Local pickup • We load it • We take it away</p>
-      <p id="mattress-special-desc" class="mattress-special-note">Need rubbish gone? Book a pickup or send us a photo for a quick quote.</p>
-      <a href="#get-in-touch" data-mobile-href="#quote" id="mattress-special-cta" class="mattress-special-cta" aria-label="Claim 10 percent off rubbish removal">Claim 10% Off</a>
+      <p id="mattress-special-desc" class="mattress-special-note">Need rubbish gone? Send us a photo for a quick quote and an estimate of disposal costs.</p>
+      <a href="#get-in-touch" data-mobile-href="#quote" id="mattress-special-cta" class="mattress-special-cta" aria-label="Get a fast quote">GET A FAST QUOTE</a>
       <a href="sms:0423101334" id="mattress-special-sms" class="mattress-special-sms">Prefer to text? Send us a photo</a>
       <p class="mattress-special-timer" id="mattress-special-timer" aria-live="polite">Offer closes automatically in <span id="mattress-special-seconds">30</span> seconds</p>
     </div>
@@ -2608,8 +2633,7 @@
   </script>
   <script>
     (function () {
-      var STORAGE_KEY = 'waymakerMonthlyTenPercentPromoDismissed';
-      var PROMO_PERCENT_OFF = 10;
+      var STORAGE_KEY = 'waymakerFullTrailerPopupDismissed';
       var overlay = document.getElementById('mattress-special-overlay');
       var dialog = document.getElementById('mattress-special-dialog');
       var closeBtn = document.getElementById('mattress-special-close');
@@ -2701,7 +2725,6 @@
       }
 
       window.waymakerClosePromoPopup = closeSpecial;
-      window.waymakerPromoPercentOff = PROMO_PERCENT_OFF;
 
       function openSpecial() {
         if (wasDismissed() || window.waymakerPromoPopupOpen) return;
