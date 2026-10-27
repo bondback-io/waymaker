@@ -101,6 +101,39 @@
   }
 }
 
+/* Mobile homepage only: Menu + large logo (location pages keep Get a Quote) */
+@media (max-width: 1023.98px) {
+  body.waymaker-homepage header#navbar .waymaker-header-actions > .nav-quote-cta {
+    display: none !important;
+  }
+
+  body.waymaker-homepage header#navbar a.waymaker-header-logo-link {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: none;
+    width: auto;
+  }
+
+  body.waymaker-homepage header#navbar img.waymaker-header-logo {
+    --waymaker-home-logo-width: clamp(
+      10rem,
+      calc(100vw - 10rem - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)),
+      13.75rem
+    );
+    width: var(--waymaker-home-logo-width) !important;
+    max-width: var(--waymaker-home-logo-width) !important;
+    height: auto !important;
+    flex: 0 0 auto;
+    flex-shrink: 0;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  body.waymaker-homepage header#navbar .waymaker-header-inner {
+    gap: 0.625rem;
+  }
+}
+
 .waymaker-nav-dropdown-wrap {
   position: relative;
   flex-shrink: 0;
