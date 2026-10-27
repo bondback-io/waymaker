@@ -258,6 +258,40 @@ function reviewsCarousel() {
       </p>`;
 }
 
+function navDropdownLinksHtml(prefix) {
+  const home = `${prefix}index.html`;
+  return `
+                <a href="${home}#about" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>About</span></a>
+                <a href="${home}#services" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-truck-ramp-box" aria-hidden="true"></i><span>Our Services</span></a>
+                <a href="${home}#google-reviews" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-star" aria-hidden="true"></i><span>Reviews</span></a>
+                <a href="${home}#areas" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i><span>Coverage Areas</span></a>
+                <a href="${home}#contact" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>Contact Us</span></a>`;
+}
+
+function navActionsHtml(prefix, quoteExtraAttrs = '') {
+  const home = `${prefix}index.html`;
+  return `
+        <div class="waymaker-nav-bar-tray">
+          <div class="waymaker-header-actions">
+            <div class="waymaker-nav-dropdown-wrap">
+              <button id="menu-toggle" type="button" class="waymaker-menu-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="waymaker-nav-dropdown-panel" aria-label="Open menu">
+                <i class="fa-solid fa-bars waymaker-menu-btn__icon" aria-hidden="true"></i>
+                <span class="waymaker-menu-btn__label">Menu</span>
+                <i class="fa-solid fa-chevron-down waymaker-menu-btn__chevron" aria-hidden="true"></i>
+              </button>
+              <div id="waymaker-nav-dropdown-panel" class="waymaker-nav-dropdown-panel" role="menu" aria-label="Site navigation" aria-hidden="true" hidden>
+${navDropdownLinksHtml(prefix)}
+              </div>
+            </div>
+            <a href="${home}#contact" class="nav-quote-cta" aria-label="Request a quote"${quoteExtraAttrs}>Get a Quote</a>
+          </div>
+        </div>`;
+}
+
+function navDropdownScriptHtml(prefix) {
+  return `<script src="${prefix}assets/waymaker-nav-dropdown.js" defer></script>`;
+}
+
 function navFragment(prefix) {
   const home = `${prefix}index.html`;
   return `
@@ -267,34 +301,10 @@ function navFragment(prefix) {
         <a href="${home}" class="logo-brand waymaker-header-logo-link inline-flex shrink-0 items-center justify-start py-0 transition-all bg-transparent">
           <img src="${prefix}assets/waymaker-logo.png" alt="Way Maker Rubbish Solutions logo" class="waymaker-header-logo" width="1024" height="341" loading="eager" decoding="async" />
         </a>
-        <div class="waymaker-nav-bar-tray">
-          <div class="hidden lg:flex shrink-0 items-center gap-2 xl:gap-3 flex-wrap justify-end">
-            <a href="${home}#about" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">About</a>
-            <a href="${home}#services" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Our Services</a>
-            <a href="${home}#google-reviews" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Reviews</a>
-            <a href="${home}#areas" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Coverage Areas</a>
-            <a href="${home}#contact" class="text-white/90 hover:text-primary transition font-medium text-base xl:text-lg">Contact</a>
-            <a href="${home}#contact" class="nav-quote-cta" aria-label="Request a quote">Get a Quote</a>
-          </div>
-          <button id="menu-toggle" type="button" class="lg:hidden shrink-0 self-center text-white p-2.5 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-            <i class="fa-solid fa-bars text-2xl" id="menu-icon-open" aria-hidden="true"></i>
-            <i class="fa-solid fa-xmark text-2xl hidden" id="menu-icon-close" aria-hidden="true"></i>
-          </button>
-        </div>
+${navActionsHtml(prefix)}
       </div>
     </nav>
-  </header>
-  <div id="mobile-menu" class="waymaker-mobile-nav lg:hidden fixed inset-0 z-[10000] flex-col overscroll-contain" data-open="false" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true">
-    <div class="waymaker-mobile-nav-panel mobile-menu-panel">
-      <a href="${home}#about" class="waymaker-mobile-nav-link">About</a>
-      <a href="${home}#services" class="waymaker-mobile-nav-link">Our Services</a>
-      <a href="${home}#google-reviews" class="waymaker-mobile-nav-link">Reviews</a>
-      <a href="${home}#areas" class="waymaker-mobile-nav-link">Coverage Areas</a>
-      <a href="${home}#contact" class="waymaker-mobile-nav-link">Contact Us</a>
-      <a href="tel:${PHONE_TEL}" class="waymaker-mobile-nav-cta waymaker-mobile-nav-cta--call"><i class="fa-solid fa-phone shrink-0" aria-hidden="true"></i> Call ${PHONE_DISP}</a>
-      <a href="${home}#contact" class="waymaker-mobile-nav-cta waymaker-mobile-nav-cta--quote">Get a Quote</a>
-    </div>
-  </div>`;
+  </header>`;
 }
 
 function footerFragment(prefix) {
@@ -564,11 +574,9 @@ function buildLocationPage(loc) {
     </section>
   </main>
   ${footerFragment(prefix)}
+  ${navDropdownScriptHtml(prefix)}
   <script>
-    (function(){var m=document.getElementById('menu-toggle'),p=document.getElementById('mobile-menu'),o=document.getElementById('menu-icon-open'),c=document.getElementById('menu-icon-close'),n=document.getElementById('navbar');
-    function set(v){if(!p||!m)return;p.setAttribute('data-open',v?'true':'false');p.setAttribute('aria-hidden',v?'false':'true');m.setAttribute('aria-expanded',v?'true':'false');document.body.classList.toggle('overflow-hidden',v);document.documentElement.classList.toggle('waymaker-menu-open',v);document.body.classList.toggle('waymaker-menu-open',v);if(o)o.classList.toggle('hidden',v);if(c)c.classList.toggle('hidden',!v);if(n)n.classList.toggle('nav-scrolled',v||window.scrollY>20);}
-    if(m&&p){m.addEventListener('click',function(){set(p.getAttribute('data-open')!=='true');});p.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});}
-    window.addEventListener('resize',function(){if(window.innerWidth>=1024&&p&&p.getAttribute('data-open')==='true')set(false);});
+    (function(){
     document.querySelectorAll('.loc-faq-btn').forEach(function(btn){btn.addEventListener('click',function(){var ex=btn.getAttribute('aria-expanded')==='true';document.querySelectorAll('.loc-faq-btn').forEach(function(b){b.setAttribute('aria-expanded','false');var pan=b.nextElementSibling;if(pan)pan.classList.remove('open');});if(!ex){btn.setAttribute('aria-expanded','true');var p2=btn.nextElementSibling;if(p2)p2.classList.add('open');}});});
     var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08});
     document.querySelectorAll('.animate-on-scroll').forEach(function(el){ob.observe(el);});
@@ -654,13 +662,7 @@ function buildHubPage() {
     </div>
   </main>
   ${footerFragment(prefix)}
-  <script>
-    (function(){var m=document.getElementById('menu-toggle'),p=document.getElementById('mobile-menu'),o=document.getElementById('menu-icon-open'),c=document.getElementById('menu-icon-close'),n=document.getElementById('navbar');
-    function set(v){if(!p||!m)return;p.setAttribute('data-open',v?'true':'false');p.setAttribute('aria-hidden',v?'false':'true');m.setAttribute('aria-expanded',v?'true':'false');document.body.classList.toggle('overflow-hidden',v);document.documentElement.classList.toggle('waymaker-menu-open',v);document.body.classList.toggle('waymaker-menu-open',v);if(o)o.classList.toggle('hidden',v);if(c)c.classList.toggle('hidden',!v);if(n)n.classList.toggle('nav-scrolled',v||window.scrollY>20);}
-    if(m&&p){m.addEventListener('click',function(){set(p.getAttribute('data-open')!=='true');});p.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});}
-    window.addEventListener('resize',function(){if(window.innerWidth>=1024&&p&&p.getAttribute('data-open')==='true')set(false);});
-    })();
-  </script>
+  ${navDropdownScriptHtml(prefix)}
 </body>
 </html>`;
 }

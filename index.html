@@ -60,6 +60,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="assets/waymaker-nav-dropdown.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -744,177 +745,6 @@
       padding-top: env(safe-area-inset-top, 0px);
     }
 
-    /* Mobile nav: full-viewport overlay (in-flow menu was pushing content / sitting “in” the page) */
-    #mobile-menu.waymaker-mobile-nav {
-      display: none;
-      -webkit-overflow-scrolling: touch;
-    }
-    #mobile-menu.waymaker-mobile-nav[data-open='true'] {
-      display: flex;
-      flex-direction: column;
-    }
-    @media (min-width: 1024px) {
-      #mobile-menu.waymaker-mobile-nav,
-      #mobile-menu.waymaker-mobile-nav[data-open='true'] {
-        display: none !important;
-      }
-    }
-
-    /* Strong overrides: full-screen drawer, readable taps (beats Tailwind / host theme) */
-    @media (max-width: 1023.98px) {
-      header#navbar.waymaker-site-header {
-        z-index: 10001 !important;
-      }
-
-      #mobile-menu.waymaker-mobile-nav[data-open='true'] {
-        display: flex !important;
-        flex-direction: column !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-        min-height: 100vh !important;
-        min-height: 100dvh !important;
-        height: 100% !important;
-        max-height: none !important;
-        box-sizing: border-box !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        z-index: 10000 !important;
-        overflow: hidden !important;
-        overscroll-behavior: contain !important;
-        isolation: isolate !important;
-        background: #000000 !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-      }
-
-      #mobile-menu.waymaker-mobile-nav .waymaker-mobile-nav-panel {
-        flex: 1 1 auto !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        width: 100% !important;
-        max-width: 24rem !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        min-height: 0 !important;
-        overflow-x: hidden !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-        overscroll-behavior-y: contain !important;
-        padding-left: 1.25rem !important;
-        padding-right: 1.25rem !important;
-        padding-top: max(6rem, calc(env(safe-area-inset-top, 0px) + 5.25rem)) !important;
-        padding-bottom: max(2rem, env(safe-area-inset-bottom, 0px)) !important;
-        gap: 0.25rem !important;
-        box-sizing: border-box !important;
-      }
-
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-link {
-        display: flex !important;
-        align-items: center !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        font-family: 'Poppins', system-ui, sans-serif !important;
-        font-size: 1.25rem !important;
-        font-weight: 600 !important;
-        line-height: 1.35 !important;
-        color: #ffffff !important;
-        text-decoration: none !important;
-        min-height: 3.25rem !important;
-        padding: 0.875rem 1rem !important;
-        border-radius: 0.75rem !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
-        background: transparent !important;
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.12);
-      }
-
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-link:active,
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-link:hover {
-        background: rgba(255, 255, 255, 0.08) !important;
-        color: #6ee7b7 !important;
-      }
-
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 0.5rem !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        font-family: 'Poppins', system-ui, sans-serif !important;
-        font-size: 1.125rem !important;
-        font-weight: 700 !important;
-        min-height: 3.5rem !important;
-        padding: 0.875rem 1.25rem !important;
-        margin-top: 0.75rem !important;
-        border-radius: 0.875rem !important;
-        text-decoration: none !important;
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      /* Call + Get a Quote — same brand green as hero / Get a Quote CTAs */
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call,
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote {
-        background: linear-gradient(165deg, #8fd94e 0%, #6dba2e 38%, #52a322 100%) !important;
-        border: 1px solid rgba(255, 255, 255, 0.28) !important;
-        box-shadow:
-          0 2px 0 rgba(255, 255, 255, 0.12) inset,
-          0 4px 16px rgba(0, 0, 0, 0.35),
-          0 6px 24px rgba(82, 163, 34, 0.32) !important;
-        color: #ffffff !important;
-      }
-
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call i {
-        color: #ffffff !important;
-        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
-      }
-
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call {
-        margin-top: 1.25rem !important;
-      }
-
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote {
-        margin-bottom: 0.5rem !important;
-      }
-
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call:active,
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--call:hover,
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote:active,
-      #mobile-menu.waymaker-mobile-nav a.waymaker-mobile-nav-cta--quote:hover {
-        filter: brightness(1.09) saturate(1.05);
-        border-color: rgba(255, 255, 255, 0.42) !important;
-        box-shadow:
-          0 2px 0 rgba(255, 255, 255, 0.2) inset,
-          0 8px 24px rgba(0, 0, 0, 0.45),
-          0 10px 36px rgba(109, 186, 46, 0.5) !important;
-      }
-
-      html.waymaker-menu-open,
-      body.waymaker-menu-open {
-        overflow: hidden !important;
-        height: 100% !important;
-        touch-action: none !important;
-        overscroll-behavior: none !important;
-      }
-
-      /* Menu toggle: same bright lime as .nav-quote-cta / hero green CTAs (#8fd94e), not focus:ring-primary (#10B981) */
-      #menu-toggle {
-        border: 2px solid #8fd94e !important;
-        box-sizing: border-box !important;
-      }
-      #menu-toggle:focus,
-      #menu-toggle:focus-visible {
-        --tw-ring-color: #8fd94e !important;
-        --tw-ring-opacity: 1 !important;
-      }
-    }
-
     nav.waymaker-header-nav {
       width: 100%;
       max-width: none;
@@ -1157,46 +987,27 @@
         </a>
 
         <div class="waymaker-nav-bar-tray">
-          <div class="hidden lg:flex shrink-0 items-center gap-3 xl:gap-4">
-            <a href="#about" class="text-white/90 hover:text-primary transition font-medium text-lg xl:text-xl">About</a>
-            <a href="#services" class="text-white/90 hover:text-primary transition font-medium text-lg xl:text-xl">Our Services</a>
-            <a href="#google-reviews" class="text-white/90 hover:text-primary transition font-medium text-lg xl:text-xl">Reviews</a>
-            <a href="#areas" class="text-white/90 hover:text-primary transition font-medium text-lg xl:text-xl">Coverage Areas</a>
-            <a href="#contact" class="text-white/90 hover:text-primary transition font-medium text-lg xl:text-xl">Contact Us</a>
+          <div class="waymaker-header-actions">
+            <div class="waymaker-nav-dropdown-wrap">
+              <button id="menu-toggle" type="button" class="waymaker-menu-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="waymaker-nav-dropdown-panel" aria-label="Open menu">
+                <i class="fa-solid fa-bars waymaker-menu-btn__icon" aria-hidden="true"></i>
+                <span class="waymaker-menu-btn__label">Menu</span>
+                <i class="fa-solid fa-chevron-down waymaker-menu-btn__chevron" aria-hidden="true"></i>
+              </button>
+              <div id="waymaker-nav-dropdown-panel" class="waymaker-nav-dropdown-panel" role="menu" aria-label="Site navigation" aria-hidden="true" hidden>
+                <a href="#about" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>About</span></a>
+                <a href="#services" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-truck-ramp-box" aria-hidden="true"></i><span>Our Services</span></a>
+                <a href="#google-reviews" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-star" aria-hidden="true"></i><span>Reviews</span></a>
+                <a href="#areas" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i><span>Coverage Areas</span></a>
+                <a href="#contact" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>Contact Us</span></a>
+              </div>
+            </div>
             <a href="#contact" class="nav-quote-cta" aria-label="Request a quote" data-mobile-href="#quote">Get a Quote</a>
           </div>
-
-          <button id="menu-toggle" type="button" class="lg:hidden shrink-0 self-center text-white p-2.5 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-            <i class="fa-solid fa-bars text-2xl" id="menu-icon-open" aria-hidden="true"></i>
-            <i class="fa-solid fa-xmark text-2xl hidden" id="menu-icon-close" aria-hidden="true"></i>
-          </button>
         </div>
       </div>
     </nav>
   </header>
-
-  <!-- Outside #navbar: fixed menu must not sit under an ancestor with backdrop-filter (.nav-scrolled), or inset-0 clips to the header box -->
-  <div
-    id="mobile-menu"
-    class="waymaker-mobile-nav lg:hidden fixed inset-0 z-[10000] flex-col overscroll-contain"
-    data-open="false"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Mobile navigation"
-    aria-hidden="true"
-  >
-    <div class="waymaker-mobile-nav-panel mobile-menu-panel">
-      <a href="#about" class="waymaker-mobile-nav-link">About</a>
-      <a href="#services" class="waymaker-mobile-nav-link">Our Services</a>
-      <a href="#google-reviews" class="waymaker-mobile-nav-link">Reviews</a>
-      <a href="#areas" class="waymaker-mobile-nav-link">Coverage Areas</a>
-      <a href="#contact" class="waymaker-mobile-nav-link">Contact Us</a>
-      <a href="tel:0423101334" class="waymaker-mobile-nav-cta waymaker-mobile-nav-cta--call">
-        <i class="fa-solid fa-phone shrink-0" aria-hidden="true"></i> Call 0423 101 334
-      </a>
-      <a href="#contact" class="waymaker-mobile-nav-cta waymaker-mobile-nav-cta--quote" data-mobile-href="#quote">Get a Quote</a>
-    </div>
-  </div>
 
   <section id="hero" class="relative flex w-full max-w-full min-w-0 min-h-[80vh] sm:min-h-[90vh] lg:min-h-screen items-center justify-center overflow-hidden">
     <!-- Static hero background: assets/hero-junk-field.png (single image, no slider) -->
@@ -1804,58 +1615,21 @@
     </div>
   </div>
 
+  <script src="assets/waymaker-nav-dropdown.js" defer></script>
   <script>
     (function () {
-      var menuToggle = document.getElementById('menu-toggle');
-      var mobileMenu = document.getElementById('mobile-menu');
-      var iconOpen = document.getElementById('menu-icon-open');
-      var iconClose = document.getElementById('menu-icon-close');
       var navbar = document.getElementById('navbar');
-
-      function setMobileMenuOpen(open) {
-        if (!mobileMenu || !menuToggle) return;
-        mobileMenu.setAttribute('data-open', open ? 'true' : 'false');
-        mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
-        menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-        if (iconOpen) iconOpen.classList.toggle('hidden', open);
-        if (iconClose) iconClose.classList.toggle('hidden', !open);
-        document.body.classList.toggle('overflow-hidden', open);
-        document.documentElement.classList.toggle('waymaker-menu-open', open);
-        document.body.classList.toggle('waymaker-menu-open', open);
-        if (navbar) {
-          if (open) navbar.classList.add('nav-scrolled');
-          else if (window.scrollY <= 60) navbar.classList.remove('nav-scrolled');
-        }
-      }
-
-      if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', function () {
-          var open = mobileMenu.getAttribute('data-open') === 'true';
-          setMobileMenuOpen(!open);
-        });
-        mobileMenu.querySelectorAll('a').forEach(function (link) {
-          link.addEventListener('click', function () {
-            setMobileMenuOpen(false);
-          });
-        });
-      }
-
-      window.addEventListener('resize', function () {
-        if (window.innerWidth >= 1024 && mobileMenu && mobileMenu.getAttribute('data-open') === 'true') {
-          setMobileMenuOpen(false);
-        }
-      });
+      var navDropdownPanel = document.getElementById('waymaker-nav-dropdown-panel');
 
       if (navbar) {
         window.addEventListener('scroll', function () {
           if (window.scrollY > 60) navbar.classList.add('nav-scrolled');
-          else if (!mobileMenu || mobileMenu.getAttribute('data-open') !== 'true') {
+          else if (!navDropdownPanel || navDropdownPanel.hidden) {
             navbar.classList.remove('nav-scrolled');
           }
         });
         if (window.scrollY > 60) navbar.classList.add('nav-scrolled');
-        else if (!mobileMenu || mobileMenu.getAttribute('data-open') !== 'true') {
+        else if (!navDropdownPanel || navDropdownPanel.hidden) {
           navbar.classList.remove('nav-scrolled');
         }
       }
@@ -1990,8 +1764,12 @@
           hideContactModal();
           return;
         }
-        if (mobileMenu && mobileMenu.getAttribute('data-open') === 'true') {
-          setMobileMenuOpen(false);
+        if (
+          navDropdownPanel &&
+          !navDropdownPanel.hidden &&
+          typeof window.waymakerSetNavDropdownOpen === 'function'
+        ) {
+          window.waymakerSetNavDropdownOpen(false);
         }
       });
 
