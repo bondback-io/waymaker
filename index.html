@@ -735,7 +735,7 @@
     @media (min-width: 1024px) {
       .waymaker-nav-bar-tray {
         gap: 1rem;
-        padding-left: 1rem;
+        padding-left: 0.75rem;
         padding-right: 0;
       }
     }
@@ -915,12 +915,78 @@
       }
     }
 
+    nav.waymaker-header-nav {
+      width: 100%;
+      max-width: none;
+      margin-left: 0;
+      margin-right: 0;
+      box-sizing: border-box;
+      padding-left: max(1rem, env(safe-area-inset-left, 0px));
+      padding-right: max(1rem, env(safe-area-inset-right, 0px));
+    }
+    @media (min-width: 640px) {
+      nav.waymaker-header-nav {
+        padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+        padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+      }
+    }
+    @media (min-width: 1024px) {
+      nav.waymaker-header-nav {
+        padding-left: max(25px, env(safe-area-inset-left, 0px));
+        padding-right: max(25px, env(safe-area-inset-right, 0px));
+      }
+    }
+    .waymaker-header-inner {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+    @media (min-width: 1024px) {
+      .waymaker-header-inner {
+        gap: 1.5rem;
+      }
+    }
     .logo-brand {
       font-family: 'Poppins', sans-serif;
       font-weight: 800;
       letter-spacing: 0.02em;
       text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
       background: transparent !important;
+    }
+    a.logo-brand.waymaker-header-logo-link {
+      flex: 0 0 auto;
+      width: fit-content;
+      min-width: fit-content;
+      max-width: none;
+      justify-content: flex-start;
+      align-items: center;
+      text-shadow: none;
+      background: transparent !important;
+      padding: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    header#navbar img.waymaker-header-logo {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: min(calc(100vw - 5.5rem), 16rem);
+      object-fit: contain;
+      object-position: left center;
+      background: transparent;
+      border: none;
+      flex-shrink: 0;
+    }
+    @media (min-width: 1024px) {
+      header#navbar img.waymaker-header-logo {
+        width: 320px;
+        max-width: 320px;
+        height: auto;
+      }
     }
 
     .animate-on-scroll { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
@@ -990,7 +1056,6 @@
         transform: translateY(-1px);
       }
     }
-
 
 
   </style>
@@ -1085,10 +1150,10 @@
   <!-- CONFIG: [INSERT YOUR PHONE NUMBER] — search file for 0423101334 / 0423 101 334 and update tel: + JSON-LD telephone -->
 
   <header id="navbar" class="waymaker-site-header fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full max-w-full min-w-0" aria-label="Main navigation">
-      <div class="flex items-stretch min-w-0 min-h-[4.25rem] h-20 gap-0">
-        <a href="#hero" class="logo-brand inline-flex min-w-0 flex-1 items-center self-center py-1.5 pr-1 lg:flex-none lg:shrink-0 lg:pr-0 lg:py-0 transition-all bg-transparent">
-          <img src="assets/waymaker-logo.png" alt="Way Maker Rubbish Solutions logo" class="h-20 sm:h-24 md:h-36 lg:h-48 xl:h-56 w-auto max-w-full sm:max-w-[min(100%,28rem)] md:max-w-none object-contain object-left" loading="eager" decoding="async" />
+    <nav class="waymaker-header-nav relative w-full" aria-label="Main navigation">
+      <div class="waymaker-header-inner min-h-[4.25rem] py-1 sm:py-1.5 lg:min-h-[7rem] lg:py-2">
+        <a href="#hero" class="logo-brand waymaker-header-logo-link inline-flex shrink-0 items-center justify-start py-0 transition-all bg-transparent">
+          <img src="assets/waymaker-logo.png" alt="Way Maker Rubbish Solutions logo" class="waymaker-header-logo" width="1024" height="341" loading="eager" decoding="async" />
         </a>
 
         <div class="waymaker-nav-bar-tray">
@@ -2240,7 +2305,6 @@
       var y = document.getElementById('year');
       if (y) y.textContent = new Date().getFullYear();
     })();
-  </script>
   </script>
 </body>
 </html>
