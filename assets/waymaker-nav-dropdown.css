@@ -278,12 +278,12 @@ header#navbar.waymaker-site-header.waymaker-nav-dropdown-active {
   border-bottom: none;
 }
 
-.waymaker-nav-dropdown-link i {
-  width: 1.15rem;
-  text-align: center;
-  font-size: 0.85rem;
-  color: rgba(109, 186, 46, 0.88);
+.waymaker-nav-dropdown-link .waymaker-nav-dropdown-icon {
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
+  display: block;
+  color: #6dba2e;
 }
 
 .waymaker-nav-dropdown-link:hover,
@@ -293,8 +293,8 @@ header#navbar.waymaker-site-header.waymaker-nav-dropdown-active {
   outline: none;
 }
 
-.waymaker-nav-dropdown-link:hover i,
-.waymaker-nav-dropdown-link:focus-visible i {
+.waymaker-nav-dropdown-link:hover .waymaker-nav-dropdown-icon,
+.waymaker-nav-dropdown-link:focus-visible .waymaker-nav-dropdown-icon {
   color: #8fd94e;
 }
 

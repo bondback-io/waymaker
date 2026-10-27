@@ -5,6 +5,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import {
+  waymakerNavDropdownIconAbout,
+  waymakerNavDropdownIconAreas,
+  waymakerNavDropdownIconContact,
+  waymakerNavDropdownIconReviews,
+  waymakerNavDropdownIconServices,
+} from './waymaker-nav-dropdown-icons.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -261,11 +268,11 @@ function reviewsCarousel() {
 function navDropdownLinksHtml(prefix) {
   const home = `${prefix}index.html`;
   return `
-                <a href="${home}#about" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>About</span></a>
-                <a href="${home}#services" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-truck-ramp-box" aria-hidden="true"></i><span>Our Services</span></a>
-                <a href="${home}#google-reviews" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-star" aria-hidden="true"></i><span>Reviews</span></a>
-                <a href="${home}#areas" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i><span>Coverage Areas</span></a>
-                <a href="${home}#contact" class="waymaker-nav-dropdown-link" role="menuitem"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>Contact Us</span></a>`;
+                <a href="${home}#about" class="waymaker-nav-dropdown-link" role="menuitem">${waymakerNavDropdownIconAbout}<span>About</span></a>
+                <a href="${home}#services" class="waymaker-nav-dropdown-link" role="menuitem">${waymakerNavDropdownIconServices}<span>Our Services</span></a>
+                <a href="${home}#google-reviews" class="waymaker-nav-dropdown-link" role="menuitem">${waymakerNavDropdownIconReviews}<span>Reviews</span></a>
+                <a href="${home}#areas" class="waymaker-nav-dropdown-link" role="menuitem">${waymakerNavDropdownIconAreas}<span>Coverage Areas</span></a>
+                <a href="${home}#contact" class="waymaker-nav-dropdown-link" role="menuitem">${waymakerNavDropdownIconContact}<span>Contact Us</span></a>`;
 }
 
 function navActionsHtml(prefix, quoteExtraAttrs = '') {
