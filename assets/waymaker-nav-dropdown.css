@@ -14,6 +14,93 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .waymaker-header-actions {
+    gap: 0.625rem;
+    align-items: center;
+  }
+
+  .waymaker-header-actions .waymaker-menu-btn {
+    box-sizing: border-box;
+    width: 145px;
+    min-width: 145px;
+    height: 55px;
+    min-height: 55px;
+    max-height: 55px;
+    padding: 0 0.65rem;
+    font-size: 17px;
+    font-weight: 600;
+    gap: 0.45rem;
+  }
+
+  .waymaker-header-actions .waymaker-menu-btn__icon {
+    font-size: 1.125rem;
+  }
+
+  .waymaker-header-actions .waymaker-menu-btn__chevron {
+    font-size: 0.75rem;
+  }
+
+  .waymaker-header-actions .nav-quote-cta {
+    box-sizing: border-box;
+    width: 175px;
+    min-width: 175px;
+    height: 55px;
+    min-height: 55px;
+    max-height: 55px;
+    padding: 0 0.75rem;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  header#navbar .waymaker-nav-bar-tray {
+    flex: 0 0 auto;
+  }
+
+  header#navbar a.waymaker-header-logo-link {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+    max-width: calc(100% - 15.5rem);
+  }
+
+  header#navbar img.waymaker-header-logo {
+    max-width: min(18rem, 100%) !important;
+    width: auto !important;
+    height: auto !important;
+    flex-shrink: 1;
+  }
+
+  .waymaker-header-actions {
+    flex-shrink: 0;
+  }
+
+  .waymaker-header-actions .waymaker-menu-btn,
+  .waymaker-header-actions .nav-quote-cta {
+    box-sizing: border-box;
+    width: auto;
+    min-width: 0;
+    min-height: 44px;
+    height: auto;
+    max-height: none;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .waymaker-header-actions .waymaker-menu-btn__icon {
+    font-size: 1.05rem;
+  }
+
+  .waymaker-header-actions .waymaker-menu-btn__chevron {
+    font-size: 0.7rem;
+  }
+}
+
 .waymaker-nav-dropdown-wrap {
   position: relative;
   flex-shrink: 0;
